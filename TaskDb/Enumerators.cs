@@ -8,6 +8,6 @@ namespace TaskDb
 {
     public class Enumerators
     {
-        public enum Status {draft, issued, paid, cancelled}
+        public enum Status {Draft, Issued, Paid, Cancelled}
     }
 }

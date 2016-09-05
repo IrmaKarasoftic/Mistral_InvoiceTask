@@ -1,0 +1,10 @@
+c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\obj\Debug\TaskDb.csprojResolveAssemblyReference.cache
+c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\bin\Debug\TaskDb.dll.config
+c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\bin\Debug\TaskDb.dll
+c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\bin\Debug\TaskDb.pdb
+c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\bin\Debug\EntityFramework.dll
+c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\bin\Debug\EntityFramework.xml
+c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\obj\Debug\TaskDb.dll
+c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\obj\Debug\TaskDb.pdb
