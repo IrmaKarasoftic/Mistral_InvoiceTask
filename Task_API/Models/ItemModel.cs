@@ -7,7 +7,7 @@ namespace Task_API.Models
 {
     public class ItemModel
     {
-        public int ItemId { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public int Quantity { get; set; }
         public double UnitPrice { get; set; }

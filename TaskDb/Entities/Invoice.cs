@@ -15,7 +15,7 @@ namespace TaskDb
             Items = new Collection<Item>();
         }
 
-        public int InvoiceId { get; set; }
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public virtual ICollection<Item> Items { get; set; }
         public Status Status { get; set; }

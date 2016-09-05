@@ -17,8 +17,6 @@ namespace Task_API.Controllers
         {
             try
             {
-                InvoiceModel im = new InvoiceModel();
-                return Ok(im);
 
             }
             catch (Exception)

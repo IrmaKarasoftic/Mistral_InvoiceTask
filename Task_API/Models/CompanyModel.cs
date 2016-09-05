@@ -7,7 +7,7 @@ namespace Task_API.Models
 {
     public class CompanyModel
     {
-        public int CompanyId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string StreetAddress { get; set; }
         public string City { get; set; }

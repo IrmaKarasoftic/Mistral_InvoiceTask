@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace TaskDb
 {
-    public class Context : DbContext
+    public class AppContext : DbContext
     {
-        public Context() : base("Database") { }
+        public AppContext() : base("Database") { }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Costumer> Costumers { get; set; }
         public DbSet<Invoice> Invoices { get; set; }

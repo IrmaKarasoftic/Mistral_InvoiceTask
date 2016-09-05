@@ -9,16 +9,16 @@ namespace TaskDb
 {
     public class Repository<Entity> where Entity:class
     {
-        public Context context;
+        public AppContext context;
         public DbSet<Entity> dbSet;
 
-        public Repository(Context _context)
+        public Repository(AppContext _context)
         {
             context = _context;
             dbSet = _context.Set<Entity>();
         }
 
-        public Context HomeContext()
+        public AppContext HomeContext()
         {
             return context;
         }
