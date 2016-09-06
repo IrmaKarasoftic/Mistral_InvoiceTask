@@ -61,3 +61,7 @@ C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\Task_API\bin\EPPlus
 C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\Task_API\bin\TsSoft.Excel.xml
 C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\Task_API\bin\Ninject.Web.dll
 C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\Task_API\bin\Ninject.Web.xml
+C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\Task_API\bin\Ninject.Web.WebApi.dll
+C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\Task_API\bin\Ninject.Web.WebApi.WebHost.dll
+C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\Task_API\bin\Ninject.Web.WebApi.xml
+C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\Task_API\bin\Ninject.Web.WebApi.WebHost.xml

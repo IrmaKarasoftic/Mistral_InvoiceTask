@@ -9,7 +9,7 @@ namespace Task_API.DataAccess
 {
     public interface Interface<Entity>
     {
-        AppContext BaseCOntext();
+        AppContext HomeContext();
         IQueryable<Entity> Get();
         Entity Get(int id);
         void Insert(Entity entity);

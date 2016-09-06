@@ -7,3 +7,4 @@ c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\bin\Debug\En
 c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\bin\Debug\EntityFramework.SqlServer.xml
 c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\obj\Debug\TaskDb.dll
 c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\obj\Debug\TaskDb.pdb
+C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\TaskDb\obj\Debug\TaskDb.csprojResolveAssemblyReference.cache
