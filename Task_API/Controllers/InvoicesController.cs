@@ -17,7 +17,7 @@ namespace Task_API.Controllers
         {
             try
             {
-                var invoices = Repository.Get().ToList();
+                var invoices = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList();
                 if (invoices != null)
                 {
                     return Ok(invoices);
