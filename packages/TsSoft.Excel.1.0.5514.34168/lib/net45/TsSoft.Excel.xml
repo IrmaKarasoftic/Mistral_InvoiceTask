@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TsSoft.Excel</name>
+    </assembly>
+    <members>
+        <member name="T:TsSoft.Excel.Attributes.StyleAttributeBase">
+            <summary>
+            Базовый атрибут для описания стилей
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.AlignAttribute">
+            <summary>
+            Задать горизонтальное выравнивание значениям
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.HeaderAlignAttribute">
+            <summary>
+            Задать горизонтальное выравнивание заголовкам
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.AutoFitType">
+            <summary>
+            Возможные типы подгона размера ячейки под содержимое
+            </summary>
+        </member>
+        <member name="F:TsSoft.Excel.Attributes.AutoFitType.None">
+            <summary>
+            Не подгонять
+            </summary>
+        </member>
+        <member name="F:TsSoft.Excel.Attributes.AutoFitType.StretchColumns">
+            <summary>
+            Расширить столбец
+            </summary>
+        </member>
+        <member name="F:TsSoft.Excel.Attributes.AutoFitType.WrapText">
+            <summary>
+            Переносить по словам
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.AutoFitAttribute">
+            <summary>
+            Автоматически подогнать размер ячейки под содержимое (по значениям содержимого)
+            </summary>
+        </member>
+        <member name="M:TsSoft.Excel.Attributes.AutoFitAttribute.#ctor(TsSoft.Excel.Attributes.AutoFitType)">
+            <summary>
+            
+            </summary>
+            <param name="type">Тип подгона размера</param>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.HeaderAutoFitAttribute">
+            <summary>
+            Автоматически подогнать размер ячейки под содержимое (по заголовкам содержимого)
+            </summary>
+        </member>
+        <member name="M:TsSoft.Excel.Attributes.HeaderAutoFitAttribute.#ctor(TsSoft.Excel.Attributes.AutoFitType)">
+            <summary>
+            
+            </summary>
+            <param name="type">Тип подгона размера</param>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.ColorAttributeBase">
+            <summary>
+            Базовый атрибут для задания цвета
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.BackgroundColorAttribute">
+            <summary>
+            Задать цвет фона
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.HeaderBackgroundColorAttribute">
+            <summary>
+            Задать цвет фона для заголовка
+            </summary>
+        </member>
+        <member name="P:TsSoft.Excel.Attributes.BorderAttributeBase.Style">
+            <summary>
+            Стиль границы ячеек
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.BorderAttribute">
+            <summary>
+            Задать границу ячеек
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.HeaderBorderAttribute">
+            <summary>
+            Задать границу ячеек (для заголовков)
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.ExcelCellAttribute">
+            <summary>
+            Аттрибутъ для обозначения ячейки. При задании Description или при присутствии DescriptionAttribute
+            выведет это в заголовок для <see cref="T:TsSoft.Excel.Attributes.ExcelTableAttribute"/> или <see cref="T:TsSoft.Excel.Attributes.ExcelDictionaryAttribute"/>
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.ExcelPartAttribute">
+            <summary>
+            Основной атрибут, отвечающий за рендер части документа,
+            все аттрибуты частей (<see cref="T:TsSoft.Excel.Attributes.ExcelTableAttribute"/>, <see cref="T:TsSoft.Excel.Attributes.ExcelCellAttribute"/>, <see cref="T:TsSoft.Excel.Attributes.ExcelDictionaryAttribute"/>) 
+            его наследуют
+            </summary>
+        </member>
+        <member name="P:TsSoft.Excel.Attributes.ExcelPartAttribute.Stylizer">
+            <summary>
+            Тип, реализующий <see cref="T:TsSoft.Excel.Stylizers.IStylizer"/>.
+            Применяется ко всему диапазону ячеек-значений
+            </summary>
+        </member>
+        <member name="P:TsSoft.Excel.Attributes.ExcelPartAttribute.HeaderStylizer">
+            <summary>
+            Тип, реализующий <see cref="T:TsSoft.Excel.Stylizers.IStylizer"/>.
+            Применяется ко всему диапазону ячеек-заголовков
+            </summary>
+        </member>
+        <member name="P:TsSoft.Excel.Attributes.ExcelPartAttribute.Description">
+            <summary>
+            Описание. Выводится как заголовок
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.ExcelCustomPartAttribute">
+            <summary>
+                Часть для рендера с кастомным генератором
+            </summary>
+        </member>
+        <member name="P:TsSoft.Excel.Attributes.ExcelCustomPartAttribute.CustomGenerator">
+            <summary>
+                Тип генератора, обязательно реализующий <see cref="T:TsSoft.Excel.Generators.PartGenerators.ICustomGenerator"/>
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.ExcelDictionaryAttribute">
+            <summary>
+            Рендер модели как словаря значаний
+            Ключ1    Значение1
+            Ключ2    Значение2
+            Ключ3    Значение3
+            где ключи - это заголовок в <see cref="T:TsSoft.Excel.Attributes.ExcelCellAttribute"/>, а значение - 
+            значения соответствующих свойств
+            </summary>
+        </member>
+        <member name="P:TsSoft.Excel.Attributes.ExcelDictionaryAttribute.WithNullValues">
+            <summary>
+            Рендерить ли заголовок для null-значений
+            </summary>
+        </member>
+        <member name="P:TsSoft.Excel.Attributes.ExcelDictionaryAttribute.WithEmptyStrings">
+            <summary>
+            Рендерить ли заголовок, если значение - пустая строка
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.ExcelModelAttribute">
+            <summary>
+            Разметка для класса модели,
+            отвечает за глобальные настройки книги и всего диапазона затронутых ячеек
+            </summary>
+        </member>
+        <member name="P:TsSoft.Excel.Attributes.ExcelModelAttribute.WorkbookName">
+            <summary>
+            Имя книги Excel
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.ExcelRowAttribute">
+            <summary>
+            Вывод одной сущности, как строки
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.ExcelTableAttribute">
+            <summary>
+            Вывод коллекции, как таблицы
+            </summary>
+        </member>
+        <member name="P:TsSoft.Excel.Attributes.FontAttributeBase.Name">
+            <summary>
+            Наименование шрифта (FontFamily)
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.FontAttribute">
+            <summary>
+            Задать настройки шрифта
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.HeaderFontAttribute">
+            <summary>
+            Задать настройки шрифта для заголовка
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.FontColorAttribute">
+            <summary>
+            Задать цвет шрифта
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.HeaderFontColorAttribute">
+            <summary>
+            Задать цвет шрифта (для заголовка)
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.FormatAttribute">
+            <summary>
+            Выбор формата отображения ячейки или диапазона
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.HeaderFormatAttribute">
+            <summary>
+            Выбор формата отображения ячейки или диапазона (для заголовка)
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.MarginAttribute">
+            <summary>
+            Сдвиг последующих частей экселя. Стили не применяются
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.PaddingAttribute">
+            <summary>
+            Сдвиг последующих частей экселя.
+            Будут применены стили, которые использует текущая часть
+            </summary>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.VerticalAlignAttribute">
+            <summary>
+            Выравнивание по вертикали
+            </summary>
+        </member>
+        <member name="M:TsSoft.Excel.Attributes.VerticalAlignAttribute.#ctor(OfficeOpenXml.Style.ExcelVerticalAlignment)">
+            <summary>
+            
+            </summary>
+            <param name="alignment">Тип выравнивания</param>
+        </member>
+        <member name="T:TsSoft.Excel.Attributes.HeaderVerticalAlignAttribute">
+            <summary>
+            Выравнивание по вертикали
+            </summary>
+        </member>
+        <member name="M:TsSoft.Excel.Attributes.HeaderVerticalAlignAttribute.#ctor(OfficeOpenXml.Style.ExcelVerticalAlignment)">
+            <summary>
+            
+            </summary>
+            <param name="alignment">Тип выравнивания</param>
+        </member>
+        <member name="T:TsSoft.Excel.Constants.Numberformats">
+            <summary>
+            https://support.office.com/en-us/article/Create-or-delete-a-custom-number-format-78f2a361-936b-4c03-8772-09fab54be7f4
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -16,5 +16,9 @@ namespace Task_API.Controllers
         {
             repository = _repo;
         }
+        protected Repository<E> Repository
+        {
+            get { return repository; }
+        }
     }
 }

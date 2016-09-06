@@ -9,7 +9,7 @@ namespace Task_API.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
+        public int Company { get; set; }
         public string CompanyName { get; set; }
     }
 }

@@ -17,7 +17,12 @@ namespace Task_API.Controllers
         {
             try
             {
-
+                var invoices = Repository.Get().ToList();
+                if (invoices != null)
+                {
+                    return Ok(invoices);
+                }
+                return BadRequest();
             }
             catch (Exception)
             {
