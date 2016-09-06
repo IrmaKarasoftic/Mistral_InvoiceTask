@@ -65,7 +65,7 @@ namespace Task_API.Models
                 CompanyName=costumer.Company.Name
             };
         }
-
+        
         public InvoiceItemModel Create(InvoiceItem invoiceItem)
         {
             return new InvoiceItemModel()
