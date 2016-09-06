@@ -50,6 +50,7 @@ namespace Task_API.Models
                 zipCode = model.ZipCode
             };
         }
+
         public Costumer Create(CostumerModel model, AppContext context)
         {
             return new Costumer()
