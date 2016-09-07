@@ -1,0 +1,1 @@
+﻿angular.module('taskAngular', ['ngRoute', 'appRoutes', 'MainCtrl']);
