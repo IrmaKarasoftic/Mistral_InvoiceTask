@@ -61,10 +61,11 @@ namespace Task_API.Controllers
         {
             if (model != null)
             {
+                Company comp = Repository.Get(id);
                 Company company = Parser.Create(model, Repository.HomeContext());
-                if(company != null)
+                if(comp != null)
                 {
-                    Repository.Update(company, company.Id);
+                    Repository.Update(company, id);
                     return Ok(Factory.Create(company));
                 }
                 return NotFound();

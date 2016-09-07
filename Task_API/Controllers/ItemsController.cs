@@ -65,10 +65,11 @@ namespace Task_API.Controllers
             {
                 try
                 {
+                    Item ite = Repository.Get(id);
                     Item it = Parser.Create(item, Repository.HomeContext());
-                    if (it != null)
+                    if (ite != null)
                     {
-                        Repository.Update(it, it.Id);
+                        Repository.Update(it, id);
                         return Ok(Factory.Create(it));
                     }
                     return NotFound();

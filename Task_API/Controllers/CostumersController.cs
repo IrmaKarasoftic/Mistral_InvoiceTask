@@ -64,10 +64,11 @@ namespace Task_API.Controllers
             {
                 try
                 {
+                    Costumer co = Repository.Get(id);
                     Costumer cost = Parser.Create(costumer, Repository.HomeContext());
-                    if (cost != null) 
+                    if (co != null) 
                     {
-                        Repository.Update(cost, cost.Id);
+                        Repository.Update(cost, id);
                         return Ok(Factory.Create(cost));
                     }
                     return NotFound();
