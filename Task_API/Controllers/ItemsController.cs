@@ -58,5 +58,45 @@ namespace Task_API.Controllers
             }
             return NotFound();
         }
+
+        public IHttpActionResult Put(ItemModel item, int id)
+        {
+            if(item != null)
+            {
+                try
+                {
+                    Item it = Parser.Create(item, Repository.HomeContext());
+                    if (it != null)
+                    {
+                        Repository.Update(it, id);
+                        return Ok(Factory.Create(it));
+                    }
+                    return NotFound();
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return NotFound();
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            try
+            {
+                Item item = Repository.Get(id);
+                if (item != null)
+                {
+                    Repository.Delete(id);
+                    return Ok();
+                }
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

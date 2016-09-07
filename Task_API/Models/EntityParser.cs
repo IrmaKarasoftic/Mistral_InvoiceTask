@@ -33,6 +33,7 @@ namespace Task_API.Models
         {
             return new InvoiceItem()
             {
+                Id = model.Id,
                 Invoice = context.Invoices.Find(model.InvoiceId),
                 Item = context.Items.Find(model.ItemId),
                 Quantity = model.Quantity

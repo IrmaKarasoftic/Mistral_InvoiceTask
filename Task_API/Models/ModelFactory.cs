@@ -70,6 +70,7 @@ namespace Task_API.Models
         {
             return new InvoiceItemModel()
             {
+                Id = invoiceItem.Id,
                 InvoiceId = invoiceItem.Invoice.Id,
                 ItemId = invoiceItem.Item.Id,
                 Quantity = invoiceItem.Quantity
