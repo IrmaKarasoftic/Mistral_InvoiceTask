@@ -25,6 +25,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Task_Angilar", "Task_Angila
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "54572"
+		SlnRelativePath = "Task_Angilar\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject

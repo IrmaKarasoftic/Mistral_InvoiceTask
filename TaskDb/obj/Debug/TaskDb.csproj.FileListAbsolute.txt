@@ -10,3 +10,15 @@ c:\users\irmaka\documents\visual studio 2015\Projects\TaskDb\TaskDb\obj\Debug\Ta
 C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\TaskDb\obj\Debug\TaskDb.csprojResolveAssemblyReference.cache
 C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\TaskDb\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Irmaka\Documents\Visual Studio 2015\Projects\TaskDb\TaskDb\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\bin\Debug\TaskDb.dll.config
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\bin\Debug\TaskDb.dll
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\bin\Debug\TaskDb.pdb
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\bin\Debug\EntityFramework.dll
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\bin\Debug\EntityFramework.xml
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\obj\Debug\TaskDb.csprojResolveAssemblyReference.cache
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\obj\Debug\TaskDb.dll
+C:\Users\Ferhat\Desktop\Mistral_InvoiceTask\TaskDb\obj\Debug\TaskDb.pdb
