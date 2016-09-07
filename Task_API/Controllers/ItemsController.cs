@@ -68,7 +68,7 @@ namespace Task_API.Controllers
                     Item it = Parser.Create(item, Repository.HomeContext());
                     if (it != null)
                     {
-                        Repository.Update(it, id);
+                        Repository.Update(it, it.Id);
                         return Ok(Factory.Create(it));
                     }
                     return NotFound();

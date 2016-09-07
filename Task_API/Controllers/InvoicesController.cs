@@ -17,13 +17,12 @@ namespace Task_API.Controllers
         {
             try
             {
-                return Ok(new InvoiceModel { Id = 5, CostumerName = "irma" });
-
-                /*var invoices = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList();
+                var invoices = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList();
                 if (invoices != null)
                  {
                      return Ok(invoices);
-                 }*/
+                 }
+                return BadRequest();
             }
             catch (Exception)
             {
