@@ -61,15 +61,15 @@ namespace Task_API.Controllers
             return BadRequest();
         }
 
-        public IHttpActionResult Put(InvoiceModel invoice)
+        public IHttpActionResult Put(InvoiceModel invoice, int id)
         {
             try
             {
-                
+                Invoice invojs = Repository.Get(id);
                 Invoice inv = Parser.Create(invoice, Repository.HomeContext());
-                if (inv != null)
+                if (invojs != null)
                 {
-                    Repository.Update(inv, inv.Id);
+                    Repository.Update(inv, id);
                     return Ok(Factory.Create(inv));
                 }
                 else return NotFound();
