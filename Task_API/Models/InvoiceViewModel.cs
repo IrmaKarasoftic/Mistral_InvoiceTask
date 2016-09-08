@@ -7,6 +7,7 @@ namespace Task_API.Models
 {
     public class InvoiceViewModel
     {
+        public CostumerModel Costumer { get; set; }
         public CompanyModel Company { get; set; }
         public InvoiceModel Invoice { get; set; }
         public ShippingDetailsModel BillTo { get; set; }
