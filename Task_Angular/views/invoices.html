@@ -1,4 +1,27 @@
-﻿
+﻿<div>
+    <div class="row">
+        <ul>
+            <li ng-repeat="invoice in invoices">
+                <div class="col-md-2">
+                    <p>id</p>
+                    {{invoice.id}}
+                </div>
+                <div class="col-md-2">
+                    date
+                    {{invoice.date}}
+                </div>
+                <div class="col-md-2">
+                    status
+                    {{invoice.status}}
+                </div>
+                <div class="col-md-2">
+                    customer name
+                    {{invoice.CustomerName}}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 <form>
     <div class="row">
         <!--Bill To-->
