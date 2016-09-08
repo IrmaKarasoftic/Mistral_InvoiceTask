@@ -188,6 +188,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ChangeStatusHelper.cs" />
+    <Compile Include="Helpers\GenerateAnInvoice.cs" />
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\CostumerModel.cs" />
     <Compile Include="Models\EntityParser.cs" />
