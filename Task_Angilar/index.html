@@ -10,15 +10,19 @@
     <!-- JS -->
     <script src="libs/angular.min.js"></script>
     <script src="libs/angular-route.min.js"></script>
+    <script src="libs/jquery-3.1.0.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
     <!-- ANGULAR CUSTOM -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/homeCtrl.js"></script>
+    <script src="scripts/controllers/invoicesCtrl.js"></script>
+    <script src="scripts/controllers/customersCtrl.js"></script>
     
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-10 col-md-offset-1">
 
                 <!-- HEADER -->
                 <div class="page-header">
@@ -30,7 +34,9 @@
                 <nav class="navbar navbar-inverse">
                     <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
                     <ul class="nav navbar-nav">
-                        <li><a href="#/home"><strong>Dashboard</strong></a></li>
+                        <li><a href="#/home"><strong>Home</strong></a></li>
+                        <li><a href="#/invoices"><strong>Invoices</strong></a></li>
+                        <li><a href="#/customers"><strong>Customers</strong></a></li>
                     </ul>
                 </nav>
                 <!-- ANGULAR DYNAMIC CONTENT -->

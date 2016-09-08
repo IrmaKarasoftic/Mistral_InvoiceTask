@@ -5,6 +5,16 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+.sonarqube/
+.vs/
+bin/
+obj/
+packages/
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
