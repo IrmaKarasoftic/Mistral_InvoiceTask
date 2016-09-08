@@ -19,7 +19,7 @@ namespace TaskDb
         public DateTime Date { get; set; }
         public virtual ICollection<Item> Items { get; set; }
         public Status Status { get; set; }
-        public virtual Costumer Costumer { get; set; }
+        public virtual Customer Costumer { get; set; }
 
     }
 }

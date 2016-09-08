@@ -11,7 +11,7 @@ namespace Task_API.Helpers
     public class GenerateAnInvoice
     {
 
-        public static void Create(InvoiceViewModel model, AppContext context)
+        /*public static void Create(InvoiceViewModel model, AppContext context)
         {
             Repository<Invoice> invoiceRepository = new Repository<Invoice>(context);
             Invoice invoice = new Invoice();
@@ -34,7 +34,7 @@ namespace Task_API.Helpers
 
             invoiceRepository.Insert(invoice);
         }
-        
+        */
         public static List<InvoiceModel> GetAllInvoices(AppContext context)
         {
             ModelFactory factory = new ModelFactory();

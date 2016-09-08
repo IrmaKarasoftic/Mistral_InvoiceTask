@@ -11,7 +11,7 @@ namespace TaskDb
     {
         public AppContext() : base("Database") { }
         public DbSet<Company> Companies { get; set; }
-        public DbSet<Costumer> Costumers { get; set; }
+        public DbSet<Customer> Costumers { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<InvoiceItem> InvoiceItems { get; set; }
