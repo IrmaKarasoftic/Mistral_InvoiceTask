@@ -17,7 +17,7 @@ namespace Task_API.Controllers
         {
             try
             {
-                var invoices = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList();
+                List<InvoiceModel> invoices = Helpers.GenerateAnInvoice.GetAllInvoices(Repository.HomeContext());
                 if (invoices != null)
                  {
                      return Ok(invoices);
@@ -50,7 +50,7 @@ namespace Task_API.Controllers
             {
                 try
                 {
-                    Repository.Insert(Parser.Create(invoice, Repository.HomeContext()));
+                    Helpers.GenerateAnInvoice.Create(invoice, Repository.HomeContext());
                     return Ok();
                 }
                 catch (Exception)
