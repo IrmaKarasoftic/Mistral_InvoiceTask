@@ -5,7 +5,9 @@ using System.Web;
 
 namespace Task_API.Models
 {
-    public class YearlyIncomeReportModel
+    public class YearlyIncomeModel
     {
+        public List<ItemModel> Items { get; set; }
+        public double Total { get; set; }
     }
 }
