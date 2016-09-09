@@ -198,6 +198,7 @@
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\ShippingDetailsModel.cs" />
+    <Compile Include="Models\YearlyIncomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
