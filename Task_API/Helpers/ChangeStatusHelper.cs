@@ -16,7 +16,7 @@ namespace Task_API.Helpers
             Invoice invoice = new Invoice();
             invoice.Id = model.Id;
             invoice.Date = model.Date;
-            invoice.Costumer = context.Costumers.Find(model.Costumer);
+            invoice.Customer = context.Customers.Find(model.Customer);
             invoice.Status = (Status)Enum.Parse(typeof(Status), status);
 
             foreach (var i in model.Items)

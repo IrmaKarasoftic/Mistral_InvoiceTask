@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Task_API.Models
 {
-    public class CostumerModel
+    public class CustomerModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

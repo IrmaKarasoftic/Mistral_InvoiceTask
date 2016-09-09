@@ -26,8 +26,8 @@ namespace Task_API.Models
                 Date = invoice.Date,
                 Items = items,
                 Status = invoice.Status.ToString(),
-                Costumer = invoice.Costumer.Id,
-                CostumerName = invoice.Costumer.Name
+                Customer = invoice.Customer.Id,
+                CustomerName = invoice.Customer.Name
             };
         }
 
@@ -55,14 +55,14 @@ namespace Task_API.Models
             };
         }
 
-        public CostumerModel Create(Costumer costumer)
+        public CustomerModel Create(Customer Customer)
         {
-            return new CostumerModel()
+            return new CustomerModel()
             {
-                Id = costumer.Id,
-                Name = costumer.Name,
-                Company = costumer.Company.Id,
-                CompanyName=costumer.Company.Name
+                Id = Customer.Id,
+                Name = Customer.Name,
+                Company = Customer.Company.Id,
+                CompanyName=Customer.Company.Name
             };
         }
         

@@ -9,16 +9,16 @@ using TaskDb;
 
 namespace Task_API.Controllers
 {
-    public class CostumersController : HomeController<Costumer>
+    public class CustomersController : HomeController<Customer>
     {
-        public CostumersController(Repository<Costumer> repo):base(repo) {}
+        public CustomersController(Repository<Customer> repo):base(repo) {}
 
         public IHttpActionResult Get()
         {
             try
             {
-                var costumers = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList();
-                if (costumers != null) return Ok(costumers);
+                var Customers = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList();
+                if (Customers != null) return Ok(Customers);
                 return NotFound();
             }
             catch (Exception)
@@ -31,8 +31,8 @@ namespace Task_API.Controllers
         {
             try
             {
-                var costumer = Repository.Get(id);
-                if (costumer != null) return Ok(costumer);
+                var Customer = Repository.Get(id);
+                if (Customer != null) return Ok(Customer);
                 return NotFound();
             }
             catch (Exception)
@@ -41,13 +41,13 @@ namespace Task_API.Controllers
             }
         }
 
-        public IHttpActionResult Post(CostumerModel costumer)
+        public IHttpActionResult Post(CustomerModel Customer)
         {
-            if (costumer != null)
+            if (Customer != null)
             {
                 try
                 {
-                    Repository.Insert(Parser.Create(costumer, Repository.HomeContext()));
+                    Repository.Insert(Parser.Create(Customer, Repository.HomeContext()));
                     return Ok();
                 }
                 catch (Exception)
@@ -58,14 +58,14 @@ namespace Task_API.Controllers
             return NotFound();
         }
 
-        public IHttpActionResult Put(CostumerModel costumer, int id)
+        public IHttpActionResult Put(CustomerModel Customer, int id)
         {
-            if(costumer != null)
+            if(Customer != null)
             {
                 try
                 {
-                    Costumer co = Repository.Get(id);
-                    Costumer cost = Parser.Create(costumer, Repository.HomeContext());
+                    Customer co = Repository.Get(id);
+                    Customer cost = Parser.Create(Customer, Repository.HomeContext());
                     if (co != null) 
                     {
                         Repository.Update(cost, id);
@@ -85,8 +85,8 @@ namespace Task_API.Controllers
         {
             try
             {
-                Costumer costumer = Repository.Get(id);
-                if (costumer != null)
+                Customer Customer = Repository.Get(id);
+                if (Customer != null)
                 {
                     Repository.Delete(id);
                     return Ok();

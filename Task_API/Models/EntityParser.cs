@@ -15,7 +15,7 @@ namespace Task_API.Models
             {
                 Id = model.Id,
                 Date = model.Date,
-                Costumer = context.Costumers.Find(model.Costumer),
+                Customer = context.Customers.Find(model.Customer),
                 Status = (Status)Enum.Parse(typeof(Status), model.Status)
             };
         }
@@ -52,9 +52,9 @@ namespace Task_API.Models
             };
         }
 
-        public Costumer Create(CostumerModel model, AppContext context)
+        public Customer Create(CustomerModel model, AppContext context)
         {
-            return new Costumer()
+            return new Customer()
             {
                 Id = model.Id,
                 Name = model.Name,

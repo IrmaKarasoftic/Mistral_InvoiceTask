@@ -11,7 +11,7 @@ namespace Task_API.Models
         public DateTime Date { get; set; }
         public List<ItemModel> Items { get; set; }
         public string Status { get; set; }
-        public int Costumer { get; set; }
-        public string CostumerName { get; set; }
+        public int Customer { get; set; }
+        public string CustomerName { get; set; }
     }
 }

@@ -11,14 +11,14 @@ namespace Task_API.Helpers
     public class GenerateAnInvoice
     {
 
-        /*public static void Create(InvoiceViewModel model, AppContext context)
+        public static void Create(InvoiceViewModel model, AppContext context)
         {
             Repository<Invoice> invoiceRepository = new Repository<Invoice>(context);
             Invoice invoice = new Invoice();
 
             invoice.Id = model.Invoice.Id;
             invoice.Date = model.Invoice.Date;
-            invoice.Costumer = context.Costumers.Find(model.Costumer);
+            invoice.Customer = context.Customers.Find(model.Customer);
             invoice.Status = (Status)Enum.Parse(typeof(Status), model.Invoice.Status);
             foreach (var i in model.Invoice.Items)
             {
@@ -34,7 +34,6 @@ namespace Task_API.Helpers
 
             invoiceRepository.Insert(invoice);
         }
-        */
         public static List<InvoiceModel> GetAllInvoices(AppContext context)
         {
             ModelFactory factory = new ModelFactory();
