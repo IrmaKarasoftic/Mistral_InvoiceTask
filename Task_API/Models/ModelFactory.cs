@@ -55,14 +55,14 @@ namespace Task_API.Models
             };
         }
 
-        public CustomerModel Create(Customer Customer)
+        public CustomerModel Create(Customer customer)
         {
             return new CustomerModel()
             {
-                Id = Customer.Id,
-                Name = Customer.Name,
-                Company = Customer.Company.Id,
-                CompanyName=Customer.Company.Name
+                Id = customer.Id,
+                Name = customer.Name,
+                Company = customer.Company.Id,
+                CompanyName=customer.Company.Name
             };
         }
         

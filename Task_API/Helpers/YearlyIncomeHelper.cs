@@ -7,5 +7,6 @@ namespace Task_API.Helpers
 {
     public class YearlyIncomeHelper
     {
+
     }
 }

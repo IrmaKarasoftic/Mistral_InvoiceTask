@@ -17,8 +17,8 @@ namespace Task_API.Controllers
         {
             try
             {
-                var Customers = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList();
-                if (Customers != null) return Ok(Customers);
+                List<CustomerModel> customers = Helpers.CustomerHelper.GetAllCustomers(Repository.HomeContext());
+                if (customers != null) return Ok(customers);
                 return NotFound();
             }
             catch (Exception)
@@ -31,8 +31,8 @@ namespace Task_API.Controllers
         {
             try
             {
-                var Customer = Repository.Get(id);
-                if (Customer != null) return Ok(Customer);
+                var customer = Repository.Get(id);
+                if (customer != null) return Ok(customer);
                 return NotFound();
             }
             catch (Exception)
@@ -41,13 +41,13 @@ namespace Task_API.Controllers
             }
         }
 
-        public IHttpActionResult Post(CustomerModel Customer)
+        public IHttpActionResult Post(CustomerModel customer)
         {
-            if (Customer != null)
+            if (customer != null)
             {
                 try
                 {
-                    Repository.Insert(Parser.Create(Customer, Repository.HomeContext()));
+                    Repository.Insert(Parser.Create(customer, Repository.HomeContext()));
                     return Ok();
                 }
                 catch (Exception)
@@ -58,14 +58,14 @@ namespace Task_API.Controllers
             return NotFound();
         }
 
-        public IHttpActionResult Put(CustomerModel Customer, int id)
+        public IHttpActionResult Put(CustomerModel customer, int id)
         {
-            if(Customer != null)
+            if(customer != null)
             {
                 try
                 {
                     Customer co = Repository.Get(id);
-                    Customer cost = Parser.Create(Customer, Repository.HomeContext());
+                    Customer cost = Parser.Create(customer, Repository.HomeContext());
                     if (co != null) 
                     {
                         Repository.Update(cost, id);
@@ -85,8 +85,8 @@ namespace Task_API.Controllers
         {
             try
             {
-                Customer Customer = Repository.Get(id);
-                if (Customer != null)
+                Customer customer = Repository.Get(id);
+                if (customer != null)
                 {
                     Repository.Delete(id);
                     return Ok();

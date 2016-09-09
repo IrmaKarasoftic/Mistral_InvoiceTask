@@ -185,7 +185,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ChangeStatusHelper.cs" />
+    <Compile Include="Helpers\CompaniesHelper.cs" />
+    <Compile Include="Helpers\CustomerHelper.cs" />
     <Compile Include="Helpers\GenerateAnInvoice.cs" />
+    <Compile Include="Helpers\YearlyIncomeHelper.cs" />
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\EntityParser.cs" />
