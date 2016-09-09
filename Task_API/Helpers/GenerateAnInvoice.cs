@@ -15,13 +15,11 @@ namespace Task_API.Helpers
         {
             Repository<Invoice> invoiceRepository = new Repository<Invoice>(context);
             Invoice invoice = new Invoice();
-            
             invoice.Id = model.Invoice.Id;
             invoice.Date = model.Invoice.Date;
             invoice.Customer = context.Customers.Find(model.Customer);
             invoice.Status = (Status)Enum.Parse(typeof(Status), model.Invoice.Status);
             foreach (var i in model.Invoice.Items)
-
             {
                 Item item = new Item()
                 {
