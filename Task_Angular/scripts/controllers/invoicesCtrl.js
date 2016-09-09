@@ -9,7 +9,7 @@
                     console.log(data);
                     $scope.invoices = data;
                 } else {
-                    notificationsConfig.error("error");
+                    alert("error");
                 }
             });
         };
