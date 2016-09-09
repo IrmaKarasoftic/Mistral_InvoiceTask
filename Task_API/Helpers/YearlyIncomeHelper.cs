@@ -18,11 +18,7 @@ namespace Task_API.Helpers
 
             foreach (var item in companyRepository.context.InvoiceItems)
             {
-<<<<<<< HEAD
                 if (item.Invoice.Date.Year == year)
-=======
-                if(item.Invoice.Date.Year == year)
->>>>>>> f562642ede12fc07c30d7457d991f7cfb89358d8
                 {
                     total += item.Item.UnitPrice * item.Item.Quantity;
                     model.Items.Add(factory.Create(item.Item));
