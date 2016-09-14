@@ -14,6 +14,11 @@
             });
         };
 
+        $scope.invoiceTransfer = function (invoice) {
+                $scope.requestedInvoice = invoice;
+                console.log($scope.requestedInvoice);
+        }
+
         $scope.loadInvoicesInfo();
 
     });

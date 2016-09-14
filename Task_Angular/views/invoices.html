@@ -1,10 +1,7 @@
 ﻿<div>
-    <!--
-        <div class="bs-callout bs-callout-primary">
-        <h4>Table</h4>
-        <p>Informative content</p>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-9 vcenter"><button class="btn btn-primary btn-block" style="height: 85px;">New Invoice</button></div>
     </div>
-        -->
     <table class="table table-hover">
         <thead>
             <tr>
@@ -12,18 +9,58 @@
                 <th class="col-md-2"><h4>DATE</h4></th>
                 <th class="col-md-2"><h4>CUSTOMER NAME</h4></th>
                 <th class="col-md-2"><h4>STATUS</h4></th>
-                <th class="col-md-2"><h4 class="pull-right">ACTIONS</h4></th>
+                <th class="col-md-2"><h4>ACTIONS</h4></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="invoice in invoices">
+            <tr ng-repeat="invoice in invoices" data-toggle="collapse" data-target="#invoiceItems" class="accordion-toggle">
                 <td class="col-md-1">{{invoice.id}}</td>
                 <td class="col-md-2">{{invoice.date | date: 'mediumDate'}}</td>
                 <td class="col-md-2">{{invoice.customerName}}</td>
                 <td class="col-md-2">{{invoice.status}}</td>
-                <td class="col-md-2"></td>
+                <td class="col-md-2">
+                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-eye"></i></button>
+                    <button class="btn btn-default btn-sm col-md-offset-1" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-cog"></i></button>
+                    <button class="btn btn-default btn-sm col-md-offset-1" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-times"></i></button>
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="invoiceModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title">Invoice #{{requestedInvoice.id}}</h2>
+            </div><!--end modal header-->
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-md-1"><h4>ID</h4></th>
+                            <th class="col-md-2"><h4>Description</h4></th>
+                            <th class="col-md-2"><h4>Quantity</h4></th>
+                            <th class="col-md-2"><h4>Unit Price</h4></th>
+                            <th class="col-md-2"><h4>Total</h4></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in invoice.items">
+                            <td class="col-md-1">{{item.id}}</td>
+                            <td class="col-md-2">{{item.description}}</td>
+                            <td class="col-md-2">{{item.quantity}}</td>
+                            <td class="col-md-2">{{item.unitPrice}}</td>
+                            <td class="col-md-2">{{item.quantity * item.unitPrice}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!--end modal body-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div><!--end modal footer-->
+        </div><!--end modal content-->
+    </div><!--end modal dialog-->
+</div><!--end modal-->
