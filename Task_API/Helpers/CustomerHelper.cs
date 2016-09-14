@@ -13,7 +13,6 @@ namespace Task_API.Helpers
         {
             ModelFactory factory = new ModelFactory();
             return new Repository<Customer>(context).Get().ToList().Select(x => factory.Create(x)).ToList();
-
         }
     }
 }
