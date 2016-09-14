@@ -12,21 +12,21 @@ namespace Task_API.Controllers
 {
     public class InvoicesController : HomeController<Invoice>
     {
-        public InvoicesController(Repository<Invoice> repo):base(repo) {}
+        public InvoicesController(Repository<Invoice> repo) : base(repo) { }
         public IHttpActionResult Get()
         {
             try
             {
                 List<InvoiceModel> invoices = Helpers.GenerateAnInvoice.GetAllInvoices(Repository.HomeContext());
                 if (invoices != null)
-                 {
-                     return Ok(invoices);
-                 }
+                {
+                    return Ok(invoices);
+                }
                 return BadRequest();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message.ToString());
             }
         }
 
@@ -46,7 +46,7 @@ namespace Task_API.Controllers
 
         public IHttpActionResult Post(InvoiceViewModel invoice)
         {
-            if(invoice != null)
+            if (invoice != null)
             {
                 try
                 {
