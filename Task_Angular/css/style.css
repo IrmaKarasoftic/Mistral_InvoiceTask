@@ -2,6 +2,18 @@
 }
 
 
+
+.btn-new-invoice{
+    height: 85px;
+}
+
+.vcenter{
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+
 .bs-callout {
     padding: 20px;
     margin: 20px 0;
