@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TaskDb;
 
 namespace Task_API.Models
 {
@@ -13,5 +14,7 @@ namespace Task_API.Models
         public string Status { get; set; }
         public int Customer { get; set; }
         public string CustomerName { get; set; }
+        public CustomerModel BillTo { get; set; }
+        public CustomerModel ShipTo { get; set; }
     }
 }

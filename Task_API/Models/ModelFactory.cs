@@ -20,6 +20,9 @@ namespace Task_API.Models
                 itModel.UnitPrice = i.UnitPrice;
                 items.Add(itModel);
             }
+            CustomerModel bill = Create(invoice.BillTo);
+            CustomerModel ship = Create(invoice.ShipTo);
+
             return new InvoiceModel()
             {
                 Id = invoice.Id,
@@ -27,7 +30,9 @@ namespace Task_API.Models
                 Items = items,
                 Status = invoice.Status.ToString(),
                 Customer = invoice.Customer.Id,
-                CustomerName = invoice.Customer.Name
+                CustomerName = invoice.Customer.Name,
+                BillTo = bill,
+                ShipTo = ship
             };
         }
 
