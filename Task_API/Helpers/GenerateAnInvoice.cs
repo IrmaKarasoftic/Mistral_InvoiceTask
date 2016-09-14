@@ -37,7 +37,22 @@ namespace Task_API.Helpers
         {
             ModelFactory factory = new ModelFactory();
             return new Repository<Invoice>(context).Get().ToList().Select(x => factory.Create(x)).ToList();
+        }
 
+        public static void UpdateInvoice(InvoiceModel model, AppContext context)
+        {
+            Repository<Invoice> invoiceRepository = new Repository<Invoice>(context);
+            Invoice invoice = new Invoice();
+            EntityParser parser = new EntityParser();
+            invoice = parser.Create(model, context);
+            invoiceRepository.Update(invoice, model.Id);
+        }
+
+        public static void DeleteInvoice(InvoiceModel model, AppContext context)
+        {
+            Repository<Invoice> invoiceRepository = new Repository<Invoice>(context);
+            Invoice invoice = invoiceRepository.Get(model.Id);
+            invoiceRepository.Delete(model.Id);
         }
     }
 }

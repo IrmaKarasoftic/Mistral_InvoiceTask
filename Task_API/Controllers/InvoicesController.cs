@@ -61,18 +61,12 @@ namespace Task_API.Controllers
             return BadRequest();
         }
 
-        public IHttpActionResult Put(InvoiceModel invoice, int id)
+        public IHttpActionResult Put(InvoiceModel invoice)
         {
             try
             {
-                Invoice invojs = Repository.Get(id);
-                Invoice inv = Parser.Create(invoice, Repository.HomeContext());
-                if (invojs != null)
-                {
-                    Repository.Update(inv, id);
-                    return Ok(Factory.Create(inv));
-                }
-                else return NotFound();
+                Helpers.GenerateAnInvoice.UpdateInvoice(invoice, Repository.HomeContext());
+                return Ok();
             }
             catch (Exception)
             {
@@ -84,13 +78,9 @@ namespace Task_API.Controllers
         {
             try
             {
-                Invoice invoice = Repository.Get(id);
-                if (invoice != null)
-                {
-                    Repository.Delete(id);
-                    return Ok();
-                }
-                else return NotFound();
+                InvoiceModel model = Factory.Create(Repository.Get(id));
+                Helpers.GenerateAnInvoice.DeleteInvoice(model, Repository.HomeContext());
+                return Ok();
             }
             catch (Exception)
             {
