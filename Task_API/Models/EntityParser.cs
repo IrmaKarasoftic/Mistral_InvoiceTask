@@ -17,8 +17,6 @@ namespace Task_API.Models
                 Date = model.Date,
                 Customer = context.Customers.Find(model.Customer),
                 Status = (Status)Enum.Parse(typeof(Status), model.Status),
-                BillTo = Create(model.BillTo, context),
-                ShipTo = Create(model.ShipTo, context)
             };
         }
         public Item Create(ItemModel model, AppContext context)
