@@ -9,9 +9,9 @@ using TaskDb;
 
 namespace Task_API.Controllers
 {
-    public class InvoiceItemController : HomeController<InvoiceItem>
+    public class InvoiceItemsController : HomeController<InvoiceItem>
     {
-        public InvoiceItemController(Repository<InvoiceItem> repo) : base(repo) { }
+        public InvoiceItemsController(Repository<InvoiceItem> repo) : base(repo) { }
         public IHttpActionResult Get()
         {
             try
