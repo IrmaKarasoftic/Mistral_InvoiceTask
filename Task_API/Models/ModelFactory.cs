@@ -17,7 +17,7 @@ namespace Task_API.Models
                 itModel.Id = i.Id;
                 itModel.Description = i.Item.Description;
                 itModel.Quantity = i.Quantity;
-                itModel.UnitPrice = i.Item.UnitPrice;
+                itModel.Price = i.Item.UnitPrice;
                 items.Add(itModel);
             }
 
@@ -102,7 +102,9 @@ namespace Task_API.Models
                 Id = invoiceItem.Id,
                 InvoiceId = invoiceItem.Invoice.Id,
                 ItemId = invoiceItem.Item.Id,
-                Quantity = invoiceItem.Quantity
+                Quantity = invoiceItem.Quantity,
+                Description = invoiceItem.Item.Description,
+                Price = invoiceItem.Price
             };
         }
     }
