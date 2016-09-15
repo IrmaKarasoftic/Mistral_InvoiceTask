@@ -39,6 +39,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-4">
+                        <h2>XYZ</h2>
                         <p>Company Name: {{requestedInvoice.billTo.companyName}}</p>
                         <p>Street Address: {{requestedInvoice.billTo.street}}</p>
                         <p>Zip Code: {{requestedInvoice.billTo.zip}}</p>
@@ -46,31 +47,32 @@
                     </div>
                     <div class="col-md-4 col-md-offset-4">
                         <p>Date: {{requestedInvoice.date | date: 'mediumDate'}}</p>
+                        <p>Invoice ID:{{requestedInvoice.id}}</p>
                         <p>Customer ID: {{requestedInvoice.customer}}</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 col-md-offset-1">
+                    <div class="col-md-4 ">
                         <div class="panel panel-default">
-                            <div class="panel-heading"><h3 class="panel-title">Bill To:</h3></div>
-                            <div class="panel-body">
+                            <div class="panel-leftheading"><h3 class="panel-title">Bill To:</h3></div>
+                            <div class="panel-rightbody">
                                 <p>Customer Name: {{requestedInvoice.billTo.name}}</p>
                                 <p>Company Name: {{requestedInvoice.billTo.companyName}}</p>
-                                <p>Street Address: {{requestedInvoice.billTo.street}}</p>
-                                <p>Zip Code: {{requestedInvoice.billTo.zip}}</p>
-                                <p>Phone/Fax: {{requestedInvoice.billTo.phone}}</p>
+                                <p>Street Address: {{requestedInvoice.billTo.streetAddress}}</p>
+                                <p>City, Zip: {{requestedInvoice.billTo.city}}, {{requestedInvoice.billTo.zipCode}}</p>
+                                <p>Phone/Fax: {{requestedInvoice.billTo.phoneNumber}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-md-offset-2">
+                    <div class="col-md-4 col-md-offset-4">
                         <div class="panel panel-default">
                             <div class="panel-heading"><h3 class="panel-title">Ship To:</h3></div>
                             <div class="panel-body">
                                 <p>Customer Name: {{requestedInvoice.shipTo.name}}</p>
                                 <p>Company Name: {{requestedInvoice.shipTo.companyName}}</p>
-                                <p>Street Address: {{requestedInvoice.shipTo.street}}</p>
-                                <p>Zip Code: {{requestedInvoice.shipTo.zip}}</p>
-                                <p>Phone/Fax: {{requestedInvoice.shipTo.phone}}</p>
+                                <p>Street Address: {{requestedInvoice.shipTo.streetAddress}}</p>
+                                <p>City, Zip: {{requestedInvoice.shipTo.city}}, {{requestedInvoice.shipTo.zipCode}}</p>
+                                <p>Phone/Fax: {{requestedInvoice.shipTo.phoneNumber}}</p>
                             </div>
                         </div>
                     </div>
@@ -80,7 +82,7 @@
                         <tr>
                             <th class="col-md-1"><h4>ID</h4></th>
                             <th class="col-md-2"><h4>Description</h4></th>
-                            <th class="col-md-2"><h4>Unit Price</h4></th>
+                            <th class="col-md-2"><h4>Amount</h4></th>
                             <th class="col-md-2"><h4>Quantity</h4></th>
                             <th class="col-md-2"><h4>Total</h4></th>
                         </tr>
@@ -89,19 +91,19 @@
                         <tr ng-repeat="item in requestedInvoice.items">
                             <td class="col-md-1">{{item.id}}</td>
                             <td class="col-md-2">{{item.description}}</td>
-                            <td class="col-md-2">{{item.quantity}}</td>
                             <td class="col-md-2">{{item.unitPrice}}</td>
+                            <td class="col-md-2">{{item.quantity}}</td>
                             <td class="col-md-2">{{item.quantity * item.unitPrice}}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="row">
                     <div class="col-md-3 col-md-offset-8">
-                        <p>Subtotal: {{requestedInvoice.shipTo.name}}</p>
-                        <p>Tax Rate: {{requestedInvoice.shipTo.companyName}}</p>
-                        <p>Tax: {{requestedInvoice.shipTo.street}}</p>
-                        <p>Other: {{requestedInvoice.shipTo.zip}}</p>
-                        <p><strong>TOTAL:</strong>{{requestedInvoice.shipTo.phone}}</p>
+                        <p>Subtotal: {{subtotal(requestedInvoice)}}</p>
+                        <p>Tax Rate: </p>
+                        <p>Tax: </p>
+                        <p>Other: </p>
+                        <p><strong>TOTAL:</strong></p>
                     </div>
                 </div>
             </div><!--end modal body-->
