@@ -13,7 +13,11 @@ namespace Task_API.Helpers
 
         public static void Create(InvoiceViewModel model, AppContext context)
         {
+            EntityParser parser = new EntityParser();
+            ModelFactory factory = new ModelFactory();
             Repository<Invoice> invoiceRepository = new Repository<Invoice>(context);
+            Repository<Item> itemRepository = new Repository<Item>(context);
+
             Invoice invoice = new Invoice();
             invoice.Id = model.Invoice.Id;
             invoice.Date = model.Invoice.Date;
@@ -21,12 +25,12 @@ namespace Task_API.Helpers
             invoice.Status = (Status)Enum.Parse(typeof(Status), model.Invoice.Status);
             foreach (var i in model.Invoice.Items)
             {
-                Item item = new Item()
+                InvoiceItem item = new InvoiceItem()
                 {
                     Id = i.Id,
-                    Description = i.Description,
-                    Quantity = i.Quantity,
-                    UnitPrice = i.UnitPrice
+                    Invoice = parser.Create(factory.Create(invoiceRepository.Get(i.InvoiceId)), context),
+                    Item= parser.Create(factory.Create(itemRepository.Get(i.ItemId)), context),
+                    Quantity = i.Quantity
                 };
                 invoice.Items.Add(item);
             }

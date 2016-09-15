@@ -12,12 +12,12 @@ namespace TaskDb
     {
         public Invoice()
         {
-            Items = new Collection<Item>();
+            Items = new Collection<InvoiceItem>();
         }
 
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public virtual ICollection<Item> Items { get; set; }
+        public virtual ICollection<InvoiceItem> Items { get; set; }
         public Status Status { get; set; }
         public virtual Customer BillTo { get; set; }
         public virtual Customer ShipTo { get; set; }
