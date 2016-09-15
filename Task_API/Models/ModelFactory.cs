@@ -79,7 +79,11 @@ namespace Task_API.Models
                 Id = customer.Id,
                 Name = customer.Name,
                 Company = customer.Company.Id,
-                CompanyName=customer.Company.Name
+                CompanyName = customer.Company.Name,
+                City = customer.Company.city,
+                ZipCode=customer.Company.zipCode,
+                PhoneNumber=customer.Company.phoneNumber,
+                StreetAddress = customer.Company.StreetAddress
             };
         }
         
