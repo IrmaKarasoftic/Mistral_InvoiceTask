@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web;
 using TaskDb;
-using System.Net.Mail;
 using System.Net;
 
 namespace Task_API.Helpers

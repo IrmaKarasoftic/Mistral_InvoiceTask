@@ -10,7 +10,7 @@ namespace Task_API.Models
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public List<ItemModel> Items { get; set; }
+        public List<InvoiceItemModel> Items { get; set; }
         public string Status { get; set; }
         public int Customer { get; set; }
         public string CustomerName { get; set; }

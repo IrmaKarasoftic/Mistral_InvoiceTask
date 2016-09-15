@@ -10,14 +10,14 @@ namespace Task_API.Models
     {
         public InvoiceModel Create(Invoice invoice)
         {
-            List<ItemModel> items = new List<ItemModel>();
+            List<InvoiceItemModel> items = new List<InvoiceItemModel>();
             foreach (var i in invoice.Items)
             {
-                var itModel = new ItemModel();
+                var itModel = new InvoiceItemModel();
                 itModel.Id = i.Id;
-                itModel.Description = i.Description;
+                itModel.Description = i.Item.Description;
                 itModel.Quantity = i.Quantity;
-                itModel.UnitPrice = i.UnitPrice;
+                itModel.UnitPrice = i.Item.UnitPrice;
                 items.Add(itModel);
             }
 
