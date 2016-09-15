@@ -27,6 +27,10 @@ namespace Task_API.Models
                 Name = invoice.BillTo.Name,
                 Company = invoice.BillTo.Company.Id,
                 CompanyName = invoice.BillTo.Name,
+                StreetAddress=invoice.Customer.Company.StreetAddress,
+                PhoneNumber = invoice.Customer.Company.phoneNumber,
+                City = invoice.Customer.Company.city,
+                ZipCode = invoice.Customer.Company.zipCode
             };
             CustomerModel ship = new CustomerModel()
             {
@@ -34,6 +38,10 @@ namespace Task_API.Models
                 Name = invoice.BillTo.Name,
                 Company = invoice.BillTo.Company.Id,
                 CompanyName = invoice.BillTo.Name,
+                StreetAddress = invoice.Customer.Company.StreetAddress,
+                PhoneNumber = invoice.Customer.Company.phoneNumber,
+                City = invoice.Customer.Company.city,
+                ZipCode = invoice.Customer.Company.zipCode
             };
             return new InvoiceModel()
             {
