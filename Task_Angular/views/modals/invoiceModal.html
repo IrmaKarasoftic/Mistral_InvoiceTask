@@ -67,9 +67,9 @@
                     <tr ng-repeat="item in requestedInvoice.items">
                         <td class="col-md-1">{{item.id}}</td>
                         <td class="col-md-2">{{item.description}}</td>
-                        <td class="col-md-2">{{item.unitPrice}}</td>
+                        <td class="col-md-2">{{item.price}}</td>
                         <td class="col-md-2">{{item.quantity}}</td>
-                        <td class="col-md-2">{{item.quantity * item.unitPrice}}</td>
+                        <td class="col-md-2">{{item.quantity * item.price}}</td>
                     </tr>
                 </tbody>
             </table>

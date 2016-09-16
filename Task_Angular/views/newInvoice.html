@@ -1,10 +1,7 @@
-﻿<div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header bg-info">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+﻿
+        <div class="bg-info">
             <h2 class="modal-title">NEW INVOICE</h2>
-        </div><!--end modal header-->
-        <div class="modal-body">
+        </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="panel panel-default">
@@ -22,11 +19,11 @@
                     <div class="panel panel-info">
                         <div class="panel-heading"><h3 class="panel-title"><strong>Bill To:</strong></h3></div>
                         <div class="panel-body">
-                            <p>Customer Name: {{requestedInvoice.billTo.name}}</p>
-                            <p>Company Name: {{requestedInvoice.billTo.companyName}}</p>
-                            <p>Street Address: {{requestedInvoice.billTo.streetAddress}}</p>
-                            <p>City, Zip: {{requestedInvoice.billTo.city}}, {{requestedInvoice.billTo.zipCode}}</p>
-                            <p>Phone/Fax: {{requestedInvoice.billTo.phoneNumber}}</p>
+                            <p>Customer Name:</p>
+                            <p>Company Name:</p>
+                            <p>Street Address:</p>
+                            <p>City, Zip:</p>
+                            <p>Phone/Fax:</p>
                         </div>
                     </div>
                 </div>
@@ -34,11 +31,11 @@
                     <div class="panel panel-success">
                         <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
                         <div class="panel-body">
-                            <p>Customer Name: {{requestedInvoice.shipTo.name}}</p>
-                            <p>Company Name: {{requestedInvoice.shipTo.companyName}}</p>
-                            <p>Street Address: {{requestedInvoice.shipTo.streetAddress}}</p>
-                            <p>City, Zip: {{requestedInvoice.shipTo.city}}, {{requestedInvoice.shipTo.zipCode}}</p>
-                            <p>Phone/Fax: {{requestedInvoice.shipTo.phoneNumber}}</p>
+                            <p>Customer Name:</p>
+                            <p>Company Name: </p>
+                            <p>Street Address: </p>
+                            <p>City, Zip:</p>
+                            <p>Phone/Fax:</p>
                         </div>
                     </div>
                 </div>
@@ -48,12 +45,6 @@
             <div class="col-md-4"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customerListModal">Select Customer</button></div>
             <div class="col-md-4"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customerListModal">Select Customer</button></div>
         </div>
-        </div><!--end modal body-->
-        <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div><!--end modal footer-->
-    </div><!--end modal content-->
-</div><!--end modal dialog-->
 
 <!-- New Invoice Modal -->
 <div class="modal fade" id="customerListModal" role="dialog">
