@@ -13,7 +13,7 @@ namespace Task_API.Helpers
         public static void SendInvoiceEmail(Invoice invoiceToPrint)
         {
             SmtpClient SmtpServer = EmailHelper.SetSmtp();
-            String Username = System.Configuration.ConfigurationManager.AppSettings["username"];
+            String Username = System.Configuration.ConfigurationManager.AppSettings["invoiceTaskMistral"];
             AppContext context = new AppContext();
             Invoice Invoice = new Invoice();
 
@@ -25,6 +25,10 @@ namespace Task_API.Helpers
             mail.IsBodyHtml = true;
             mail.From = from;
             mail.Subject = subject;
+
+            string bodyHtml = "";
+
+            mail.Body = content + bodyHtml;
             
         }
 
@@ -32,7 +36,7 @@ namespace Task_API.Helpers
         {
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com",587);
             SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
-            SmtpServer.Credentials = new NetworkCredential("username", "password");
+            SmtpServer.Credentials = new NetworkCredential("invoiceTaskMistral", "MistralTask");
             SmtpServer.EnableSsl = true;
             return SmtpServer;
         }
