@@ -20,6 +20,11 @@
                     templateUrl: "views/customers.html",
                     controller: "customersController"
                 })
+
+                .when("/login", {
+                    templateUrl: "views/login.html",
+                    controller: "loginController"
+                })
                 .otherwise({ redirectTo: "/home" });
         })
     /*
