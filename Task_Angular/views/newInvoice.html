@@ -1,15 +1,18 @@
 ﻿<div>
     <h1>New Invoice</h1>
-</div><div class="row">
+    <hr />
+    <h2>Company Details</h2>
+    <br />
+</div>
+<div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title"><strong>From:</strong></h3></div>
             <div class="panel-body">
-                <p>2854 Granville Lane</p>
-                <p>Newark, 07104</p>
-                <p>973-482-1872</p>
-                <p> </p>
-                <p> </p>
+                <p>Company Name: {{companyName}}</p>
+                <p>Street Address: {{streetAddress}}</p>
+                <p>City, Zip: {{city}}, {{zipCode}}</p>
+                <p>Phone/Fax: {{phoneNumber}}</p>
             </div>
         </div>
     </div>
@@ -39,12 +42,71 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4"><button class="btn btn-primary">Edit Company Details</button></div>
-    <div class="col-md-4"><button class="btn btn-primary" data-toggle="modal" data-target="#customerListModal" ng-click="loadCustomersInfoBillTo()">Select Customer</button></div>
-    <div class="col-md-4"><button class="btn btn-primary" data-toggle="modal" data-target="#customerListModal" ng-click="loadCustomersInfoShipTo()">Select Customer</button></div>
+    <!--<div class="col-md-4"><button class="btn btn-primary">Edit Company Details</button></div>-->
+    <div class="col-md-4 col-md-offset-4">
+        <!--BILL TO BUTTON-->
+        <button class="btn btn-primary" 
+                data-toggle="modal"
+                data-target="#customerListModal"
+                ng-click="loadCustomersInfoBillTo()">
+            Select Customer
+        </button>
+    </div>
+    <div class="col-md-4">
+        <!--SHIP TO BUTTON-->
+        <button class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#customerListModal"
+                ng-click="loadCustomersInfoShipTo()">
+            Select Customer
+        </button>
+    </div>
+</div>
+<hr />
+<h2>Items</h2>
+<!--ADD ITEMS BUTTON-->
+<button class="btn btn-primary" 
+        data-toggle="modal"
+        data-target="#itemListModal"
+        ng-click="loadItemsInfo()">
+    Edit List of Items
+</button>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-1"><h4>ID</h4></th>
+                    <th class="col-md-2"><h4>Description</h4></th>
+                    <th class="col-md-2"><h4>Amount</h4></th>
+                    <th class="col-md-2"><h4>Quantity</h4></th>
+                    <th class="col-md-2"><h4>Total</h4></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in requestedInvoice.items">
+                    <td class="col-md-1">{{item.id}}</td>
+                    <td class="col-md-2">{{item.description}}</td>
+                    <td class="col-md-2">{{item.price}}</td>
+                    <td class="col-md-2">{{item.quantity}}</td>
+                    <td class="col-md-2">{{item.quantity * item.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<!-- New Invoice Modal -->
+
+<!-- Customer List Modal -->
 <div class="modal fade" id="customerListModal" role="dialog">
     <div ng-include="'views/modals/customerListModal.html'"></div>
-</div><!--end modal-->
+</div>
+
+<!-- Item List Modal -->
+<div class="modal fade" id="itemListModal" role="dialog">
+    <div ng-include="'views/modals/itemListModal.html'"></div>
+</div>
+
+
+
+

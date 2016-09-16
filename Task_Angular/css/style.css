@@ -4,13 +4,13 @@
 
 
 .btn-new-invoice{
-    height: 85px;
+   height: 85px; 
+   font-size: 18px;
 }
 
-.vcenter{
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
+.vhcenter {
+    display: flex;
+    align-items: center; /* align vertical */
 }
 
 
