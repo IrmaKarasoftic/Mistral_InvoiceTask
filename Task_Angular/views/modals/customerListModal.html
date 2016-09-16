@@ -4,7 +4,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h2 class="modal-title">Select Customer</h2>
         </div><!--end modal header-->
-        <div class="modal-body">
+        <div class="modal-body" >
 
             <table class="table table-hover">
                 <thead class="bg-primary">
@@ -14,10 +14,16 @@
                         <th class="col-md-2"><h4>Company</h4></th>
                         <th class="col-md-2"><h4>Company Address</h4></th>
                     </tr>
-                </thead>
+                </thead>                
                 <tbody>
-                    <tr class="clickable-row" ng-repeat="customer in customers | orderBy: '+description'">
-                        <td class="col-md-1">{{customer.id}}</td>
+                    <tr ng-if="billTo" ng-repeat="customer in customers | orderBy: '+name'" data-dismiss="modal" ng-click="customerTransferBillTo(customer)">
+                        <td class="col-md-1">{{customer.id}} bill tp</td>
+                        <td class="col-md-2">{{customer.name}}</td>
+                        <td class="col-md-2">{{customer.companyName}}</td>
+                        <td class="col-md-2">{{customer.streetAddress}}</td>
+                    </tr>
+                    <tr ng-if="shipTo" ng-repeat="customer in customers | orderBy: '+name'" data-dismiss="modal" ng-click="customerTransferShipTo(customer)">
+                        <td class="col-md-1">{{customer.id}} ship to</td>
                         <td class="col-md-2">{{customer.name}}</td>
                         <td class="col-md-2">{{customer.companyName}}</td>
                         <td class="col-md-2">{{customer.streetAddress}}</td>

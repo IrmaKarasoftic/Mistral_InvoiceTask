@@ -1,18 +1,6 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
-
-</body>
-</html>
-
-<div class="bg-info">
-    <h2 class="modal-title">NEW INVOICE</h2>
-</div>
-<div class="row">
+﻿<div>
+    <h1>New Invoice</h1>
+</div><div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title"><strong>From:</strong></h3></div>
@@ -29,11 +17,11 @@
         <div class="panel panel-info">
             <div class="panel-heading"><h3 class="panel-title"><strong>Bill To:</strong></h3></div>
             <div class="panel-body">
-                <p>Customer Name:</p>
-                <p>Company Name:</p>
-                <p>Street Address:</p>
-                <p>City, Zip:</p>
-                <p>Phone/Fax:</p>
+                <p>Customer Name: {{selectedCustomerBillTo.name}}</p>
+                <p>Company Name: {{selectedCustomerBillTo.companyName}}</p>
+                <p>Street Address: {{selectedCustomerBillTo.streetAddress}}</p>
+                <p>City, Zip: {{selectedCustomerBillTo.city}}, {{customer.zipCode}}</p>
+                <p>Phone/Fax: {{selectedCustomerBillTo.phoneNumber}}</p>
             </div>
         </div>
     </div>
@@ -41,19 +29,19 @@
         <div class="panel panel-success">
             <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
             <div class="panel-body">
-                <p>Customer Name:</p>
-                <p>Company Name: </p>
-                <p>Street Address: </p>
-                <p>City, Zip:</p>
-                <p>Phone/Fax:</p>
+                <p>Customer Name: {{selectedCustomerShipTo.name}}</p>
+                <p>Company Name: {{selectedCustomerShipTo.companyName}}</p>
+                <p>Street Address: {{selectedCustomerShipTo.streetAddress}}</p>
+                <p>City, Zip: {{selectedCustomerShipTo.city}}, {{selectedCustomerShipTo.zipCode}}</p>
+                <p>Phone/Fax: {{selectedCustomerShipTo.phoneNumber}}</p>
             </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4"><button type="button" class="btn btn-primary">Edit Company Details</button></div>
-    <div class="col-md-4"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customerListModal">Select Customer</button></div>
-    <div class="col-md-4"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customerListModal">Select Customer</button></div>
+    <div class="col-md-4"><button class="btn btn-primary">Edit Company Details</button></div>
+    <div class="col-md-4"><button class="btn btn-primary" data-toggle="modal" data-target="#customerListModal" ng-click="loadCustomersInfoBillTo()">Select Customer</button></div>
+    <div class="col-md-4"><button class="btn btn-primary" data-toggle="modal" data-target="#customerListModal" ng-click="loadCustomersInfoShipTo()">Select Customer</button></div>
 </div>
 
 <!-- New Invoice Modal -->
