@@ -9,6 +9,7 @@ using TaskDb;
 
 namespace Task_API.Controllers
 {
+    [Authorize]
     public class InvoiceItemsController : HomeController<InvoiceItem>
     {
         public InvoiceItemsController(Repository<InvoiceItem> repo) : base(repo) { }
@@ -47,7 +48,7 @@ namespace Task_API.Controllers
                 try
                 {
                     Repository.Insert(Parser.Create(invoiceItem, Repository.HomeContext()));
-                    return Ok();
+                    return Ok(invoiceItem);
                 }
                 catch (Exception)
                 {

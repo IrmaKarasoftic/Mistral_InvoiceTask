@@ -13,6 +13,7 @@ namespace Task_API.App_Start
     using DataAccess;
     using TaskDb;
     using System.Data.Entity;
+    using Services;
 
     public static class NinjectWebCommon 
     {
@@ -65,6 +66,8 @@ namespace Task_API.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(Interface<>)).To(typeof(Repository<>)).WithConstructorArgument(typeof(DbContext), new AppContext());
+            kernel.Bind<IInvoiceIdentityService>().To<InvoiceIdentityService>();
+
         }        
     }
 }

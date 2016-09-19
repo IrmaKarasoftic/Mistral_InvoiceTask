@@ -9,6 +9,7 @@ using TaskDb;
 
 namespace Task_API.Controllers
 {
+    [Authorize]
     public class CompaniesController : HomeController<Company>
     {
         public CompaniesController(Repository<Company> repo):base(repo) {}
@@ -47,7 +48,7 @@ namespace Task_API.Controllers
                 try
                 {
                     Repository.Insert(Parser.Create(company, Repository.HomeContext()));
-                    return Ok();
+                    return Ok(company);
                 }
                 catch (Exception)
                 {
