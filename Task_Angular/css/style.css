@@ -70,10 +70,25 @@
 .bs-callout-info h4 {
     color: #5bc0de;
 }
-.login {
-    width : 30%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 100px;
+
+.LoginSubmit {
+	width: 8vw;
+	height: 3vw;
+	display: block;
+	margin: 0 auto 0 auto;
+	background: #ffffff;
+	border-radius: 40%;
+	border: 0.1vw solid black;
+	color: darkgrey;
+	font-size: 1vw;
+	cursor: pointer;
+	box-shadow: 0 0 0.3vw slategrey;
+	transition: 0.5s ease-out;
 }
 
+.LoginSubmit:hover,
+.LoginSubmit:focus {
+	background: grey;
+	color: #fff;
+	outline: 0;
+}
