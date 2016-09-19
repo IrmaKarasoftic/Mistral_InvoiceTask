@@ -33,6 +33,7 @@
             create: function (dataSet, data, callback) {
                 $http({ method: "post", url: source + dataSet, data: data })
                     .success(function (data) {
+                        console.log(data);
                         callback(data);
                     })
                     .error(function (error) {

@@ -18,21 +18,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickable-row" ng-repeat="item in items | orderBy: '+id'">
-                        <td class="col-md-1">{{item.id}}</td>
-                        <td class="col-md-2">{{item.description}}</td>
-                        <td class="col-md-2">{{item.quantity}}</td>
-                        <td class="col-md-2">{{item.unitPrice}}</td>
-                        <td class="col-md-2">
-                           <input class="form-control" type="number" value="0" id="example-number-input">
-                        </td>
-                        <td class="col-md-2"></td>
-                    </tr>
+                    <tr ng-repeat="item in items | orderBy: '+id'">
+                <td class="col-md-1">{{item.id}}</td>
+                <td class="col-md-2">{{item.description}}</td>
+                <td class="col-md-2">{{item.quantity}}</td>
+                <td class="col-md-2">{{item.unitPrice}}</td>
+                <td class="col-md-2">
+                    <input class="form-control"
+                           type="number"
+                           min="0"
+                           max="{{item.quantity}}"
+                           ng-model="pqty[$index]">
+                </td>
+                <td class="col-md-2">{{item.unitPrice * pqty[$index] | number:2}}</td>
+                </tr>
                 </tbody>
             </table>
         </div><!--end modal body-->
         <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="getPqty()">Submit</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div><!--end modal footer-->
     </div><!--end modal content-->
 </div><!--end modal dialog-->

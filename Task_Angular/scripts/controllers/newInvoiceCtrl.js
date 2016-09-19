@@ -3,6 +3,14 @@
 
     taskAngular.controller('newInvoiceController', function ($scope, dataService) {
 
+        $scope.from = {
+            "companyName": "XYZ",
+            "streetAddress": "Somewhere",
+            "city": "OfSomewhere",
+            "zipCode": 79209,
+            "phoneNumber": "5555-555-555-555"
+        }
+
         $scope.billTo = false;
         $scope.shipTo = false;
 
@@ -11,6 +19,7 @@
                 if (data) {
                     //console.log(data);
                     $scope.items = data;
+                    $scope.pqty = Array.apply(null, { length: $scope.items.length }).map(function () { return 0; });
                 }
                 else {
                     alert("error");
@@ -46,8 +55,6 @@
             $scope.billTo = false;
         };
 
-        
-
         $scope.customerTransferBillTo = function (customer) {
             $scope.selectedCustomerBillTo = customer;
             $scope.selectedCustomerShipTo = customer;
@@ -55,6 +62,10 @@
         $scope.customerTransferShipTo = function (customer) {
             $scope.selectedCustomerShipTo = customer;
         };
+
+
+        $scope.loadItemsInfo();
+
 
     });
 }());

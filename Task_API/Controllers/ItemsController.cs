@@ -49,7 +49,7 @@ namespace Task_API.Controllers
                 try
                 {
                     Repository.Insert(Parser.Create(item, Repository.HomeContext()));
-                    return Ok();
+                    return Ok(item);
                 }
                 catch (Exception)
                 {

@@ -16,6 +16,10 @@
                     templateUrl: "views/newInvoice.html",
                     controller: "newInvoiceController"
                 })
+                .when("/newitem", {
+                    templateUrl: "views/newItem.html",
+                    controller: "newItemController"
+                })
                 .when("/customers", {
                     templateUrl: "views/customers.html",
                     controller: "customersController"

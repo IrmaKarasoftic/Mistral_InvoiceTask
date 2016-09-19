@@ -9,10 +9,36 @@
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title"><strong>From:</strong></h3></div>
             <div class="panel-body">
-                <p>Company Name: {{companyName}}</p>
-                <p>Street Address: {{streetAddress}}</p>
-                <p>City, Zip: {{city}}, {{zipCode}}</p>
-                <p>Phone/Fax: {{phoneNumber}}</p>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <label class="col-md-6" for="fromCompanyName">Company Name: </label>
+                        <input type="text" class="form-control col-md-6" id="fromCompanyName" ng-model="from.companyName" value="{{from.companyName}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <label class="col-md-6" for="fromStreetAddress">Street Address: </label>
+                        <input type="text" class="form-control col-md-6" id="fromStreetAddress" ng-model="from.streetAddress" value="{{from.streetAddress}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <label class="col-md-6" for="fromCity">City: </label>
+                        <input type="text" class="form-control col-md-6" id="fromCity" ng-model="from.city" value="{{from.city}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <label class="col-md-6" for="fromZip">Zip: </label>
+                        <input type="text" class="form-control col-md-6" id="fromZip" ng-model="from.zipCode" value="{{from.zipCode}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <label class="col-md-6" for="fromPhone">Phone/Fax: </label>
+                        <input type="tel" class="form-control col-md-6" id="fromPhone" ng-model="from.phoneNumber" value="{{from.phoneNumber}}">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -20,32 +46,14 @@
         <div class="panel panel-info">
             <div class="panel-heading"><h3 class="panel-title"><strong>Bill To:</strong></h3></div>
             <div class="panel-body">
-                <p>Customer Name: {{selectedCustomerBillTo.name}}</p>
-                <p>Company Name: {{selectedCustomerBillTo.companyName}}</p>
-                <p>Street Address: {{selectedCustomerBillTo.streetAddress}}</p>
-                <p>City, Zip: {{selectedCustomerBillTo.city}}, {{customer.zipCode}}</p>
-                <p>Phone/Fax: {{selectedCustomerBillTo.phoneNumber}}</p>
+                <p><strong>Customer Name: </strong>{{selectedCustomerBillTo.name}}</p>
+                <p><strong>Company Name: </strong>{{selectedCustomerBillTo.companyName}}</p>
+                <p><strong>Street Address: </strong>{{selectedCustomerBillTo.streetAddress}}</p>
+                <p><strong>City, Zip: </strong>{{selectedCustomerBillTo.city}}, {{customer.zipCode}}</p>
+                <p><strong>Phone/Fax: </strong>{{selectedCustomerBillTo.phoneNumber}}</p>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-success">
-            <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
-            <div class="panel-body">
-                <p>Customer Name: {{selectedCustomerShipTo.name}}</p>
-                <p>Company Name: {{selectedCustomerShipTo.companyName}}</p>
-                <p>Street Address: {{selectedCustomerShipTo.streetAddress}}</p>
-                <p>City, Zip: {{selectedCustomerShipTo.city}}, {{selectedCustomerShipTo.zipCode}}</p>
-                <p>Phone/Fax: {{selectedCustomerShipTo.phoneNumber}}</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <!--<div class="col-md-4"><button class="btn btn-primary">Edit Company Details</button></div>-->
-    <div class="col-md-4 col-md-offset-4">
-        <!--BILL TO BUTTON-->
-        <button class="btn btn-primary" 
+        <button class="btn btn-primary"
                 data-toggle="modal"
                 data-target="#customerListModal"
                 ng-click="loadCustomersInfoBillTo()">
@@ -53,7 +61,16 @@
         </button>
     </div>
     <div class="col-md-4">
-        <!--SHIP TO BUTTON-->
+        <div class="panel panel-success">
+            <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
+            <div class="panel-body">
+                <p><strong>Customer Name: </strong>{{selectedCustomerShipTo.name}}</p>
+                <p><strong>Company Name: </strong>{{selectedCustomerShipTo.companyName}}</p>
+                <p><strong>Street Address: </strong>{{selectedCustomerShipTo.streetAddress}}</p>
+                <p><strong>City, Zip: </strong>{{selectedCustomerShipTo.city}}, {{selectedCustomerShipTo.zipCode}}</p>
+                <p><strong>Phone/Fax: </strong>{{selectedCustomerShipTo.phoneNumber}}</p>
+            </div>
+        </div>
         <button class="btn btn-primary"
                 data-toggle="modal"
                 data-target="#customerListModal"
@@ -62,14 +79,33 @@
         </button>
     </div>
 </div>
+<!--
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <button class="btn btn-primary" 
+                data-toggle="modal"
+                data-target="#customerListModal"
+                ng-click="loadCustomersInfoBillTo()">
+            Select Customer
+        </button>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#customerListModal"
+                ng-click="loadCustomersInfoShipTo()">
+            Select Customer
+        </button>
+    </div>
+</div>
+    -->
 <hr />
 <h2>Items</h2>
 <!--ADD ITEMS BUTTON-->
 <button class="btn btn-primary" 
         data-toggle="modal"
-        data-target="#itemListModal"
-        ng-click="loadItemsInfo()">
-    Edit List of Items
+        data-target="#itemListModal">
+    Update List
 </button>
 <div class="row">
     <div class="col-md-12">
