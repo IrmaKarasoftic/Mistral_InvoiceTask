@@ -1,7 +1,7 @@
 ﻿(function () {
     var taskAngular = angular.module('taskAngular');
 
-    taskAngular.controller('newItemController', function ($scope, dataService) {
+    taskAngular.controller('ItemsController', function ($scope, dataService) {
 
         $scope.newItemRow = false;
 
