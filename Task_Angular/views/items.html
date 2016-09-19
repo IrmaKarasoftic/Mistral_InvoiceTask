@@ -18,7 +18,7 @@
             <td><input type="text" class="form-control col-md-2" id="newItemQuantity" ng-model="newItem.quantity"></td>
             <td>
                 <button class="btn btn-primary btn-success" ng-show="newItemRow" ng-click="createNewItem()"><strong>Submit</strong></button>
-                <button class="btn btn-primary btn-danger" ng-show="newItemRow" ng-click="hideNewItemRow()"><strong>Cancel</strong></button>
+                <button class="btn btn-default btn-default" ng-show="newItemRow" ng-click="hideNewItemRow()"><strong>Cancel</strong></button>
             </td>
         </tr>
         <tr ng-repeat="item in items | orderBy: '+id'">
@@ -33,12 +33,16 @@
             <!--end on edit-->
             <td>
                 
-                <button ng-hide="checkEdit(item)" class="btn btn-default btn-sm" ng-click="editOn(item)"><i class="fa fa-cog"></i></button>
-                <button ng-hide="checkEdit(item)" class="btn btn-default btn-sm" ng-click="removeItem()"><i class="fa fa-times"></i></button>
+                <button ng-hide="checkActions(item)" class="btn btn-default btn-sm" ng-click="editOn(item)"><i class="fa fa-cog"></i></button>
+                <button ng-hide="checkActions(item)" class="btn btn-default btn-sm" ng-click="removeOn(item)"><i class="fa fa-times"></i></button>
                 <!--on edit-->
                 <button ng-show="checkEdit(item)" class="btn btn-primary btn-success" ng-click="updateItem()"><strong>Submit</strong></button>
-                <button ng-show="checkEdit(item)" class="btn btn-primary btn-danger" ng-click="editOff()"><strong>Cancel</strong></button>
+                <button ng-show="checkEdit(item)" class="btn btn-primary btn-default" ng-click="editOff()"><strong>Cancel</strong></button>
                 <!--end on edit-->
+                <!--on remove-->
+                <button ng-show="checkRemove(item)" class="btn btn-danger" ng-click="removeItem()"><strong>Remove</strong></button>
+                <button ng-show="checkRemove(item)" class="btn btn-default" ng-click="removeOff()"><strong>Cancel</strong></button>
+                <!--end on remove-->
             </td>
         </tr>
     </tbody>
