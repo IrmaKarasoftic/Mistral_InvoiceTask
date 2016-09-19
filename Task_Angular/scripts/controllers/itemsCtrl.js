@@ -5,7 +5,7 @@
 
         $scope.newItemRow = false;
         $scope.editOnId;
-        $scope.bla;
+        $scope.removeOnId;
 
         $scope.newItem = {
             id: 0,
@@ -27,9 +27,10 @@
 
         $scope.createNewItem = function () {
             dataService.create("items", $scope.newItem, function (data) {
+                $scope.hideNewItemRow();
+                $scope.loadItemsInfo();
                 if (data)
                 {
-                    $scope.hideNewItemRow();
                     alert("Item created");
                 }
                 else
@@ -39,6 +40,7 @@
 
         $scope.updateItem = function () {
             dataService.update("items", $scope.newItem.id, $scope.newItem, function (data) {
+                $scope.loadItemsInfo();
                 $scope.editOff();
                 if (data) {
                     alert("Item updated");
@@ -51,7 +53,8 @@
 
         $scope.removeItem = function () {
             dataService.remove("items", $scope.newItem.id, function (data) {
-                $scope.editOff();
+                $scope.removeOff();
+                $scope.loadItemsInfo();
                 if (data) {
                     alert("Item removed");
                 }
@@ -85,6 +88,23 @@
 
         $scope.checkEdit = function (item) {
             return $scope.editOnId === item.id;
+        }
+
+        $scope.removeOn = function (item) {
+            $scope.hideNewItemRow();
+            $scope.removeOnId = item.id;
+            $scope.newItem = item;
+        }
+        $scope.removeOff = function () {
+            $scope.removeOnId = null;
+            $scope.newItem = null;
+        }
+        $scope.checkRemove = function (item) {
+            return $scope.removeOnId === item.id;
+        }
+
+        $scope.checkActions = function (item) {
+            return $scope.checkEdit(item) || $scope.checkRemove(item);
         }
 
 
