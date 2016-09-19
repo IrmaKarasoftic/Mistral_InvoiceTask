@@ -4,13 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Task_API.Filters;
 using Task_API.Models;
 using TaskDb;
 
 namespace Task_API.Controllers
 {
-    [Authorize]
     public class CustomersController : HomeController<Customer>
     {
         public CustomersController(Repository<Customer> repo):base(repo) {}

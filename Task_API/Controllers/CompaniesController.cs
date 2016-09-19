@@ -9,7 +9,6 @@ using TaskDb;
 
 namespace Task_API.Controllers
 {
-    [Authorize]
     public class CompaniesController : HomeController<Company>
     {
         public CompaniesController(Repository<Company> repo):base(repo) {}
