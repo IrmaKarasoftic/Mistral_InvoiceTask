@@ -10,7 +10,6 @@ using TaskDb;
 
 namespace Task_API.Controllers
 {
-    [Authorize]
     public class ItemsController : HomeController<Item>
     {
         public ItemsController(Repository<Item> repo): base(repo) {}
