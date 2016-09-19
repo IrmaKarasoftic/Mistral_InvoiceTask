@@ -5,6 +5,7 @@
 
         $scope.newItemRow = false;
         $scope.editOnId;
+        $scope.bla;
 
         $scope.newItem = {
             id: 0,
