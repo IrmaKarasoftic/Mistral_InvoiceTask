@@ -1,5 +1,5 @@
 ﻿<div>
-    <input type="submit" class="LoginSubmit" data-toggle="modal" data-target="#newCustomerModal" ng-click="customerTransfer(customer)" value="Add customer"></input>
+    <input type="submit" class="LoginSubmit" data-toggle="modal" data-target="#newCustomerModal" value="Add customer"></input>
     <table class="table table-hover" align="right">
         <thead>
             <tr>
@@ -23,6 +23,8 @@
 
                 <td class="col-md-2">
                     <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#editCustomerModal" ng-click="customerTransfer(customer)"><i class="fa fa-eye"></i></button>
+                    <button class="btn btn-default btn-sm" ng-click="removeCustomer()"><i class="fa fa-times"></i></button>
+
                 </td>
             </tr>
         </tbody>

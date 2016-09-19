@@ -2,10 +2,9 @@
     var taskAngular = angular.module('taskAngular');
 
     taskAngular.controller('newCustomerController', function ($scope, dataService) {
-
-        $scope.newCustomerRow = false;
-
+        
         $scope.newCustomer = {
+            id: 0,
             name: "",
             company: 0,
             companyName: "",
@@ -27,23 +26,38 @@
         };
 
         $scope.createNewCustomer = function () {
-            if ($scope.newCustomer)
+            //if ($scope.newCustomer)
                 dataService.create("customers", $scope.newCustomer, function (data) {
                     if (data) {
-                        $scope.hideNewCustomerRow();
-                        alert("customer created");
+                        alert("Customer created");
                     }
                     else
                         alert("error");
                 })
         }
+        
 
-        $scope.showNewCustomerRow = function () {
-            $scope.newCustomerRow = true;
+        $scope.updateCustomer = function () {
+            dataService.update("customers", $scope.newCustomer.id, $scope.newCustomer, function (data) {
+                $scope.editOff();
+                if (data) {
+                    alert("Customer updated");
+                }
+                else {
+                    alert("error");
+                }
+            })
         }
 
-        $scope.hideNewCustomerRow = function () {
-            $scope.newCustomerRow = false;
+        $scope.removeCustomer = function () {
+            dataService.remove("customers", $scope.newCustomer.id, function (data) {
+                if (data) {
+                    alert("Customer removed");
+                }
+                else {
+                    alert("error");
+                }
+            })
         }
 
         $scope.loadCustomersInfo();
