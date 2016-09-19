@@ -10,6 +10,7 @@ using TaskDb;
 
 namespace Task_API.Controllers
 {
+    [Authorize]
     public class InvoicesController : HomeController<Invoice>
     {
         public InvoicesController(Repository<Invoice> repo) : base(repo) { }
@@ -51,7 +52,7 @@ namespace Task_API.Controllers
                 try
                 {
                     Helpers.GenerateAnInvoice.Create(invoice, Repository.HomeContext());
-                    return Ok();
+                    return Ok(invoice);
                 }
                 catch (Exception)
                 {

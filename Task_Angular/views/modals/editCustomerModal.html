@@ -5,7 +5,7 @@
             <h2 class="modal-title">Customer: {{requestedCustomer.name}}</h2>
         </div><!--end modal header-->
 
-        <div class="modal-body">
+        <div class="modal-body" >
             <div class="row">
                 <div class="col-md-4">
                     <h2>XYZ<br /><small>Edit customer information</small></h2>
@@ -30,11 +30,12 @@
                         <p>Phone/Fax: </p>
                         <input type="text" name="phoneNumber" value="{{requestedCustomer.phoneNumber}}" /><br>
                     </div>
+                </div>
             </div>
 
-        </div><!--end modal body-->
-        <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
-        </div><!--end modal footer-->
-    </div><!--end modal content-->
-</div><!--end modal dialog-->
+            </div><!--end modal body-->
+            <div class="modal-footer bg-info">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-submit="UpdateData()">Save</button>
+            </div><!--end modal footer-->
+        </div><!--end modal content-->
+    </div><!--end modal dialog-->
