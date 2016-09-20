@@ -3,9 +3,9 @@
 
 
 
-.btn-new-invoice{
-   height: 85px; 
-   font-size: 18px;
+.btn-new-invoice {
+    height: 85px;
+    font-size: 18px;
 }
 
 .vhcenter {
@@ -14,81 +14,30 @@
 }
 
 
-.bs-callout {
-    padding: 20px;
-    margin: 20px 0;
-    border: 1px solid #eee;
-    border-left-width: 5px;
-    border-radius: 3px;
-}
-.bs-callout h4 {
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-.bs-callout p:last-child {
-    margin-bottom: 0;
-}
-.bs-callout code {
-    border-radius: 3px;
-}
-.bs-callout+.bs-callout {
-    margin-top: -5px;
-}
-.bs-callout-default {
-    border-left-color: #777;
-}
-.bs-callout-default h4 {
-    color: #777;
-}
-.bs-callout-primary {
-    border-left-color: #428bca;
-}
-.bs-callout-primary h4 {
-    color: #428bca;
-}
-.bs-callout-success {
-    border-left-color: #5cb85c;
-}
-.bs-callout-success h4 {
-    color: #5cb85c;
-}
-.bs-callout-danger {
-    border-left-color: #d9534f;
-}
-.bs-callout-danger h4 {
-    color: #d9534f;
-}
-.bs-callout-warning {
-    border-left-color: #f0ad4e;
-}
-.bs-callout-warning h4 {
-    color: #f0ad4e;
-}
-.bs-callout-info {
-    border-left-color: #5bc0de;
-}
-.bs-callout-info h4 {
-    color: #5bc0de;
+.box {
+    margin-left: auto;
+    margin-right: auto;
+    background: #5FCF80;
+    width: 6vw;
+    height: 6vw;
 }
 
-.LoginSubmit {
-	width: 8vw;
-	height: 3vw;
-	display: block;
-	margin: 0 auto 0 auto;
-	background: #ffffff;
-	border-radius: 40%;
-	border: 0.1vw solid black;
-	color: darkgrey;
-	font-size: 1vw;
-	cursor: pointer;
-	box-shadow: 0 0 0.3vw slategrey;
-	transition: 0.5s ease-out;
+.box:hover {
+    -webkit-transform: rotate(360deg);
+    background: #9351A6;
+    border-radius: 50%;
+    }
+
+.rotate {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
-.LoginSubmit:hover,
-.LoginSubmit:focus {
-	background: grey;
-	color: #fff;
-	outline: 0;
-}
+.rotate:hover {
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    }
