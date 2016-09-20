@@ -3,6 +3,9 @@
     padding:3vw;
 }
 
+p {
+    padding-top:15px;
+}
 
 
 .btn-new-invoice {
@@ -17,11 +20,12 @@
 
 
 .box {
-    margin-left: auto;
-    margin-right: auto;
-    background: #5FCF80;
-    width: 6vw;
+    margin-left: 46%;
+    background: blue;
+    width: 8vw;
+    font-size:1.15vw;
     height: 4vw;
+    color:white;
 }
 
 .box:hover {

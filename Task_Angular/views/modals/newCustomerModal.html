@@ -2,29 +2,30 @@
     <div class="modal-content">
         <div class="modal-header bg-info">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h2 class="modal-title">Customer: </h2>
+            <h2 class="modal-title">XYZ<br /><small>Add new customer</small></h2>
         </div><!--end modal header-->
 
         <div class="modal-body">
-            <div class="row">
-                    <h2>XYZ<br /><small>Edit customer information</small></h2>
-                <div class="col-md-4">
+            <div class="container-fluid">
+                <div class="row">
+                    
+                    <div class="col-md-4">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 ">
-                <div class="panel panel-info">
-                    <div class="panel-body">
-                        <p>Customer Name: </p>
-                        <input type="text" name="name" ng-model = "newCustomer.name" placeholder="Customer name" />
-                        <p>Select company: </p>
+                <div class="col-md-4 ">
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <p>Customer Name: </p>
+                            <input type="text" name="name" ng-model="newCustomer.name" placeholder="Customer name" />
+                            <p>Select company:</p>
 
-                        <select ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company">
-                            <option>"Choose company"></option>
-                        </select>
+                            <select ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company">
+                                <option>"Choose company"></option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div><!--end modal body-->
         <div class="modal-footer bg-info">
             <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="createNewCustomer()">Save</button>
