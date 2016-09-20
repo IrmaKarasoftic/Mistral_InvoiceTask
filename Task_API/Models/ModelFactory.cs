@@ -52,7 +52,8 @@ namespace Task_API.Models
                 Customer = invoice.Customer.Id,
                 CustomerName = invoice.Customer.Name,
                 BillTo = bill,
-                ShipTo=ship,
+                ShipTo = ship,
+                IsDeleted = invoice.IsDeleted,
             };
         }
 
@@ -63,7 +64,8 @@ namespace Task_API.Models
                 Id = item.Id,
                 Description = item.Description,
                 Quantity = item.Quantity,
-                UnitPrice = item.UnitPrice
+                UnitPrice = item.UnitPrice,
+                IsDeleted = item.IsDeleted,
             };
         }
 
@@ -89,9 +91,10 @@ namespace Task_API.Models
                 Company = customer.Company.Id,
                 CompanyName = customer.Company.Name,
                 City = customer.Company.city,
-                ZipCode=customer.Company.zipCode,
-                PhoneNumber=customer.Company.phoneNumber,
-                StreetAddress = customer.Company.StreetAddress
+                ZipCode = customer.Company.zipCode,
+                PhoneNumber = customer.Company.phoneNumber,
+                StreetAddress = customer.Company.StreetAddress,
+                IsDeleted = customer.IsDeleted,
             };
         }
         

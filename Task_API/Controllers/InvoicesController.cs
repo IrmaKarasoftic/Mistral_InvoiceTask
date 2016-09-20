@@ -17,7 +17,7 @@ namespace Task_API.Controllers
         {
             try
             {
-                List<InvoiceModel> invoices = Helpers.GenerateAnInvoice.GetAllInvoices(Repository.HomeContext());
+                List<InvoiceModel> invoices = Helpers.GenerateAnInvoice.GetAllInvoices(Repository.HomeContext()).Where(x => x.IsDeleted == false).ToList();
                 if (invoices != null)
                 {
                     return Ok(invoices);

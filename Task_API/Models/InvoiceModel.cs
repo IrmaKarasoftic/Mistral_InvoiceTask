@@ -16,5 +16,6 @@ namespace Task_API.Models
         public string CustomerName { get; set; }
         public CustomerModel BillTo { get; set; }
         public CustomerModel ShipTo { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

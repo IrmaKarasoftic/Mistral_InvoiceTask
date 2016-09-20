@@ -1,5 +1,7 @@
-﻿<div>
-    <button class="box rotate" data-toggle="modal" data-target="#newCustomerModal">Add customer</button>
+
+﻿<div ng-show="!waitCustomers">
+    <input type="submit" class="box rotate" data-toggle="modal" data-target="#newCustomerModal" value="Add customer"/>
+
     <table class="table table-hover" align="right">
         <thead>
             <tr>
@@ -24,12 +26,39 @@
 
                 <td class="col-md-2" style="text-align:center">
                     <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#editCustomerModal" ng-click="customerTransfer(customer)"><i class="fa fa-eye"></i></button>
-                    <button class="btn btn-default btn-sm" ng-click="removeCustomer()"><i class="fa fa-times"></i></button>
+                    <button ng-hide="CustomerCheckRemove(customer)" class="btn btn-default btn-sm" ng-click="CustomerRemoveOn(customer)"><i class="fa fa-times"></i></button>
 
+                </td>
+                <td>
+                    <!--on remove-->
+                    <button ng-show="CustomerCheckRemove(customer)" class="btn btn-danger" ng-click="removeCustomer()"><strong>Remove</strong></button>
+                    <button ng-show="CustomerCheckRemove(customer)" class="btn btn-default" ng-click="CustomerRemoveOff()"><strong>Cancel</strong></button>
+                    <!--end on remove-->
                 </td>
             </tr>
         </tbody>
     </table>
+</div>
+<div ng-show="waitCustomers">
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Invoice Modal -->
