@@ -39,6 +39,7 @@
             company: 0,
             companyName: "",
             streetAddress: "",
+            isDeleted : false,
             city: "",
             zipCode: 0,
             phoneNumber: ""
@@ -73,17 +74,15 @@
         }
 
         $scope.removeCustomer = function () {
-            dataService.remove("customers", $scope.newCustomer.id, function (data) {
+            dataService.update("customers", $scope.requestedCustomer.id, $scope.requestedCustomer, function (data) {
+                $scope.loadCustomersInfo();
+                console.log($scope.editCustomer);
                 if (data) {
-                    alert("Customer removed");
+                    alert("Customer updated");
                 }
                 else {
                     alert("error");
-                    $scope.CustomerRemoveOff();
                 }
-                $scope.CustomerRemoveOff();
-                $scope.loadCustomersInfo();
-
             })
         }
 
