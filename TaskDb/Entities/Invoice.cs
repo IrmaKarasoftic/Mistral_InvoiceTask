@@ -19,6 +19,7 @@ namespace TaskDb
         public DateTime Date { get; set; }
         public virtual ICollection<InvoiceItem> Items { get; set; }
         public Status Status { get; set; }
+        public bool IsDeleted { get; set; }
         public virtual Customer BillTo { get; set; }
         public virtual Customer ShipTo { get; set; }
         public virtual Customer Customer { get; set; }

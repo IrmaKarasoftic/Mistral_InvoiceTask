@@ -11,5 +11,6 @@ namespace Task_API.Models
         public string Description { get; set; }
         public int Quantity { get; set; }
         public double UnitPrice { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

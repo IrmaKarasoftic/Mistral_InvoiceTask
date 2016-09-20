@@ -17,6 +17,7 @@ namespace Task_API.Models
                 Date = model.Date,
                 Customer = context.Customers.Find(model.Customer),
                 Status = (Status)Enum.Parse(typeof(Status), model.Status),
+                IsDeleted = model.IsDeleted,
             };
         }
         public Item Create(ItemModel model, AppContext context)
@@ -26,7 +27,8 @@ namespace Task_API.Models
                 Id = model.Id,
                 Description = model.Description,
                 Quantity = model.Quantity,
-                UnitPrice = model.UnitPrice
+                UnitPrice = model.UnitPrice,
+                IsDeleted = model.IsDeleted,
             };
         }
         public InvoiceItem Create(InvoiceItemModel model, AppContext context)
@@ -58,7 +60,8 @@ namespace Task_API.Models
             {
                 Id = model.Id,
                 Name = model.Name,
-                Company = context.Companies.Find(model.Company)
+                Company = context.Companies.Find(model.Company),
+                IsDeleted = model.IsDeleted,
             };
         }
     }

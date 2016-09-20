@@ -19,7 +19,7 @@ namespace Task_API.Controllers
         {
             try
             {
-                List<CustomerModel> customers = Helpers.CustomerHelper.GetAllCustomers(Repository.HomeContext());
+                List<CustomerModel> customers = Helpers.CustomerHelper.GetAllCustomers(Repository.HomeContext()).Where(x => x.IsDeleted == false).ToList();
                 if (customers != null) return Ok(customers);
                 return NotFound();
             }

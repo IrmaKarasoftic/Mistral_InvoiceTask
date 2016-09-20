@@ -18,7 +18,7 @@ namespace Task_API.Controllers
         {
             try
             {
-                var items = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList();
+                var items = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList().Where(x => x.IsDeleted == false).ToList();
                 if (items != null) return Ok(items);
                 return NotFound();
             }
