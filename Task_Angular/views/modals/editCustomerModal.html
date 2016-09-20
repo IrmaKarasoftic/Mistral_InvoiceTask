@@ -16,26 +16,26 @@
                 <div class="panel panel-info">
                     <div class="panel-body">
                         <p>Customer ID: </p>
-                        <input type="text" name="id" value="{{requestedCustomer.id}}" />
+                        <input type="text" name="id" value="{{requestedCustomer.id}}" ng-model = "editCustomer.id" readonly />
                         <p>Customer Name: </p>
-                        <input type="text" name="name" value="{{requestedCustomer.name}}" />
+                        <input type="text" name="name" value="{{requestedCustomer.name}}" ng-model = "editCustomer.name" />
                         <p>Company Name: </p>
-                        <input type="text" name="companyName" value="{{requestedCustomer.companyName}}" />
+                        <input type="text" name="companyName" value="{{requestedCustomer.companyName}}" ng-model = "editCustomer.companyName" />
                         <p>Street Address: </p>
-                        <input type="text" name="streetAddress" value="{{requestedCustomer.streetAddress}}" />
+                        <input type="text" name="streetAddress" value="{{requestedCustomer.streetAddress}}" ng-model = "editCustomer.streetAddress"/>
                         <p>City: </p>
-                        <input type="text" name="city" value="{{requestedCustomer.city}}" />
+                        <input type="text" name="city" value="{{requestedCustomer.city}}" ng-model = "editCustomer.city"/>
                         <p>Zip: </p>
-                        <input type="text" name="zip" value="{{requestedCustomer.zipCode}}" />
+                        <input type="text" name="zip" value="{{requestedCustomer.zipCode}}" ng-model = "editCustomer.zipCode"/>
                         <p>Phone/Fax: </p>
-                        <input type="text" name="phoneNumber" value="{{requestedCustomer.phoneNumber}}" /><br>
+                        <input type="text" name="phoneNumber" value="{{requestedCustomer.phoneNumber}}" ng-model = "editCustomer.phoneNumber" /><br>
                     </div>
                 </div>
             </div>
 
             </div><!--end modal body-->
             <div class="modal-footer bg-info">
-                <button type="button" class="btn btn-default" data-dismiss="modal" ng-submit="UpdateData()">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="updateCustomer()">Save</button>
             </div><!--end modal footer-->
         </div><!--end modal content-->
     </div><!--end modal dialog-->
