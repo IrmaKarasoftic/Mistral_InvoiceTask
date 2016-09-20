@@ -1,18 +1,20 @@
-﻿<div>
-    <h1>New Invoice</h1>
-    <hr />
-    <h2>General</h2>
-    Date: {{currentDate | date: medium-date}}
-    <div class="row">
-        <div class="form-group form-inline">
-            <label class="col-md-1" for="customerName">Customer Name: </label>
-            <input type="text" class="form-control col-md-2" id="customerName" ng-model="customerName">
+﻿
+<div id="invoicesManager">
+    <div>
+        <h1>New Invoice</h1>
+        <hr />
+        <h2>General</h2>
+        Date: {{currentDate | date: medium-date}}
+        <div class="row">
+            <div class="form-group form-inline">
+                <label class="col-md-1" for="customerName">Customer Name: </label>
+                <input type="text" class="form-control col-md-2" id="customerName" ng-model="customerName">
+            </div>
         </div>
+        <br />
+        <h2>Company Details</h2>
+        <br />
     </div>
-    <br />
-    <h2>Company Details</h2>
-    <br />
-</div>
 
     <div class="row">
         <div class="col-md-4">
@@ -190,7 +192,7 @@
     <div class="modal fade" id="itemListModal" role="dialog">
         <div ng-include="'views/modals/itemListModal.html'"></div>
     </div>
-
+</div>
 
 
 

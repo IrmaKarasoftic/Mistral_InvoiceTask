@@ -74,11 +74,12 @@
         }
 
         $scope.removeCustomer = function () {
-            dataService.update("customers", $scope.requestedCustomer.id, $scope.requestedCustomer, function (data) {
+            $scope.newCustomer.isDeleted = true;
+            dataService.update("customers", $scope.newCustomer.id, $scope.newCustomer, function (data) {
                 $scope.loadCustomersInfo();
-                console.log($scope.editCustomer);
+                console.log($scope.newCustomer);
                 if (data) {
-                    alert("Customer updated");
+                    alert("Customer deleted");
                 }
                 else {
                     alert("error");
