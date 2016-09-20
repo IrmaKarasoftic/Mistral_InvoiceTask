@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Task_API.Models;
 using TaskDb;
+using TaskDb.DataAccess;
 
 namespace Task_API.Controllers
 {
@@ -65,11 +66,13 @@ namespace Task_API.Controllers
             {
                 try
                 {
+                    int companyId = customer.Company;
+                    Company comp = new Repository<Company>(Repository.HomeContext()).Get(companyId);
                     Customer co = Repository.Get(id);
                     Customer cost = Parser.Create(customer, Repository.HomeContext());
                     if (co != null) 
                     {
-                        Repository.Update(cost, id);
+                        new CustomerUnit(Repository.HomeContext()).Update(cost, id); 
                         return Ok(Factory.Create(cost));
                     }
                     return NotFound();

@@ -19,16 +19,11 @@
                         <input type="text" name="id" value="{{requestedCustomer.id}}" ng-model = "editCustomer.id" readonly />
                         <p>Customer Name: </p>
                         <input type="text" name="name" value="{{requestedCustomer.name}}" ng-model = "editCustomer.name" />
-                        <p>Company Name: </p>
-                        <input type="text" name="companyName" value="{{requestedCustomer.companyName}}" ng-model = "editCustomer.companyName" />
-                        <p>Street Address: </p>
-                        <input type="text" name="streetAddress" value="{{requestedCustomer.streetAddress}}" ng-model = "editCustomer.streetAddress"/>
-                        <p>City: </p>
-                        <input type="text" name="city" value="{{requestedCustomer.city}}" ng-model = "editCustomer.city"/>
-                        <p>Zip: </p>
-                        <input type="text" name="zip" value="{{requestedCustomer.zipCode}}" ng-model = "editCustomer.zipCode"/>
-                        <p>Phone/Fax: </p>
-                        <input type="text" name="phoneNumber" value="{{requestedCustomer.phoneNumber}}" ng-model = "editCustomer.phoneNumber" /><br>
+                        <p>Select company: </p>
+                        
+                        <select ng-options="company.id as company.name for company in companies" ng-model="editCustomer.company">
+                            <option>"Choose company"></option>
+                        </select>
                     </div>
                 </div>
             </div>

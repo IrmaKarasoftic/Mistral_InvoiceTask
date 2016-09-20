@@ -2,12 +2,22 @@
     var taskAngular = angular.module('taskAngular');
 
     taskAngular.controller('customersController', function ($scope, dataService) {
+        $scope.removeOnId;
 
         $scope.loadCustomersInfo = function () {
             dataService.list("customers", function (data) {
                 if (data) {
                     //console.log(data);
                     $scope.customers = data;
+                }
+                else {
+                    alert("error");
+                }
+            })
+            dataService.list("companies", function (data) {
+                if (data) {
+                    console.log(data);
+                    $scope.companies = data;
                 }
                 else {
                     alert("error");
@@ -32,10 +42,11 @@
         }
 
 
-
         $scope.createNewCustomer = function () {
             //if ($scope.newCustomer)
             dataService.create("customers", $scope.newCustomer, function (data) {
+                $scope.loadCustomersInfo();
+                console.log($scope.newCustomer);
                 if (data) {
                     alert("Customer created");
                 }
@@ -48,6 +59,7 @@
         $scope.updateCustomer = function () {
             dataService.update("customers", $scope.editCustomer.id, $scope.editCustomer, function (data) {
                 $scope.loadCustomersInfo();
+                console.log($scope.editCustomer);
                 if (data) {
                     alert("Customer updated");
                 }
@@ -64,11 +76,29 @@
                 }
                 else {
                     alert("error");
+                    $scope.CustomerRemoveOff();
                 }
+                $scope.CustomerRemoveOff();
+                $scope.loadCustomersInfo();
+
             })
         }
+
+        $scope.CustomerRemoveOn = function (customer) {
+            $scope.removeOnId = customer.id;
+            $scope.newCustomer = customer;
+        }
+        $scope.CustomerRemoveOff = function () {
+            $scope.removeOnId = null;
+            $scope.newCustomer = null;
+        }
+        $scope.CustomerCheckRemove = function (customer) {
+            return $scope.removeOnId === customer.id;
+        }
+       
 
         $scope.loadCustomersInfo();
 
     });
 }());
+    

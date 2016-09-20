@@ -16,16 +16,11 @@
                     <div class="panel-body">
                         <p>Customer Name: </p>
                         <input type="text" name="name" ng-model = "newCustomer.name" placeholder="Customer name" />
-                        <p>Company Name: </p>
-                        <input type="text" name="companyName" ng-model = "newCustomer.companyName" placeholder="Company name" />
-                        <p>Street Address: </p>
-                        <input type="text" name="streetAddress" ng-model = "newCustomer.streetAddress" placeholder="Street address" />
-                        <p>City: </p>
-                        <input type="text" name="city" ng-model = "newCustomer.city" placeholder="City" />
-                        <p>Zip: </p>
-                        <input type="text" name="zip" ng-model = "newCustomer.zipCode" placeholder="Zip code" />
-                        <p>Phone/Fax: </p>
-                        <input type="text" name="phoneNumber" ng-model = "newCustomer.phoneNumber" placeholder="Phone number" /><br>
+                        <p>Select company: </p>
+
+                        <select ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company">
+                            <option>"Choose company"></option>
+                        </select>
                     </div>
                 </div>
             </div>

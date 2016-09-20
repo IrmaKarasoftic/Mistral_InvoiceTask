@@ -23,8 +23,14 @@
 
                 <td class="col-md-2">
                     <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#editCustomerModal" ng-click="customerTransfer(customer)"><i class="fa fa-eye"></i></button>
-                    <button class="btn btn-default btn-sm" ng-click="removeCustomer()"><i class="fa fa-times"></i></button>
+                    <button ng-hide="CustomerCheckRemove(customer)" class="btn btn-default btn-sm" ng-click="CustomerRemoveOn(customer)"><i class="fa fa-times"></i></button>
 
+                </td>
+                <td>
+                    <!--on remove-->
+                    <button ng-show="CustomerCheckRemove(customer)" class="btn btn-danger" ng-click="removeCustomer()"><strong>Remove</strong></button>
+                    <button ng-show="CustomerCheckRemove(customer)" class="btn btn-default" ng-click="CustomerRemoveOff()"><strong>Cancel</strong></button>
+                    <!--end on remove-->
                 </td>
             </tr>
         </tbody>
