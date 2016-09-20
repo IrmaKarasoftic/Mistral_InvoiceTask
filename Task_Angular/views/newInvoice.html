@@ -1,198 +1,192 @@
-﻿
-<div id="invoicesManager">
-    <div>
-        <h1>New Invoice</h1>
-        <hr />
-        <h2>General</h2>
-        Date: {{currentDate | date: medium-date}}
-        <div class="row">
-            <div class="form-group form-inline">
-                <label class="col-md-1" for="customerName">Customer Name: </label>
-                <input type="text" class="form-control col-md-2" id="customerName" ng-model="customerName">
-            </div>
-        </div>
-        <br />
-        <h2>Company Details</h2>
-        <br />
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3 class="panel-title"><strong>From:</strong></h3></div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="form-group form-inline">
-                            <label class="col-md-6" for="fromCompanyName">Company Name: </label>
-                            <input type="text" class="form-control col-md-6" id="fromCompanyName" ng-model="from.companyName" value="{{from.companyName}}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group form-inline">
-                            <label class="col-md-6" for="fromStreetAddress">Street Address: </label>
-                            <input type="text" class="form-control col-md-6" id="fromStreetAddress" ng-model="from.streetAddress" value="{{from.streetAddress}}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group form-inline">
-                            <label class="col-md-6" for="fromCity">City: </label>
-                            <input type="text" class="form-control col-md-6" id="fromCity" ng-model="from.city" value="{{from.city}}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group form-inline">
-                            <label class="col-md-6" for="fromZip">Zip: </label>
-                            <input type="text" class="form-control col-md-6" id="fromZip" ng-model="from.zipCode" value="{{from.zipCode}}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group form-inline">
-                            <label class="col-md-6" for="fromPhone">Phone/Fax: </label>
-                            <input type="tel" class="form-control col-md-6" id="fromPhone" ng-model="from.phoneNumber" value="{{from.phoneNumber}}">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 ">
-            <div class="panel panel-info">
-                <div class="panel-heading"><h3 class="panel-title"><strong>Bill To:</strong></h3></div>
-                <div class="panel-body">
-                    <p><strong>Customer Name: </strong>{{selectedCustomerBillTo.name}}</p>
-                    <p><strong>Company Name: </strong>{{selectedCustomerBillTo.companyName}}</p>
-                    <p><strong>Street Address: </strong>{{selectedCustomerBillTo.streetAddress}}</p>
-                    <p><strong>City, Zip: </strong>{{selectedCustomerBillTo.city}}, {{customer.zipCode}}</p>
-                    <p><strong>Phone/Fax: </strong>{{selectedCustomerBillTo.phoneNumber}}</p>
-                </div>
-            </div>
-            <button class="btn btn-primary"
-                    data-toggle="modal"
-                    data-target="#customerListModal"
-                    ng-click="loadCustomersInfoBillTo()">
-                Select Customer
-            </button>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-success">
-                <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
-                <div class="panel-body">
-                    <p><strong>Customer Name: </strong>{{selectedCustomerShipTo.name}}</p>
-                    <p><strong>Company Name: </strong>{{selectedCustomerShipTo.companyName}}</p>
-                    <p><strong>Street Address: </strong>{{selectedCustomerShipTo.streetAddress}}</p>
-                    <p><strong>City, Zip: </strong>{{selectedCustomerShipTo.city}}, {{selectedCustomerShipTo.zipCode}}</p>
-                    <p><strong>Phone/Fax: </strong>{{selectedCustomerShipTo.phoneNumber}}</p>
-                </div>
-            </div>
-            <button class="btn btn-primary"
-                    data-toggle="modal"
-                    data-target="#customerListModal"
-                    ng-click="loadCustomersInfoShipTo()">
-                Select Customer
-            </button>
-        </div>
-    </div>
-    <!--
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <button class="btn btn-primary"
-                    data-toggle="modal"
-                    data-target="#customerListModal"
-                    ng-click="loadCustomersInfoBillTo()">
-                Select Customer
-            </button>
-        </div>
-        <div class="col-md-4">
-            <button class="btn btn-primary"
-                    data-toggle="modal"
-                    data-target="#customerListModal"
-                    ng-click="loadCustomersInfoShipTo()">
-                Select Customer
-            </button>
-        </div>
-    </div>
-        -->
+﻿<div>
+    <h1>New Invoice</h1>
     <hr />
-    <h2>Items</h2>
-    <br />
-    <!--ADD ITEMS BUTTON-->
-    <!--<button class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#itemListModal">
-        Update List
-    </button>-->
+    <h2>General</h2>
+    Date: {{currentDate | date: medium-date}}
     <div class="row">
-        <div class="col-md-2">
-            <select ng-model="selectedItem"
-                    class="form-control"
-                    ng-options="item.description for item in items">
-                <option value="" disabled selected>- Select Item -</option>
-            </select>
+        <div class="form-group form-inline">
+            <label class="col-md-1" for="customerName">Customer Name: </label>
+            <input type="text" class="form-control col-md-2" id="customerName" ng-model="customerName">
         </div>
-        <button class="btn btn-primary"
-                ng-click="pushToItemList()">
-            Add
-        </button>
     </div>
     <br />
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-hover" ng-show="listExists">
-                <thead>
-                    <tr>
-                        <th class="col-md-1"><h4>ID</h4></th>
-                        <th class="col-md-2"><h4>Description</h4></th>
-                        <th class="col-md-2"><h4>Amount</h4></th>
-                        <th class="col-md-2"><h4>Quantity</h4></th>
-                        <th class="col-md-2"><h4>Total</h4></th>
-                        <th class="col-md-1"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in itemList">
-                        <td class="col-md-1">{{item.id}}</td>
-                        <td class="col-md-2">{{item.description}}</td>
-                        <td class="col-md-2">{{item.unitPrice}}</td>
-                        <td>
-                            <input class="form-control"
-                                   type="number"
-                                   min="1"
-                                   max="{{item.quantity}}"
-                                   ng-model="purchasedQuantity[$index]"
-                                   ng-change="calculateFinal()">
-                        </td>
-                        <td class="col-md-2">{{purchasedQuantity[$index] * item.unitPrice |number:2}}</td>
-                        <td class="col-md-1"><button class="btn btn-default btn-sm" ng-click="removeFromItemList(item)"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <p><strong>Subtotal: {{subTotal | number:2}}</strong></p>
-                <p><strong>Tax Rate: {{taxRate | number:2}}</strong></p>
-                <p><strong>Tax: {{tax | number:2}}</strong></p>
-                <p><strong>Other: </strong></p>
-                <h3><strong>TOTAL: {{total | number:2}}</strong></h3>
+    <h2>Company Details</h2>
+    <br />
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title"><strong>From:</strong></h3></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <label class="col-md-6" for="fromCompanyName">Company Name: </label>
+                        <input type="text" class="form-control col-md-6" id="fromCompanyName" ng-model="from.companyName" value="{{from.companyName}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <label class="col-md-6" for="fromStreetAddress">Street Address: </label>
+                        <input type="text" class="form-control col-md-6" id="fromStreetAddress" ng-model="from.streetAddress" value="{{from.streetAddress}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <label class="col-md-6" for="fromCity">City: </label>
+                        <input type="text" class="form-control col-md-6" id="fromCity" ng-model="from.city" value="{{from.city}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <label class="col-md-6" for="fromZip">Zip: </label>
+                        <input type="text" class="form-control col-md-6" id="fromZip" ng-model="from.zipCode" value="{{from.zipCode}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <label class="col-md-6" for="fromPhone">Phone/Fax: </label>
+                        <input type="tel" class="form-control col-md-6" id="fromPhone" ng-model="from.phoneNumber" value="{{from.phoneNumber}}">
+                    </div>
+                </div>
             </div>
         </div>
-        <br />
+    </div>
+    <div class="col-md-4 ">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title"><strong>Bill To:</strong></h3></div>
+            <div class="panel-body">
+                <p><strong>Customer Name: </strong>{{selectedCustomerBillTo.name}}</p>
+                <p><strong>Company Name: </strong>{{selectedCustomerBillTo.companyName}}</p>
+                <p><strong>Street Address: </strong>{{selectedCustomerBillTo.streetAddress}}</p>
+                <p><strong>City, Zip: </strong>{{selectedCustomerBillTo.city}}, {{customer.zipCode}}</p>
+                <p><strong>Phone/Fax: </strong>{{selectedCustomerBillTo.phoneNumber}}</p>
+            </div>
+        </div>
         <button class="btn btn-primary"
-                ng-click="createNewInvoice()">
-            Submit
+                data-toggle="modal"
+                data-target="#customerListModal"
+                ng-click="loadCustomersInfoBillTo()">
+            Select Customer
         </button>
     </div>
-
-
-    <!-- Customer List Modal -->
-    <div class="modal fade" id="customerListModal" role="dialog">
-        <div ng-include="'views/modals/customerListModal.html'"></div>
+    <div class="col-md-4">
+        <div class="panel panel-success">
+            <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
+            <div class="panel-body">
+                <p><strong>Customer Name: </strong>{{selectedCustomerShipTo.name}}</p>
+                <p><strong>Company Name: </strong>{{selectedCustomerShipTo.companyName}}</p>
+                <p><strong>Street Address: </strong>{{selectedCustomerShipTo.streetAddress}}</p>
+                <p><strong>City, Zip: </strong>{{selectedCustomerShipTo.city}}, {{selectedCustomerShipTo.zipCode}}</p>
+                <p><strong>Phone/Fax: </strong>{{selectedCustomerShipTo.phoneNumber}}</p>
+            </div>
+        </div>
+        <button class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#customerListModal"
+                ng-click="loadCustomersInfoShipTo()">
+            Select Customer
+        </button>
     </div>
-
-    <!-- Item List Modal -->
-    <div class="modal fade" id="itemListModal" role="dialog">
-        <div ng-include="'views/modals/itemListModal.html'"></div>
+</div>
+<!--
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <button class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#customerListModal"
+                ng-click="loadCustomersInfoBillTo()">
+            Select Customer
+        </button>
     </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#customerListModal"
+                ng-click="loadCustomersInfoShipTo()">
+            Select Customer
+        </button>
+    </div>
+</div>
+    -->
+<hr />
+<h2>Items</h2>
+<br />
+<!--ADD ITEMS BUTTON-->
+<!--<button class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#itemListModal">
+    Update List
+</button>-->
+<div class="row">
+    <div class="col-md-2">
+        <select ng-model="selectedItem"
+                class="form-control"
+                ng-options="item.description for item in items">
+            <option value="" disabled selected>- Select Item -</option>
+        </select>
+    </div>
+    <button class="btn btn-primary"
+            ng-click="pushToItemList()">
+        Add
+    </button>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover" ng-show="listExists">
+            <thead>
+                <tr>
+                    <th class="col-md-1"><h4>ID</h4></th>
+                    <th class="col-md-2"><h4>Description</h4></th>
+                    <th class="col-md-2"><h4>Amount</h4></th>
+                    <th class="col-md-2"><h4>Quantity</h4></th>
+                    <th class="col-md-2"><h4>Total</h4></th>
+                    <th class="col-md-1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemList">
+                    <td class="col-md-1">{{item.id}}</td>
+                    <td class="col-md-2">{{item.description}}</td>
+                    <td class="col-md-2">{{item.unitPrice}}</td>
+                    <td>
+                        <input class="form-control"
+                               type="number"
+                               min="1"
+                               max="{{item.quantity}}"
+                               ng-model="purchasedQuantity[$index]"
+                               ng-change="calculateFinal()">
+                    </td>
+                    <td class="col-md-2">{{purchasedQuantity[$index] * item.unitPrice |number:2}}</td>
+                    <td class="col-md-1"><button class="btn btn-default btn-sm" ng-click="removeFromItemList(item)"><i class="fa fa-times"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p><strong>Subtotal: {{subTotal | number:2}}</strong></p>
+            <p><strong>Tax Rate: {{taxRate | number:2}}</strong></p>
+            <p><strong>Tax: {{tax | number:2}}</strong></p>
+            <p><strong>Other: </strong></p>
+            <h3><strong>TOTAL: {{total | number:2}}</strong></h3>
+        </div>
+    </div>
+    <br />
+    <button class="btn btn-primary"
+            ng-click="createNewInvoice()">
+        Submit
+    </button>
 </div>
 
 
+<!-- Customer List Modal -->
+<div class="modal fade" id="customerListModal" role="dialog">
+    <div ng-include="'views/modals/customerListModal.html'"></div>
+</div>
 
+<!-- Item List Modal -->
+<div class="modal fade" id="itemListModal" role="dialog">
+    <div ng-include="'views/modals/itemListModal.html'"></div>
+</div>

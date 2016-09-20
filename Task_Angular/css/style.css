@@ -1,4 +1,6 @@
 ﻿body {
+    background-image:url("../background1.jpg");
+    padding:3vw;
 }
 
 
@@ -132,9 +134,4 @@
 	100% {
 		transform: rotate(360deg);
 	}
-}
-
-#invoicesManager
-{
-    padding:3vw;
 }
