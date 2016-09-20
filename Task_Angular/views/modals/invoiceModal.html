@@ -74,12 +74,12 @@
                 </tbody>
             </table>
             <div class="row">
-                <div class="col-md-3 col-md-offset-8">
-                    <p>Subtotal: {{$scope.subtotal}}</p>
-                    <p>Tax Rate: {{$scope.taxRate}}</p>
-                    <p>Tax: {{$scope.tax}}</p>
-                    <p>Other: </p>
-                    <p><strong>TOTAL: {{$scope.total}}</strong></p>
+                <div class="col-md-3 col-md-offset-9" >
+                    <p><strong>Subtotal: {{subTotal | number:2}}</strong></p>
+                    <p><strong>Tax Rate: {{taxRate | number:2}}</strong></p>
+                    <p><strong>Tax: {{tax | number:2}}</strong></p>
+                    <p><strong>Other: </strong></p>
+                    <h3><strong>TOTAL: {{total | number:2}}</strong></h3>
                 </div>
             </div>
         </div><!--end modal body-->

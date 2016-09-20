@@ -21,5 +21,9 @@
         };
 
         $scope.loadCustomersInfo();
+
+        $scope.l = function () {
+            console.log($scope.newCustomer);
+        }
     });
 }());

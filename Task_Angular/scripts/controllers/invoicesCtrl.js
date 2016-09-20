@@ -3,6 +3,10 @@
 
     taskAngular.controller('invoicesController', function ($scope, dataService) {
 
+        $scope.subTotal = 0;
+        $scope.total = 0;
+        $scope.taxRate = 0.17;
+        $scope.tax = 0;
 
         $scope.loadInvoicesInfo = function () {
             dataService.list("invoices", function (data) {
@@ -16,24 +20,23 @@
         };
 
 
+        $scope.calculateValues = function (invoice) {
+            for (var i = 0; i<invoice.items.length; i++)
+            {
+                $scope.subTotal = $scope.subTotal + invoice.items[i].quantity * invoice.items[i].price;
+            }
+            $scope.tax = $scope.subTotal * $scope.taxRate;
+            $scope.total = $scope.subTotal + $scope.tax;
+        }
+
+
         $scope.invoiceTransfer = function (invoice) {
             $scope.requestedInvoice = invoice;
-            //console.log($scope.requestedInvoice);
+            $scope.calculateValues($scope.requestedInvoice);
         };
 
-        calculateValues = function()
-        {
-            $scope.subtotal = 0;
-            $scope.total = 0;
-            $scope.taxRate = 0.17;
-            foreach(item in invoices.items)
-            {
-                $scope.subtotal = $scope.subtotal + item.quantity * item.unitPrice;
-            }
-            $scope.tax = $scope.subtotal * $scope.taxRate;
-            $scope.total = $scope.subtotal - $scope.subtotal * $scope.tax;
-        }
         $scope.loadInvoicesInfo();
+        
 
     });
 }());

@@ -1,5 +1,5 @@
 ﻿<div>
-    <input type="submit" class="box rotate" data-toggle="modal" data-target="#newCustomerModal" value="Add customer"></input>
+    <button class="box rotate" data-toggle="modal" data-target="#newCustomerModal">Add customer</button>
     <table class="table table-hover" align="right">
         <thead>
             <tr>
@@ -9,10 +9,11 @@
                 <th class="col-md-2" style="text-align:center"><h4>STREET ADDRESS</h4></th>
                 <th class="col-md-2" style="text-align:center"><h4>CITY</h4></th>
                 <th class="col-md-2" style="text-align:center"><h4>PHONE NUMBER</h4></th>
+                <th class="col-md-2" style="text-align:center"><h4>ACTIONS</h4></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="customer in customers" data-toggle="collapse" class="accordion-toggle">
+            <tr ng-repeat="customer in customers">
                 <td class="col-md-1" style="text-align:center">{{customer.id}}</td>
                 <td class="col-md-2" style="text-align:center">{{customer.name}}</td>
                 <td class="col-md-2" style="text-align:center">{{customer.companyName}}</td>
@@ -21,7 +22,7 @@
                 <td class="col-md-2" style="text-align:center">{{customer.phoneNumber}}</td>
 
 
-                <td class="col-md-2">
+                <td class="col-md-2" style="text-align:center">
                     <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#editCustomerModal" ng-click="customerTransfer(customer)"><i class="fa fa-eye"></i></button>
                     <button class="btn btn-default btn-sm" ng-click="removeCustomer()"><i class="fa fa-times"></i></button>
 

@@ -13,20 +13,8 @@
             zipCode: 0,
             phoneNumber:""
         }
-
-        $scope.loadCustomersInfo = function () {
-            dataService.list("customers", function (data) {
-                if (data) {
-                    $scope.customers = data;
-                }
-                else {
-                    alert("error");
-                }
-            })
-        };
-
+        
         $scope.createNewCustomer = function () {
-
                 dataService.create("customers", $scope.newCustomer, function (data) {
                     if (data) {
                         alert("customer created");
@@ -36,11 +24,11 @@
                 })
         }
         
+  
 
-
+/*
         $scope.updateCustomer = function () {
             dataService.update("customers", $scope.newCustomer.id, $scope.newCustomer, function (data) {
-                $scope.editOff();
                 if (data) {
                     alert("Customer updated");
                 }
@@ -60,7 +48,7 @@
                 }
             })
         }
-
+        */
 
         $scope.loadCustomersInfo();
 

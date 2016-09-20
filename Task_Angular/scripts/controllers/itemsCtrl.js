@@ -27,33 +27,31 @@
 
         $scope.createNewItem = function () {
             dataService.create("items", $scope.newItem, function (data) {
-                $scope.hideNewItemRow();
-                $scope.loadItemsInfo();
                 if (data)
                 {
                     alert("Item created");
                 }
                 else
                     alert("Error");
+                $scope.hideNewItemRow();
+                $scope.loadItemsInfo();
             })
         }
 
         $scope.updateItem = function () {
             dataService.update("items", $scope.newItem.id, $scope.newItem, function (data) {
-                $scope.editOff();
-                $scope.loadItemsInfo();
                 if (data) {
                     alert("Item updated");
                 }
                 else {
                     alert("error");
                 }
+                $scope.editOff();
             })
         }
 
         $scope.removeItem = function () {
             dataService.remove("items", $scope.newItem.id, function (data) {
-                
                 if (data) {
                     alert("Item removed");
                 }
@@ -88,6 +86,7 @@
         $scope.editOff = function () {
             $scope.editOnId = null;
             $scope.newItem = null;
+            $scope.loadItemsInfo();
         }
 
         $scope.checkEdit = function (item) {
