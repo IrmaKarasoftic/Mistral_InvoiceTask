@@ -5,10 +5,13 @@
         $scope.removeOnId;
 
         $scope.loadCustomersInfo = function () {
+            $scope.waitCustomers = true;
             dataService.list("customers", function (data) {
                 if (data) {
                     //console.log(data);
                     $scope.customers = data;
+                    $scope.waitCustomers = false;
+
                 }
                 else {
                     alert("error");

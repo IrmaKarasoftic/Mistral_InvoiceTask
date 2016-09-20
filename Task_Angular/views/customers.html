@@ -1,5 +1,5 @@
-﻿<div>
-    <input type="submit" class="box rotate" data-toggle="modal" data-target="#newCustomerModal" value="Add customer"></input>
+﻿<div ng-show="!waitCustomers">
+    <input type="submit" class="box rotate" data-toggle="modal" data-target="#newCustomerModal" value="Add customer"/>
     <table class="table table-hover" align="right">
         <thead>
             <tr>
@@ -35,6 +35,27 @@
             </tr>
         </tbody>
     </table>
+</div>
+<div ng-show="waitCustomers">
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Invoice Modal -->

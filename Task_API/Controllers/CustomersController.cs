@@ -97,9 +97,9 @@ namespace Task_API.Controllers
                 }
                 return NotFound();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                 return BadRequest(ex.Message);
             }
         }
     }
