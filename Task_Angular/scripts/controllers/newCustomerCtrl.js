@@ -3,7 +3,6 @@
 
     taskAngular.controller('newCustomerController', function ($scope, dataService) {
 
-        $scope.newCustomerRow = false;
 
         $scope.newCustomer = {
             name: "",
@@ -27,23 +26,13 @@
         };
 
         $scope.createNewCustomer = function () {
-            if ($scope.newCustomer)
                 dataService.create("customers", $scope.newCustomer, function (data) {
                     if (data) {
-                        $scope.hideNewCustomerRow();
                         alert("customer created");
                     }
                     else
                         alert("error");
                 })
-        }
-
-        $scope.showNewCustomerRow = function () {
-            $scope.newCustomerRow = true;
-        }
-
-        $scope.hideNewCustomerRow = function () {
-            $scope.newCustomerRow = false;
         }
 
         $scope.loadCustomersInfo();

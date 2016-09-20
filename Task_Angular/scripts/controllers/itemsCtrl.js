@@ -40,8 +40,8 @@
 
         $scope.updateItem = function () {
             dataService.update("items", $scope.newItem.id, $scope.newItem, function (data) {
-                $scope.loadItemsInfo();
                 $scope.editOff();
+                $scope.loadItemsInfo();
                 if (data) {
                     alert("Item updated");
                 }
@@ -53,20 +53,23 @@
 
         $scope.removeItem = function () {
             dataService.remove("items", $scope.newItem.id, function (data) {
-                $scope.removeOff();
-                $scope.loadItemsInfo();
+                
                 if (data) {
                     alert("Item removed");
                 }
                 else {
                     alert("error");
+                    $scope.removeOff();
                 }
+                $scope.removeOff();
+                $scope.loadItemsInfo();
             })
         }
 
         $scope.showNewItemRow = function (){
             $scope.newItemRow = true;
             $scope.editOff();
+            $scope.removeOff();
         }
 
         $scope.hideNewItemRow = function () {
@@ -75,6 +78,7 @@
         }
 
         $scope.editOn = function (item) {
+            $scope.removeOff();
             $scope.hideNewItemRow();
             $scope.editOnId = item.id;
             $scope.newItem = item;
@@ -92,6 +96,7 @@
 
         $scope.removeOn = function (item) {
             $scope.hideNewItemRow();
+            $scope.editOff();
             $scope.removeOnId = item.id;
             $scope.newItem = item;
         }

@@ -36,8 +36,8 @@
                 <button ng-hide="checkActions(item)" class="btn btn-default btn-sm" ng-click="editOn(item)"><i class="fa fa-cog"></i></button>
                 <button ng-hide="checkActions(item)" class="btn btn-default btn-sm" ng-click="removeOn(item)"><i class="fa fa-times"></i></button>
                 <!--on edit-->
-                <button ng-show="checkEdit(item)" class="btn btn-primary btn-success" ng-click="updateItem()"><strong>Submit</strong></button>
-                <button ng-show="checkEdit(item)" class="btn btn-primary btn-default" ng-click="editOff()"><strong>Cancel</strong></button>
+                <button ng-show="checkEdit(item)" class="btn btn-success" ng-click="updateItem()"><strong>Submit</strong></button>
+                <button ng-show="checkEdit(item)" class="btn btn-default" ng-click="editOff()"><strong>Cancel</strong></button>
                 <!--end on edit-->
                 <!--on remove-->
                 <button ng-show="checkRemove(item)" class="btn btn-danger" ng-click="removeItem()"><strong>Remove</strong></button>
