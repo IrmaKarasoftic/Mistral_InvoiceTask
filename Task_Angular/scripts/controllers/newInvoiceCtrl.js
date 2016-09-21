@@ -40,29 +40,22 @@
         $scope.billTo = false;
         $scope.shipTo = false;
 
-        $scope.copyItemsToNewInvoice = function(){
-            
-        }
-        /*$scope.newInvoice.items.push({
-                    description : $scope.itemList[i].description,
-                    quantity : $scope.purchasedQuantity[i],
-                    invoiceId : $scope.newInvoice.id,
-                    itemId : $scope.itemList[i].id,
-                    price : $scope.itemList[i].unitPrice
-                });*/
-
         $scope.createNewInvoice = function () {
+            console.log($scope.newInvoice);
             dataService.create("invoices", $scope.newInvoice, function (data) {
                 if (data) {
+                    console.log(data, "data");
                     $scope.newInvoice.id = data;
                     for (var i = 0; i < $scope.itemList.length; i += 1) {
-                        dataService.create("invoiceitems", {
+                        $scope.newInvoice.items.push({
                             description: $scope.itemList[i].description,
                             quantity: $scope.purchasedQuantity[i],
                             invoiceId: $scope.newInvoice.id,
                             itemId: $scope.itemList[i].id,
                             price: $scope.itemList[i].unitPrice
-                        }, function (data) {
+                        })
+                        console.log($scope.newInvoice.items[i]);
+                        dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
                             if (data)
                                 alert("invoice created");
                             else
@@ -108,13 +101,12 @@
         };
 
         $scope.switchShipTo = function () {
-            $scope.shipTo = true;
             $scope.billTo = false;
+            $scope.shipTo = true;
         };
 
         $scope.customerTransferBillTo = function (customer) {
             $scope.newInvoice.billTo = customer;
-            $scope.newInvoice.shipTo = customer;
         };
         $scope.customerTransferShipTo = function (customer) {
             $scope.newInvoice.shipTo = customer;

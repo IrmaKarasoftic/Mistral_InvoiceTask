@@ -51,7 +51,8 @@ namespace Task_API.Controllers
                 try
                 {
                     Helpers.GenerateAnInvoice.Create(invoice, Repository.HomeContext());
-                    var lastId = Repository.Get().OrderByDescending(x => x.Id).FirstOrDefault();
+                    var lastAddedInvoice = Repository.Get().OrderByDescending(x => x.Id).FirstOrDefault();
+                    int lastId = lastAddedInvoice.Id;
                     return Ok(lastId);
                 }
                 catch (Exception ex)
