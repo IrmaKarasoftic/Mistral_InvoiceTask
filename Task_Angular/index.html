@@ -24,9 +24,10 @@
     <script src="scripts/controllers/newInvoiceCtrl.js"></script>
     <script src="scripts/controllers/itemsCtrl.js"></script>
     <script src="scripts/controllers/customersCtrl.js"></script>
+    <script src="scripts/controllers/companiesCtrl.js"></script>
+
     <script src="scripts/toastr.js"></script>
     <script src="scripts/config/notifications-config.js"></script>
-    <script src="scripts/validation.js"></script>
 
     <!--ANGULAR SERVICES-->
     <script src="scripts/services/dataService.js"></script>
@@ -50,6 +51,13 @@
                         <li><a href="#/invoices"><strong>Invoices</strong></a></li>
                         <li><a href="#/customers"><strong>Customers</strong></a></li>
                         <li><a href="#/items"><strong>Items</strong></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="font-weight:bold">Companies<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#/companies">View all companies</a></li>
+                                <li><a href="#">Add a company</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- ANGULAR DYNAMIC CONTENT -->
