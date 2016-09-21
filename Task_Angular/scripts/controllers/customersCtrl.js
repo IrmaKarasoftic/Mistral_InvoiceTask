@@ -10,7 +10,6 @@
                 if (data) {
                     $scope.customers = data;
                     $scope.waitCustomers = false;
-                    notificationsConfig.success("Customer added");
                 }
                 else {
                     alert("error");
@@ -51,10 +50,9 @@
                 $scope.loadCustomersInfo();
                 console.log($scope.newCustomer);
                 if (data) {
-                    alert("Customer created");
+                    notificationsConfig.success("Customer added");
                 }
-                else
-                    alert("error");
+                else notificationsConfig.error("Adding customers failed!");
             })
         }
 
@@ -64,10 +62,10 @@
                 $scope.loadCustomersInfo();
                 console.log($scope.editCustomer);
                 if (data) {
-                    alert("Customer updated");
+                    notificationsConfig.success("Customer updated");
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.success("Customer update failed");
                 }
             })
         }
@@ -78,10 +76,10 @@
                 $scope.loadCustomersInfo();
                 console.log($scope.newCustomer);
                 if (data) {
-                    alert("Customer deleted");
+                    notificationsConfig.success("Customer deleted");
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.success("Customer delete failed");
                 }
             })
         }
