@@ -1,18 +1,17 @@
 ﻿<div ng-show="!waitCustomers">
 
-
-    <input type="submit" class="box rotate" data-toggle="modal" data-target="#newCustomerModal" value="Add customer" />
+    <input type="submit" class="btn-primary" data-toggle="modal" data-target="#newCustomerModal" value="Add customer" />
     <br /><br />
     <table class="table table-striped" align="right">
         <thead>
             <tr>
                 <th class="col-md-1" style="text-align:center"><h4>ID</h4></th>
-                <th class="col-md-2" style="text-align:center"><h4>NAME</h4></th>
+                <th class="col-md-1" style="text-align:center"><h4>NAME</h4></th>
                 <th class="col-md-2" style="text-align:center"><h4>COMPANY NAME</h4></th>
                 <th class="col-md-2" style="text-align:center"><h4>STREET ADDRESS</h4></th>
-                <th class="col-md-2" style="text-align:center"><h4>CITY</h4></th>
+                <th class="col-md-1" style="text-align:center"><h4>CITY</h4></th>
                 <th class="col-md-2" style="text-align:center"><h4>PHONE NUMBER</h4></th>
-                <th class="col-md-2" style="text-align:center"><h4>ACTIONS</h4></th>
+                <th class="col-md-3" style="text-align:center"><h4>ACTIONS</h4></th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +25,7 @@
 
 
                 <td class="col-md-3" style="text-align:center">
-                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#editCustomerModal" ng-click="customerTransfer(customer)"><i class="fa fa-pencil-square-o"></i></button>
+                    <button ng-hide="CustomerCheckRemove(customer)" id="editBtn" class="btn btn-default btn-sm" data-toggle="modal" data-target="#editCustomerModal" ng-click="customerTransfer(customer)"><i class="fa fa-pencil-square-o"></i></button>
                     <button ng-hide="CustomerCheckRemove(customer)" class="btn btn-default btn-sm" ng-click="CustomerRemoveOn(customer)"><i class="fa fa-times"></i></button>
 
                     <div class="btn-group">

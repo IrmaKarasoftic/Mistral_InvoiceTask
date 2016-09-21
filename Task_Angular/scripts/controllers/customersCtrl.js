@@ -64,6 +64,8 @@
                 else {
                     notificationsConfig.success("Customer update failed");
                 }
+                $scope.editOff();
+
             })
         }
 
@@ -80,6 +82,7 @@
             })
         }
 
+
         $scope.CustomerRemoveOn = function (customer) {
             $scope.removeOnId = customer.id;
             $scope.newCustomer = customer;
@@ -91,7 +94,6 @@
         $scope.CustomerCheckRemove = function (customer) {
             return $scope.removeOnId === customer.id;
         }
-       
 
         $scope.loadCustomersInfo();
 
