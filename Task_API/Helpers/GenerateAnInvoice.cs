@@ -23,6 +23,10 @@ namespace Task_API.Helpers
             invoice.Date = model.Date;
             invoice.Customer = context.Customers.Find(model.Customer);
             invoice.Status = (Status)Enum.Parse(typeof(Status), model.Status);
+
+            invoice.ShipTo = parser.Create(model.ShipTo, invoiceRepository.context);
+            invoice.BillTo = parser.Create(model.BillTo, invoiceRepository.context);
+
             //foreach (var i in model.Items)
             //{
             //    InvoiceItem item = new InvoiceItem()

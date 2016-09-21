@@ -3,19 +3,19 @@
 
     taskAngular.controller('newInvoiceController', function ($scope, dataService) {
 
-        $scope.currentDate = new Date();
-        $scope.currentDate.toJSON();
-
         $scope.newInvoice = {
+            "id": 0,
             "date": "",
             "items": [],
-            "status": "issued",
+            "status": 1,
             "customer": 0,
             "customerName": "",
             "billTo": {},
             "shipTo": {},
             "isDeleted": false
         }
+        $scope.newInvoice.date = new Date();
+        $scope.newInvoice.date.toJSON();
 
         $scope.from = {
             "companyName": "XYZ",
@@ -40,27 +40,35 @@
         $scope.billTo = false;
         $scope.shipTo = false;
 
-        $scope.copyDataToNewInvoice = function(){
-            $scope.newInvoice.date = $scope.currentDate;
-            $scope.newInvoice.customerName ="";
-            for (var i = 0; i < $scope.itemList.length; i += 1) {
-                $scope.newInvoice.items.push({
+        $scope.copyItemsToNewInvoice = function(){
+            
+        }
+        /*$scope.newInvoice.items.push({
                     description : $scope.itemList[i].description,
                     quantity : $scope.purchasedQuantity[i],
-                    invoiceId : 0,
+                    invoiceId : $scope.newInvoice.id,
                     itemId : $scope.itemList[i].id,
                     price : $scope.itemList[i].unitPrice
-                });
-            }
-            $scope.newInvoice.billTo = $scope.selectedCustomerBillTo;
-            $scope.newInvoice.shipTo = $scope.selectedCustomerShipTo;
-        }
+                });*/
 
         $scope.createNewInvoice = function () {
-            $scope.copyDataToNewInvoice();
             dataService.create("invoices", $scope.newInvoice, function (data) {
                 if (data) {
-                    alert("Invoice created");
+                    $scope.newInvoice.id = data;
+                    for (var i = 0; i < $scope.itemList.length; i += 1) {
+                        dataService.create("invoiceitems", {
+                            description: $scope.itemList[i].description,
+                            quantity: $scope.purchasedQuantity[i],
+                            invoiceId: $scope.newInvoice.id,
+                            itemId: $scope.itemList[i].id,
+                            price: $scope.itemList[i].unitPrice
+                        }, function (data) {
+                            if (data)
+                                alert("invoice created");
+                            else
+                                alert("error");
+                        })
+                    }
                 }
                 else
                     alert("Error");
@@ -105,11 +113,11 @@
         };
 
         $scope.customerTransferBillTo = function (customer) {
-            $scope.selectedCustomerBillTo = customer;
-            $scope.selectedCustomerShipTo = customer;
+            $scope.newInvoice.billTo = customer;
+            $scope.newInvoice.shipTo = customer;
         };
         $scope.customerTransferShipTo = function (customer) {
-            $scope.selectedCustomerShipTo = customer;
+            $scope.newInvoice.shipTo = customer;
         };
 
         $scope.pushToItemList = function () {

@@ -54,9 +54,9 @@ namespace Task_API.Controllers
                     var lastId = Repository.Get().OrderByDescending(x => x.Id).FirstOrDefault();
                     return Ok(lastId);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    return BadRequest();
+                    return BadRequest(ex.Message);
                 }
             }
             return BadRequest();
