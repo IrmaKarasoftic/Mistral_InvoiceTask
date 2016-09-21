@@ -10,15 +10,15 @@
 
                 <div class="col-md-4 ">
                     <div class="panel panel-info">
-                        <div class="panel-body">
+                        <ng-form class="panel-body" id="badPadding">
                             <p>Customer Name: </p>
-                            <input type="text" name="name" ng-model="newCustomer.name" placeholder="Customer name" />
+                            <input type="text" name="name" class="form-control" id="inputDefault" ng-model="newCustomer.name" placeholder="Customer name" onkeyup="validateName(this)" required="required"/>
                             <p>Select company:</p>
 
-                            <select ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company">
-                                <option>"Choose company"></option>
+                            <select ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company" required>
+                                <option value="">- - - Choose company - - - </option>
                             </select>
-                        </div>
+                        </ng-form>
                     </div>
                 </div>
             </div>
