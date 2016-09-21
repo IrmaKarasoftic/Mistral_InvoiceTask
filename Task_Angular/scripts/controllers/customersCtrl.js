@@ -17,7 +17,6 @@
             })
             dataService.list("companies", function (data) {
                 if (data) {
-                    console.log(data);
                     $scope.companies = data;
                 }
                 else {
@@ -48,7 +47,6 @@
             //if ($scope.newCustomer)
             dataService.create("customers", $scope.newCustomer, function (data) {
                 $scope.loadCustomersInfo();
-                console.log($scope.newCustomer);
                 if (data) {
                     notificationsConfig.success("Customer added");
                 }
@@ -60,7 +58,6 @@
         $scope.updateCustomer = function () {
             dataService.update("customers", $scope.editCustomer.id, $scope.editCustomer, function (data) {
                 $scope.loadCustomersInfo();
-                console.log($scope.editCustomer);
                 if (data) {
                     notificationsConfig.success("Customer updated");
                 }
@@ -74,7 +71,6 @@
             $scope.newCustomer.isDeleted = true;
             dataService.update("customers", $scope.newCustomer.id, $scope.newCustomer, function (data) {
                 $scope.loadCustomersInfo();
-                console.log($scope.newCustomer);
                 if (data) {
                     notificationsConfig.success("Customer deleted");
                 }
