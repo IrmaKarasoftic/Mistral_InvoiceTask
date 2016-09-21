@@ -7,28 +7,24 @@
 
         <div class="modal-body">
             <div class="container-fluid">
-                <div class="row">
-                    
-                    <div class="col-md-4">
-                    </div>
-                </div>
+
                 <div class="col-md-4 ">
                     <div class="panel panel-info">
-                        <div class="panel-body">
+                        <ng-form class="panel-body" id="badPadding">
                             <p>Customer Name: </p>
-                            <input type="text" name="name" ng-model="newCustomer.name" placeholder="Customer name" />
+                            <input type="text" name="name" class="form-control" id="inputDefault" ng-model="newCustomer.name" placeholder="Customer name" onkeyup="validateName(this)" required="required"/>
                             <p>Select company:</p>
 
-                            <select ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company">
-                                <option>"Choose company"></option>
+                            <select ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company" required>
+                                <option value="">- - - Choose company - - - </option>
                             </select>
-                        </div>
+                        </ng-form>
                     </div>
                 </div>
             </div>
         </div><!--end modal body-->
         <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="createNewCustomer()">Save</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createNewCustomer()">Save</button>
             <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
         </div><!--end modal footer-->
     </div><!--end modal content-->
