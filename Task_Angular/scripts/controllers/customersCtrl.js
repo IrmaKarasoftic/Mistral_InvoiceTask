@@ -10,7 +10,6 @@
                 if (data) {
                     $scope.customers = data;
                     $scope.waitCustomers = false;
-                    notificationsConfig.success("Customer added");
                 }
                 else {
                     alert("error");
@@ -18,7 +17,6 @@
             })
             dataService.list("companies", function (data) {
                 if (data) {
-                    console.log(data);
                     $scope.companies = data;
                 }
                 else {
@@ -49,12 +47,10 @@
             //if ($scope.newCustomer)
             dataService.create("customers", $scope.newCustomer, function (data) {
                 $scope.loadCustomersInfo();
-                console.log($scope.newCustomer);
                 if (data) {
-                    alert("Customer created");
+                    notificationsConfig.success("Customer added");
                 }
-                else
-                    alert("error");
+                else notificationsConfig.error("Adding customers failed!");
             })
         }
 
@@ -62,13 +58,14 @@
         $scope.updateCustomer = function () {
             dataService.update("customers", $scope.editCustomer.id, $scope.editCustomer, function (data) {
                 $scope.loadCustomersInfo();
-                console.log($scope.editCustomer);
                 if (data) {
-                    alert("Customer updated");
+                    notificationsConfig.success("Customer updated");
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.success("Customer update failed");
                 }
+                $scope.editOff();
+
             })
         }
 
@@ -76,15 +73,15 @@
             $scope.newCustomer.isDeleted = true;
             dataService.update("customers", $scope.newCustomer.id, $scope.newCustomer, function (data) {
                 $scope.loadCustomersInfo();
-                console.log($scope.newCustomer);
                 if (data) {
-                    alert("Customer deleted");
+                    notificationsConfig.success("Customer deleted");
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.success("Customer delete failed");
                 }
             })
         }
+
 
         $scope.CustomerRemoveOn = function (customer) {
             $scope.removeOnId = customer.id;
@@ -97,7 +94,6 @@
         $scope.CustomerCheckRemove = function (customer) {
             return $scope.removeOnId === customer.id;
         }
-       
 
         $scope.loadCustomersInfo();
 

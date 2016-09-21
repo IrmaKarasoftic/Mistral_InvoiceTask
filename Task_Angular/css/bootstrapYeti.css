@@ -6756,9 +6756,19 @@ button.close {
     display: none !important;
   }
 }
+
+.navbar-collapse {
+  text-align:center;
+}
+.navbar-nav {
+    display:inline-block;
+    float:none;
+}
+
 .navbar {
+    text-align:center;
   border: none;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 300;
 }
 .navbar .navbar-toggle:hover .icon-bar {
