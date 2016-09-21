@@ -11,7 +11,7 @@ namespace Task_API.Helpers
     public class GenerateAnInvoice
     {
 
-        public static void Create(InvoiceViewModel model, AppContext context)
+        public static void Create(InvoiceModel model, AppContext context)
         {
             EntityParser parser = new EntityParser();
             ModelFactory factory = new ModelFactory();
@@ -19,11 +19,11 @@ namespace Task_API.Helpers
             Repository<Item> itemRepository = new Repository<Item>(context);
 
             Invoice invoice = new Invoice();
-            invoice.Id = model.Invoice.Id;
-            invoice.Date = model.Invoice.Date;
+            invoice.Id = model.Id;
+            invoice.Date = model.Date;
             invoice.Customer = context.Customers.Find(model.Customer);
-            invoice.Status = (Status)Enum.Parse(typeof(Status), model.Invoice.Status);
-            foreach (var i in model.Invoice.Items)
+            invoice.Status = (Status)Enum.Parse(typeof(Status), model.Status);
+            foreach (var i in model.Items)
             {
                 InvoiceItem item = new InvoiceItem()
                 {

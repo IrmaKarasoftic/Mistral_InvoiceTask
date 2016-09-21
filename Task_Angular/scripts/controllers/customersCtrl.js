@@ -8,10 +8,9 @@
             $scope.waitCustomers = true;
             dataService.list("customers", function (data) {
                 if (data) {
-                    //console.log(data);
                     $scope.customers = data;
                     $scope.waitCustomers = false;
-
+                    notificationsConfig.success("Customer added");
                 }
                 else {
                     alert("error");
