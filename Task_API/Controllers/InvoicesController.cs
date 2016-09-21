@@ -44,7 +44,7 @@ namespace Task_API.Controllers
             }
         }
 
-        public IHttpActionResult Post(InvoiceViewModel invoice)
+        public IHttpActionResult Post(InvoiceModel invoice)
         {
             if (invoice != null)
             {

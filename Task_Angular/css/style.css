@@ -1,52 +1,14 @@
 ﻿body {
-    background-image:url("../background1.jpg");
+    //background-image:url("../background2.jpg");
     padding:3vw;
+    font-size:16px !important;
 }
 
-p {
+#badPadding p {
     padding-top:15px;
 }
 
 
-.btn-new-invoice {
-    height: 85px;
-    font-size: 18px;
-}
-
-.vhcenter {
-    display: flex;
-    align-items: center; /* align vertical */
-}
-
-
-.box {
-    margin-left: 46%;
-    background: blue;
-    width: 8vw;
-    font-size:1.15vw;
-    height: 4vw;
-    color:white;
-}
-
-.box:hover {
-    -webkit-transform: rotate(360deg);
-    background: #9351A6;
-    border-radius: 50%;
-    }
-
-.rotate {
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-}
-
-.rotate:hover {
-    -webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
-    }
 
 .loader {
     bottom: 0;
