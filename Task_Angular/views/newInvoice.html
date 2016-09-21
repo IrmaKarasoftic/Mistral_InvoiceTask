@@ -2,10 +2,11 @@
     <h1>New Invoice</h1>
     <hr />
     <h2>General</h2>
-    Date: {{currentDate | date: medium-date}}
+    Date: {{newInvoice.date | date: medium-date}}
+    <br />
     <div class="row">
         <div class="col-md-2">
-            <label for="customerID">CustomerID: </label>
+            CustomerID:
             <div class="input-group">
                 <input type="text" class="form-control" id="customerID" aria-label="..." ng-model="newInvoice.customer" value="newInvoice.customer">
                 <div class="input-group-btn">
@@ -15,7 +16,7 @@
                             data-toggle="dropdown" 
                             aria-haspopup="true" 
                             aria-expanded="false">
-                    Customer <span class="caret"></span>
+                     <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li ng-repeat="customer in customers" ng-click="getCustomerID(customer)"><a>{{customer.name}}</a></li>
@@ -71,11 +72,11 @@
         <div class="panel panel-info">
             <div class="panel-heading"><h3 class="panel-title"><strong>Bill To:</strong></h3></div>
             <div class="panel-body">
-                <p><strong>Customer Name: </strong>{{selectedCustomerBillTo.name}}</p>
-                <p><strong>Company Name: </strong>{{selectedCustomerBillTo.companyName}}</p>
-                <p><strong>Street Address: </strong>{{selectedCustomerBillTo.streetAddress}}</p>
-                <p><strong>City, Zip: </strong>{{selectedCustomerBillTo.city}}, {{customer.zipCode}}</p>
-                <p><strong>Phone/Fax: </strong>{{selectedCustomerBillTo.phoneNumber}}</p>
+                <p><strong>Customer Name: </strong>{{newInvoice.billTo.name}}</p>
+                <p><strong>Company Name: </strong>{{newInvoice.billTo.companyName}}</p>
+                <p><strong>Street Address: </strong>{{newInvoice.billTo.streetAddress}}</p>
+                <p><strong>City, Zip: </strong>{{newInvoice.billTo.city}}, {{newInvoice.billTo.zipCode}}</p>
+                <p><strong>Phone/Fax: </strong>{{newInvoice.billTo.phoneNumber}}</p>
             </div>
         </div>
         <button class="btn btn-primary"
@@ -89,11 +90,11 @@
         <div class="panel panel-success">
             <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
             <div class="panel-body">
-                <p><strong>Customer Name: </strong>{{selectedCustomerShipTo.name}}</p>
-                <p><strong>Company Name: </strong>{{selectedCustomerShipTo.companyName}}</p>
-                <p><strong>Street Address: </strong>{{selectedCustomerShipTo.streetAddress}}</p>
-                <p><strong>City, Zip: </strong>{{selectedCustomerShipTo.city}}, {{selectedCustomerShipTo.zipCode}}</p>
-                <p><strong>Phone/Fax: </strong>{{selectedCustomerShipTo.phoneNumber}}</p>
+                <p><strong>Customer Name: </strong>{{newInvoice.shipTo.name}}</p>
+                <p><strong>Company Name: </strong>{{newInvoice.shipTo.companyName}}</p>
+                <p><strong>Street Address: </strong>{{newInvoice.shipTo.streetAddress}}</p>
+                <p><strong>City, Zip: </strong>{{newInvoice.shipTo.city}}, {{newInvoice.shipTo.zipCode}}</p>
+                <p><strong>Phone/Fax: </strong>{{newInvoice.shipTo.phoneNumber}}</p>
             </div>
         </div>
         <button class="btn btn-primary"
@@ -124,7 +125,6 @@
     </div>
 </div>
     -->
-<hr />
 <h2>Items</h2>
 <br />
 <!--ADD ITEMS BUTTON-->

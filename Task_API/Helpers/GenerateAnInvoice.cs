@@ -28,12 +28,14 @@ namespace Task_API.Helpers
                 InvoiceItem item = new InvoiceItem()
                 {
                     Id = i.Id,
-                    Invoice = parser.Create(factory.Create(invoiceRepository.Get(i.InvoiceId)), context),
+                    Invoice = parser.Create(factory.Create(invoiceRepository.Get(model.Id)), context),
                     Item= parser.Create(factory.Create(itemRepository.Get(i.ItemId)), context),
                     Quantity = i.Quantity
                 };
                 invoice.Items.Add(item);
             }
+            invoice.ShipTo = parser.Create(model.ShipTo, invoiceRepository.context);
+            invoice.BillTo = parser.Create(model.BillTo, invoiceRepository.context);
 
             invoiceRepository.Insert(invoice);
         }

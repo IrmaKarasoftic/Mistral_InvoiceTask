@@ -53,9 +53,9 @@ namespace Task_API.Controllers
                     Helpers.GenerateAnInvoice.Create(invoice, Repository.HomeContext());
                     return Ok(invoice);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    return BadRequest();
+                    return BadRequest(ex.Message);
                 }
             }
             return BadRequest();
