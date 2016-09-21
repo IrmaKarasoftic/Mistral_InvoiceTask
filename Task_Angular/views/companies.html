@@ -13,12 +13,11 @@
                     <button ng-hide="CompanyCheckRemove(company)" id="editBtn" class="btn btn-default btn-sm" data-toggle="modal" data-target="#editCompanyModal" ng-click="companyTransfer(company)"><i class="fa fa-pencil-square-o"></i></button>
                     <button ng-hide="CompanyCheckRemove(company)" class="btn btn-default btn-sm" ng-click="CompanyRemoveOn(company)"><i class="fa fa-times"></i></button>
 
-                    <div class="btn-group">
-                        <!--on remove-->
-                        <button ng-show="CompanyCheckRemove(company)" class="btn btn-danger" ng-click="removeCompany()"><strong>Remove</strong></button>
-                        <button ng-show="CompanyCheckRemove(company)" class="btn btn-default" ng-click="CompanyRemoveOff()"><strong>Cancel</strong></button>
-                        <!--end on remove-->
-                    </div>
+                    <!--on remove-->
+                    <button ng-show="CompanyCheckRemove(company)" class="btn btn-danger" id="CompanyPanelButtons" ng-click="removeCompany()"><strong>Remove</strong></button>
+                    <button ng-show="CompanyCheckRemove(company)" class="btn btn-default" id="CompanyPanelButtons" ng-click="CompanyRemoveOff()"><strong>Cancel</strong></button>
+                    <!--end on remove-->
+
                 </p>
 
             </div>

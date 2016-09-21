@@ -144,3 +144,17 @@ tr {
     text-align:center;
 }
 
+#CompanyPanelButtons {
+    height:35px;
+}
+
+.newCompanyButtons {
+    float:right;
+}
+#newCompany, input#inputDefault {
+    width:80%;
+}
+#newCompany p
+{
+    padding:20px;
+}
