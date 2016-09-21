@@ -4,10 +4,25 @@
     <h2>General</h2>
     Date: {{currentDate | date: medium-date}}
     <div class="row">
-        <div class="form-group form-inline">
-            <label class="col-md-1" for="customerName">Customer Name: </label>
-            <input type="text" class="form-control col-md-2" id="customerName" ng-model="customerName">
-        </div>
+        <div class="col-md-2">
+            <label for="customerID">CustomerID: </label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="customerID" aria-label="..." ng-model="newInvoice.customer" value="newInvoice.customer">
+                <div class="input-group-btn">
+                    <button 
+                            type="button" 
+                            class="btn btn-default dropdown-toggle" 
+                            data-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">
+                    Customer <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li ng-repeat="customer in customers" ng-click="getCustomerID(customer)"><a>{{customer.name}}</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+            </div><!-- /input-group -->
+        </div><!-- /.col-md-6 -->
     </div>
     <br />
     <h2>Company Details</h2>
@@ -66,7 +81,7 @@
         <button class="btn btn-primary"
                 data-toggle="modal"
                 data-target="#customerListModal"
-                ng-click="loadCustomersInfoBillTo()">
+                ng-click="switchBillTo()">
             Select Customer
         </button>
     </div>
@@ -84,7 +99,7 @@
         <button class="btn btn-primary"
                 data-toggle="modal"
                 data-target="#customerListModal"
-                ng-click="loadCustomersInfoShipTo()">
+                ng-click="switchShipTo()">
             Select Customer
         </button>
     </div>

@@ -5,8 +5,6 @@
 
         $scope.currentDate = new Date();
         $scope.currentDate.toJSON();
-        $scope.customerName;
-        $scope.customerID;
 
         $scope.newInvoice = {
             "date": "",
@@ -16,6 +14,7 @@
             "customerName": "",
             "billTo": {},
             "shipTo": {},
+            "isDeleted": false
         }
 
         $scope.from = {
@@ -41,7 +40,7 @@
         $scope.billTo = false;
         $scope.shipTo = false;
 
-        $scope.copyDataToNewItem = function(){
+        $scope.copyDataToNewInvoice = function(){
             $scope.newInvoice.date = $scope.currentDate;
             $scope.newInvoice.customerName ="";
             for (var i = 0; i < $scope.itemList.length; i += 1) {
@@ -55,20 +54,23 @@
             }
             $scope.newInvoice.billTo = $scope.selectedCustomerBillTo;
             $scope.newInvoice.shipTo = $scope.selectedCustomerShipTo;
-            console.log($scope.newInvoice);
         }
 
         $scope.createNewInvoice = function () {
-            $scope.copyDataToNewItem();
-
+            $scope.copyDataToNewInvoice();
+            dataService.create("invoices", $scope.newInvoice, function (data) {
+                if (data) {
+                    alert("Invoice created");
+                }
+                else
+                    alert("Error");
+            })
         }
 
         $scope.loadItemsInfo = function () {
             dataService.list("items", function (data) {
                 if (data) {
-                    //console.log(data);
                     $scope.items = data;
-                   // $scope.pqty = Array.apply(null, { length: $scope.items.length }).map(function () { return 0; });
                 }
                 else {
                     alert("error");
@@ -76,7 +78,7 @@
             })
         };
 
-        $scope.loadCustomersInfoBillTo = function () {
+        $scope.loadCustomersInfo = function () {
             dataService.list("customers", function (data) {
                 if (data) {
                     //console.log(data);
@@ -86,20 +88,18 @@
                     alert("error");
                 }
             })
+        }
+
+        $scope.getCustomerID = function (customer) {
+            $scope.newInvoice.customer = customer.id;
+        }
+
+        $scope.switchBillTo = function () {
             $scope.billTo = true;
             $scope.shipTo = false;
         };
 
-        $scope.loadCustomersInfoShipTo = function () {
-            dataService.list("customers", function (data) {
-                if (data) {
-                    //console.log(data);
-                    $scope.customers = data;
-                }
-                else {
-                    alert("error");
-                }
-            })
+        $scope.switchShipTo = function () {
             $scope.shipTo = true;
             $scope.billTo = false;
         };
@@ -156,5 +156,6 @@
         }
 
         $scope.loadItemsInfo();
+        $scope.loadCustomersInfo();
     });
 }());

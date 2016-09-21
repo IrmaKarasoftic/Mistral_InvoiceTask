@@ -16,7 +16,7 @@
                         <th class="col-md-2"><h4>City, Zip</h4></th>
                         <th class="col-md-2"><h4>Phone/Fax</h4></th>
                     </tr>
-                </thead>                
+                </thead>
                 <tbody>
                     <tr ng-if="billTo" ng-repeat="customer in customers | orderBy: '+name'" data-dismiss="modal" ng-click="customerTransferBillTo(customer)">
                         <td class="col-md-1">{{customer.id}}</td>
