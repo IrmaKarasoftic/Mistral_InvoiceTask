@@ -186,6 +186,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoiceItemsController.cs" />
     <Compile Include="Controllers\InvoicesController.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Helpers\YearlyIncomeHelper.cs" />
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\EntityParser.cs" />
     <Compile Include="Models\InvoiceItemModel.cs" />
     <Compile Include="Models\InvoiceModel.cs" />
