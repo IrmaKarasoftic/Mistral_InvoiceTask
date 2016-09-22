@@ -32,7 +32,7 @@
                     <div class="panel panel-info">
                         <div class="panel-heading"><h3 class="panel-title"><strong>Bill To:</strong></h3></div>
                         <div class="panel-body">
-                            <p>Customer Name: {{requestedInvoice.billTo.name}}</p>
+                            <p>Customer Name: {{requestedInvoice.billTo.costumerName}}</p>
                             <p>Company Name: {{requestedInvoice.billTo.companyName}}</p>
                             <p>Street Address: {{requestedInvoice.billTo.streetAddress}}</p>
                             <p>City, Zip: {{requestedInvoice.billTo.city}}, {{requestedInvoice.billTo.zipCode}}</p>
@@ -44,7 +44,7 @@
                     <div class="panel panel-success">
                         <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
                         <div class="panel-body">
-                            <p>Customer Name: {{requestedInvoice.shipTo.name}}</p>
+                            <p>Customer Name: {{requestedInvoice.shipTo.costumerName}}</p>
                             <p>Company Name: {{requestedInvoice.shipTo.companyName}}</p>
                             <p>Street Address: {{requestedInvoice.shipTo.streetAddress}}</p>
                             <p>City, Zip: {{requestedInvoice.shipTo.city}}, {{requestedInvoice.shipTo.zipCode}}</p>
@@ -114,7 +114,7 @@
     <div style="width:27%; display:inline-block; border: #008cba solid;margin:10px; padding:5px">
         <strong>Bill To:</strong>
         <div class="panel-body">
-            <p>Customer Name: {{requestedInvoice.billTo.name}}</p>
+            <p>Customer Name: {{requestedInvoice.billTo.costumerName}}</p>
             <p>Company Name: {{requestedInvoice.billTo.companyName}}</p>
             <p>Street Address: {{requestedInvoice.billTo.streetAddress}}</p>
             <p>City, Zip: {{requestedInvoice.billTo.city}}, {{requestedInvoice.billTo.zipCode}}</p>
@@ -124,7 +124,7 @@
     <div style="width:27%; display:inline-block; border: #008cba solid;margin:10px; padding:5px">
         <strong>Ship To:</strong>
         <div class="panel-body">
-            <p>Customer Name: {{requestedInvoice.shipTo.name}}</p>
+            <p>Customer Name: {{requestedInvoice.shipTo.costumerName}}</p>
             <p>Company Name: {{requestedInvoice.shipTo.companyName}}</p>
             <p>Street Address: {{requestedInvoice.shipTo.streetAddress}}</p>
             <p>City, Zip: {{requestedInvoice.shipTo.city}}, {{requestedInvoice.shipTo.zipCode}}</p>
