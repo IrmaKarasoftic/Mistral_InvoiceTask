@@ -31,6 +31,17 @@
             });
         };
 
+        $scope.loadInvoiceItems = function () {
+            dataService.list("invoices", function (data) {
+                if (data) {
+                    $scope.invoiceItems = data;
+                }
+                else {
+                    notificationsConfig.success("error");
+                }
+            })
+        }
+
 
         $scope.removeInvoice = function () {
             $scope.requestedInvoice.isDeleted = true;
@@ -71,6 +82,7 @@
         //for modal
         $scope.invoiceTransfer = function (invoice) {
             $scope.requestedInvoice = invoice;
+            $scope.loadInvoiceItems();
             $scope.calculateValues($scope.requestedInvoice);
         };
 
