@@ -38,7 +38,8 @@ namespace Task_API.Models
                 Id = model.Id,
                 Invoice = context.Invoices.Find(model.InvoiceId),
                 Item = context.Items.Find(model.ItemId),
-                Quantity = model.Quantity
+                Quantity = model.Quantity,
+                Price = model.Price
             };
         }
         public Company Create(CompanyModel model, AppContext context)

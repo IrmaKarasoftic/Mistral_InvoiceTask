@@ -24,10 +24,19 @@ namespace Task_API.Helpers
             invoice.Customer = context.Customers.Find(model.Customer);
             invoice.Status = (Status)Enum.Parse(typeof(Status), model.Status);
 
-
-            invoice.BillTo = context.Customers.Find(model.BillTo.Id);
-            invoice.ShipTo = context.Customers.Find(model.ShipTo.Id);
-
+            if (model.BillTo == null)
+            {
+                invoice.BillTo = context.Customers.Find(model.ShipTo.Id);
+            }
+            else if (model.ShipTo == null)
+            {
+                invoice.BillTo = context.Customers.Find(model.BillTo.Id);
+            }
+            else
+            {
+                invoice.BillTo = context.Customers.Find(model.BillTo.Id);
+                invoice.ShipTo = context.Customers.Find(model.ShipTo.Id);
+            }
             invoiceRepository.Insert(invoice);
         }
         public static List<InvoiceModel> GetAllInvoices(AppContext context)
