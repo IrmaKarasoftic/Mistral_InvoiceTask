@@ -9,7 +9,7 @@
         <div class="modal-body">
             <h3>Email</h3>
             <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="email.mailTo">
             </div>
             <br />
             <br />
@@ -17,7 +17,7 @@
         </div><!--end modal body-->
 
         <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-primary" onclick="sendEmail()">Send</button>
+            <button type="button" class="btn btn-primary" ng-click="sendEmail()">Send</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div><!--end modal footer-->
 

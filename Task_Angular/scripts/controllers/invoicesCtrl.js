@@ -110,5 +110,39 @@
         $scope.loadInvoicesInfo();
         
 
+        $scope.emailTransfer = function (email) {
+            $scope.email = email;
+        };
+        $scope.email = {
+            "id": 0,
+            "date": "",
+            "items": [],
+            "status": 1,
+            "customer": 0,
+            "customerName": "",
+            "billTo": {},
+            "shipTo": {},
+            "isDeleted": false,
+            "mailTo": ""
+        }
+        $scope.email.date = new Date();
+        $scope.email.date.toJSON();
+
+        $scope.sendEmail = function () {
+            dataService.create("emails", $scope.email, function (data) {
+                if (data) {
+                    notificationsConfig.success("Email sent");
+                }
+                else notificationsConfig.error("Sending Email failed!");
+            })
+        }
+        $scope.printDiv = function (divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var popupWin = window.open('', '_blank', 'width=300,height=300');
+            popupWin.document.open();
+            popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
+            popupWin.document.close();
+        }
+
     });
 }());
