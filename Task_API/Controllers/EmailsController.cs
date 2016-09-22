@@ -16,7 +16,7 @@ namespace Task_API.Controllers
             {
                 try
                 {
-                    Helpers.EmailHelper.SendInvoiceEmail(email.Email, email.MailTo);
+                    Helpers.EmailHelper.SendInvoiceEmail(email);
                     return Ok(email);
                 }
                 catch (Exception ex)
