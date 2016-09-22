@@ -12,10 +12,10 @@
                     <div class="panel panel-info">
                         <ng-form class="panel-body" id="badPadding">
                             <p>Customer Name: </p>
-                            <input type="text" name="name" class="form-control" id="inputDefault" ng-model="newCustomer.name" placeholder="Customer name" onkeyup="validateName(this)" ng-required="true"/>
+                            <input type="text" name="name" class="form-control" id="inputDefault" ng-model="newCustomer.name" placeholder="Customer name"  />
                             <p>Select company:</p>
 
-                            <select ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company" ng-required="true">
+                            <select ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company">
                                 <option value="">- - - Choose company - - - </option>
                             </select>
                         </ng-form>
@@ -24,8 +24,8 @@
             </div>
         </div><!--end modal body-->
         <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createNewCustomer()" ng-pattern="string">Save</button>
-            <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createNewCustomer()">Save</button>
+            <button class="btn btn-default" data-dismiss="modal">Cancel</button>
         </div><!--end modal footer-->
     </div><!--end modal content-->
 </div><!--end modal dialog-->

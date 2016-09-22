@@ -26,20 +26,25 @@
             })
         };
 
-        $scope.createNewItem = function () {
-            //validation
+        $scope.incorrect= false;
+        $scope.validation = function () {
             if ($scope.newItem === null ||
                 $scope.newItem.quantity === 0 ||
                 $scope.newItem.unitPrice === 0 ||
                 typeof $scope.newItem.quantity !== "number" ||
-                typeof $scope.newItem.unitPrice !== "number")
-            {
+                typeof $scope.newItem.unitPrice !== "number") {
                 $scope.hideNewItemRow();
                 $scope.loadItemsInfo();
                 alert("Incorrect input");
+                $scope.incorrect = true;
                 return;
+                
             }
-            //end validation
+        }
+
+        $scope.createNewItem = function () {
+            $scope.validation();
+            if ($scope.incorrect) return;
             dataService.create("items", $scope.newItem, function (data) {
                 if (data)
                 {
@@ -53,6 +58,7 @@
         }
 
         $scope.updateItem = function () {
+            $scope.validation();
             dataService.update("items", $scope.newItem.id, $scope.newItem, function (data) {
                 if (data) {
                     alert("Item updated");

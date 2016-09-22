@@ -34,13 +34,13 @@
             id: null,
             name: null,
             company: null,
-            companyName: null,
             streetAddress: null,
             isDeleted : false,
             city: null,
             zipCode: null,
             phoneNumber: null
         }
+        $scope.charsAndNumbers = "^[a-zA-Z0-9]*$";
 
 
         $scope.createNewCustomer = function () {
@@ -48,11 +48,6 @@
                 $scope.newCustomer.company === null)
             {
                 alert("All fields must be filled in.");
-                return;
-            }
-            if (typeof $scope.newCustomer.name === "string")
-            {
-                alert("Incorrect input");
                 return;
             }
             //if ($scope.newCustomer)

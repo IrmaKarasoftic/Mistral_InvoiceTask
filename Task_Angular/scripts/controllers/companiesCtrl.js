@@ -40,28 +40,31 @@
             phoneNumber: null,
             isDeleted: false
         }
-
-
-        $scope.createNewCompany = function () {
+        $scope.incorrect= false;
+        $scope.validation = function () {
             if ($scope.newCompany.name === null ||
-                $scope.newCompany.streetAddress === null ||
-                $scope.newCompany.city === null ||
-                $scope.newCompany.zipCode === null ||
-                $scope.newCompany.phoneNumber === null)
-            {
+               $scope.newCompany.streetAddress === null ||
+               $scope.newCompany.city === null ||
+               $scope.newCompany.zipCode === null ||
+               $scope.newCompany.phoneNumber === null) {
                 alert("All fields must be filled in.");
+                $scope.incorrect = true;
                 return;
             }
             if (
-                typeof $scope.newCompany.name === "string" ||
-                typeof $scope.newCompany.streetAddress === "string" ||
-                typeof $scope.newCompany.city === "string" ||
-                typeof $scope.newCompany.zipCode === "number" ||
-                typeof $scope.newCompany.phoneNumber === "number")
-            {
+                typeof $scope.newCompany.name !== "string" ||
+                typeof $scope.newCompany.streetAddress !== "string" ||
+                typeof $scope.newCompany.city !== "string" ||
+                typeof $scope.newCompany.zipCode !== "number") {
                 alert("Incorrect input");
+                $scope.incorrect = true;
                 return;
             }
+        }
+
+        $scope.createNewCompany = function () {
+            $scope.validation();
+            if ($scope.incorrect) return;
             dataService.create("companies", $scope.newCompany, function (data) {
                 $scope.loadCompaniesInfo();
                 if (data) {
@@ -80,7 +83,7 @@
                     notificationsConfig.success("Company updated");
                 }
                 else {
-                    notificationsConfig.success("Company update failed");
+                    notificationsConfig.error("Company update failed");
                 }
                 $scope.editOff();
 
@@ -95,7 +98,7 @@
                     notificationsConfig.success("Company deleted");
                 }
                 else {
-                    notificationsConfig.success("Company delete failed");
+                    notificationsConfig.error("Company delete failed");
                 }
             })
         }
