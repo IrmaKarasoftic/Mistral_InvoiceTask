@@ -52,26 +52,34 @@
                 $scope.itemList.length < 1) {
                 notificationsConfig.error("All fields must be filled in.");
             }
+            //Generate invoice
             dataService.create("invoices", $scope.newInvoice, function (data) {
+                //get invoice ID
                 if (data) {
                     $scope.newInvoice.id = data;
-                    for (var i = 0; i < $scope.itemList.length; i += 1) {
+                    //Push all items from itemList to newInvoice
+                    for (var i = 0; i < $scope.itemList.length; i += 1)
                         $scope.pushItemToInvoice(i);
+                    //Generate all items from newInvoice as invoiceItem models
+                    for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
                         dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
                             if (data) {
-                                //for (var j = 0; j < $scope.newInvoice.length; j += 1){
-                                //     $scope.itemList[j].quantity = $scope.itemList[j].quantity - $scope.newInvoice[j].quantity
-                                //     dataService.update("items", $scope.itemList[j].id, $scope.itemList[j], function (data) {
-                                //         if (data) {
-                                //             alert("updated item");
-                                //          }
-                                //          else
-                                //        alert("error while updating item quantity");
-                                //     })
-                                //}
                             }
                             else
-                                alert("error");
+                                notificationsConfig.error("error while generating invoice items");
+                        })
+                    }
+                    //Update all store quantities for corresponding items in newInvoice
+                    for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
+                        console.log($scope.itemList[i], $scope.itemList[i].quantity, $scope.newInvoice.items[i].quantity);
+                        $scope.itemList[i].quantity = $scope.itemList[i].quantity - $scope.newInvoice.items[i].quantity
+                        console.log($scope.itemList[i], $scope.itemList[i].quantity);
+                        dataService.update("items", $scope.itemList[i].id, $scope.itemList[i], function (data) {
+                            if (data) {
+                                
+                            }
+                            else
+                                notificationsConfig.error("error while updating item quantity");
                         })
                     }
                 }
