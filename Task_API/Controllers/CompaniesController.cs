@@ -17,7 +17,7 @@ namespace Task_API.Controllers
         {
             try
             {
-                var companies = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList();
+                var companies = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList().Where(x => x.IsDeleted == false).ToList();
                 return Ok(companies);
             }
             catch (Exception)
