@@ -11,7 +11,7 @@
             dataService.create("emails", $scope.newCustomer, function (data) {
                 $scope.loadCustomersInfo();
                 if (data) {
-                    notificationsConfig.success("Customer added");
+                    notificationsConfig.success("Email sent");
                 }
                 else notificationsConfig.error("Adding customers failed!");
             })
