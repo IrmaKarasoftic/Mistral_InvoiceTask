@@ -15,14 +15,6 @@
                     alert("error");
                 }
             })
-            dataService.list("companies", function (data) {
-                if (data) {
-                    $scope.companies = data;
-                }
-                else {
-                    alert("error");
-                }
-            })
         };
 
         $scope.companyTransfer = function (company) {
@@ -66,12 +58,13 @@
             $scope.validation();
             if ($scope.incorrect) return;
             dataService.create("companies", $scope.newCompany, function (data) {
-                $scope.loadCompaniesInfo();
                 if (data) {
                     notificationsConfig.success("Company added");
                 }
                 else
                     notificationsConfig.error("Adding companies failed!");
+
+                $scope.loadCompaniesInfo();
             })
         }
 

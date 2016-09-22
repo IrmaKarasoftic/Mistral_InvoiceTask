@@ -21,7 +21,7 @@
                     $scope.items = data;
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.error("error");
                 }
             })
         };
@@ -48,10 +48,10 @@
             dataService.create("items", $scope.newItem, function (data) {
                 if (data)
                 {
-                    alert("Item created");
+                    notificationsConfig.success("Item created");
                 }
                 else
-                    alert("Error");
+                    notificationsConfig.error("Error");
                 $scope.hideNewItemRow();
                 $scope.loadItemsInfo();
             })
@@ -61,10 +61,10 @@
             $scope.validation();
             dataService.update("items", $scope.newItem.id, $scope.newItem, function (data) {
                 if (data) {
-                    alert("Item updated");
+                    notificationsConfig.success("Item updated");
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.error("error");
                 }
                 $scope.editOff();
             })
@@ -74,10 +74,10 @@
             $scope.newItem.isDeleted = true;
             dataService.update("items", $scope.newItem.id,$scope.newItem, function (data) {
                 if (data) {
-                    alert("Item removed");
+                    notificationsConfig.success("Item removed");
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.error("error");
                     $scope.removeOff();
                 }
                 $scope.removeOff();

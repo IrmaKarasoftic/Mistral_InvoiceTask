@@ -26,7 +26,7 @@
                 if (data) {
                     $scope.invoices = data;
                 } else {
-                    alert("error");
+                    notificationsConfig.success("error");
                 }
             });
         };
@@ -36,21 +36,21 @@
             $scope.requestedInvoice.isDeleted = true;
             dataService.update("invoices", $scope.requestedInvoice.id, $scope.requestedInvoice, function (data) {
                 if (data) {
-                    alert("invoice removed");
+                    notificationsConfig.success("invoice removed");
                     $scope.loadInvoicesInfo();
                 }
                 else
-                    alert("Error");
+                    notificationsConfig.error("Error");
             })
         }
 
         $scope.updateInvoice = function () {
             dataService.update("invoices", $scope.requestedInvoice.id, $scope.requestedInvoice, function (data) {
                 if (data) {
-                    alert("invoice updated");
+                    notificationsConfig.success("invoice updated");
                 }
                 else
-                    alert("Error");
+                    notificationsConfig.error("Error");
                 $scope.editOff();
             })
         }

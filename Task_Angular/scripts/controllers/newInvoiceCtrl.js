@@ -25,12 +25,7 @@
             "phoneNumber": "5555-555-555-555"
         }
 
-        $scope.selectedItem = {
-            id: 0,
-            description: "",
-            quantity: 0,
-            unitPrice: ""
-        }
+        $scope.selectedItem = null;
 
         $scope.listExists = false;
         $scope.isInList = false;
@@ -65,7 +60,21 @@
                     for (var i = 0; i < $scope.itemList.length; i += 1) {
                         $scope.pushItemToInvoice(i);
                         dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
-                            if (data) { }
+                            if (data) {
+                                for (var j = 0; j < $scope.newInvoice.length; j += 1){
+                                    for (var k = 0; i < $scope.itemList.length; k += 1)
+                                        if($scope.itemList[k].id === $scope.newInvoice[j].id)
+                                        {
+                                            $scope.itemList[k].quantity = $scope.itemList[k].quantity - $scope.newInvoice[j].quantity
+                                            dataService.update("items", $scope.itemList[i].id, $scope.itemList[i], function (data) {
+                                                if (data) {
+                                                }
+                                                else
+                                                    alert("error while updating item quantity");
+                                            })
+                                        }
+                                }
+                            }
                             else
                                 alert("error");
                         })
@@ -73,7 +82,7 @@
                     alert("Invoice created");
                 }
                 else
-                    alert("Error");
+                    alert("Error in invoice");
             })
         }
 
@@ -123,6 +132,7 @@
         };
 
         $scope.pushToItemList = function () {
+            if ($scope.selectedItem === null) return;
             if (!$scope.listExists)
                 $scope.listExists = true;
             for (var i = 0; i < $scope.itemList.length; i += 1)
