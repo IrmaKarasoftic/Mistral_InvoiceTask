@@ -85,8 +85,12 @@
             </div>
         </div><!--end modal body-->
         <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-primary" onclick="sendEmail()">Email the invoice</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#typeInEmailModal" onclick="emailTransfer(email)">Email the invoice</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div><!--end modal footer-->
     </div><!--end modal content-->
 </div><!--end modal dialog-->
+<!-- Email Modal -->
+<div class="modal fade" id="typeInEmailModal" role="dialog">
+    <div ng-include="'views/modals/typeInEmailModal.html'"></div>
+</div><!--end modal-->
