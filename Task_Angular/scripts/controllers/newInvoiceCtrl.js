@@ -49,10 +49,8 @@
             if ($scope.newInvoice.billTo === null ||
                 $scope.newInvoice.shipTo === null ||
                 $scope.newInvoice.customer === null ||
-                $scope.itemList.length < 1)
-            {
-                alert("All fields must be filled in.");
-                return;
+                $scope.itemList.length < 1) {
+                notificationsConfig.error("All fields must be filled in.");
             }
             dataService.create("invoices", $scope.newInvoice, function (data) {
                 if (data) {
@@ -76,12 +74,12 @@
                                 alert("error");
                         })
                     }
-                    alert("Invoice created");
                 }
-                else
-                    alert("Error in invoice");
-            })
-        }
+                 else
+                     notificationsConfig.error("Error in invoice!");
+                    })
+            }
+        
 
 
         $scope.loadItemsInfo = function () {
@@ -90,7 +88,7 @@
                     $scope.items = data;
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.error("Error!");
                 }
             })
         };
@@ -102,7 +100,7 @@
                     $scope.customers = data;
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.error("Error!");
                 }
             })
         }
