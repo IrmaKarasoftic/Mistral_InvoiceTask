@@ -21,24 +21,20 @@ namespace Task_API.Models
                 items.Add(itModel);
             }
 
-            CustomerModel bill = new CustomerModel()
-            {
-                Id = invoice.BillTo.Id,
-                Name = invoice.BillTo.Name,
-                Company = invoice.BillTo.Company.Id,
+            ShippingDetailsModel bill = new ShippingDetailsModel()
+            {                
                 CompanyName = invoice.BillTo.Name,
                 StreetAddress=invoice.Customer.Company.StreetAddress,
+                CostumerName = invoice.Customer.Name,
                 PhoneNumber = invoice.Customer.Company.phoneNumber,
                 City = invoice.Customer.Company.city,
-                ZipCode = invoice.Customer.Company.zipCode
+                ZipCode = invoice.Customer.Company.zipCode,
             };
-            CustomerModel ship = new CustomerModel()
+            ShippingDetailsModel ship = new ShippingDetailsModel()
             {
-                Id = invoice.BillTo.Id,
-                Name = invoice.BillTo.Name,
-                Company = invoice.BillTo.Company.Id,
                 CompanyName = invoice.BillTo.Name,
                 StreetAddress = invoice.Customer.Company.StreetAddress,
+                CostumerName = invoice.Customer.Name,
                 PhoneNumber = invoice.Customer.Company.phoneNumber,
                 City = invoice.Customer.Company.city,
                 ZipCode = invoice.Customer.Company.zipCode

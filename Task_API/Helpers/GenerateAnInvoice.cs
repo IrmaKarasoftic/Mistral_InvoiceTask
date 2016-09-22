@@ -25,20 +25,8 @@ namespace Task_API.Helpers
             invoice.Status = (Status)Enum.Parse(typeof(Status), model.Status);
 
 
-            invoice.BillTo = parser.Create(model.BillTo, invoiceRepository.context);
-            invoice.ShipTo = parser.Create(model.ShipTo, invoiceRepository.context);
-
-            //foreach (var i in model.Items)
-            //{
-            //    InvoiceItem item = new InvoiceItem()
-            //    {
-            //        Id = i.Id,
-            //        Invoice = parser.Create(factory.Create(invoiceRepository.Get(i.InvoiceId)), context),
-            //        Item= parser.Create(factory.Create(itemRepository.Get(i.ItemId)), context),
-            //        Quantity = i.Quantity
-            //    };
-            //    invoice.Items.Add(item);
-            //}
+            invoice.BillTo = context.Customers.Find(model.BillTo.Id);
+            invoice.ShipTo = context.Customers.Find(model.ShipTo.Id);
 
             invoiceRepository.Insert(invoice);
         }

@@ -1,4 +1,4 @@
-﻿(function () {
+﻿ (function () {
     var taskAngular = angular.module('taskAngular');
 
     taskAngular.controller('newInvoiceController', function ($scope, dataService) {
