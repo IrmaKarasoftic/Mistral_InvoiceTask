@@ -65,12 +65,12 @@
                     for (var i = 0; i < $scope.itemList.length; i += 1) {
                         $scope.pushItemToInvoice(i);
                         dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
-                            if (data)
-                                alert("invoice created");
+                            if (data) { }
                             else
                                 alert("error");
                         })
                     }
+                    alert("Invoice created");
                 }
                 else
                     alert("Error");

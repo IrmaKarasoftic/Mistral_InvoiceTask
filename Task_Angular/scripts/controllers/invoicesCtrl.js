@@ -3,6 +3,7 @@
 
     taskAngular.controller('invoicesController', function ($scope, dataService) {
 
+        $scope.hidden = true;
         $scope.subTotal = 0;
         $scope.total = 0;
         $scope.taxRate = 0.17;

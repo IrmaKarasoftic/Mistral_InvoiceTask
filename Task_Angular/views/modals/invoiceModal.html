@@ -85,14 +85,14 @@
             </div>
         </div><!--end modal body-->
         <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#typeInEmailModal" ng-click="emailTransfer(requestedInvoice)">Email the invoice</button>
-            <button type="button" class="btn btn-primary" ng-click="printDiv('printable')">Print the invoice</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#typeInEmailModal" ng-click="emailTransfer(requestedInvoice)"><i class="fa fa-envelope-o"></i></button>
+            <button type="button" class="btn btn-primary" ng-click="printDiv('printable')"><i class="fa fa-print"></i></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div><!--end modal footer-->
     </div><!--end modal content-->
 </div><!--end modal dialog-->
 
-<div id="printable" ng-hide="">
+<div id="printable" ng-hide="hidden">
     <h2 style="font-family: " Open Sans", "Helvetica Neue" , Helvetica, Arial, sans-serif;">INVOICE #{{requestedInvoice.id}} {{requestedInvoice.status}}</h2><h1 style="font-family: " Open Sans", "Helvetica Neue" , Helvetica, Arial, sans-serif;">XYZ<br /><small>Makes billing easy</small></h1>
     <hr>
     <h4>Date: {{requestedInvoice.date | date: 'mediumDate'}}</h4>
