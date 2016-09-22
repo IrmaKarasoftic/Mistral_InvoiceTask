@@ -68,7 +68,7 @@ namespace Task_API.Controllers
             try
             {
                 Helpers.GenerateAnInvoice.UpdateInvoice(invoice, Repository.HomeContext());
-                return Ok();
+                return Ok(invoice);
             }
             catch (Exception)
             {

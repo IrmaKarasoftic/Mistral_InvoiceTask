@@ -7,7 +7,7 @@
             "id": 0,
             "date": "",
             "items": [],
-            "status": 1,
+            "status": "Issued",
             "customer": 0,
             "customerName": "",
             "billTo": {},
@@ -40,21 +40,22 @@
         $scope.billTo = false;
         $scope.shipTo = false;
 
+        $scope.pushItemToInvoice = function (i) {
+            $scope.newInvoice.items.push({
+                description: $scope.itemList[i].description,
+                quantity: $scope.purchasedQuantity[i],
+                invoiceId: $scope.newInvoice.id,
+                itemId: $scope.itemList[i].id,
+                price: $scope.itemList[i].unitPrice
+            })
+        }
+
         $scope.createNewInvoice = function () {
-            console.log($scope.newInvoice);
             dataService.create("invoices", $scope.newInvoice, function (data) {
                 if (data) {
-                    console.log(data, "data");
                     $scope.newInvoice.id = data;
                     for (var i = 0; i < $scope.itemList.length; i += 1) {
-                        $scope.newInvoice.items.push({
-                            description: $scope.itemList[i].description,
-                            quantity: $scope.purchasedQuantity[i],
-                            invoiceId: $scope.newInvoice.id,
-                            itemId: $scope.itemList[i].id,
-                            price: $scope.itemList[i].unitPrice
-                        })
-                        console.log($scope.newInvoice.items[i]);
+                        $scope.pushItemToInvoice(i);
                         dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
                             if (data)
                                 alert("invoice created");
@@ -67,6 +68,7 @@
                     alert("Error");
             })
         }
+
 
         $scope.loadItemsInfo = function () {
             dataService.list("items", function (data) {

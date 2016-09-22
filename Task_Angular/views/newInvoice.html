@@ -4,7 +4,7 @@
     Date: {{newInvoice.date | date: medium-date}}
     <br />
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-1">
             CustomerID:
             <div class="input-group">
                 <input type="text" class="form-control" id="customerID" aria-label="..." ng-model="newInvoice.customer" value="newInvoice.customer">
@@ -17,7 +17,7 @@
                             aria-expanded="false">
                      <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-right">
+                    <ul class="dropdown-menu dropdown-menu-right scrollable-menu">
                         <li ng-repeat="customer in customers" ng-click="getCustomerID(customer)"><a>{{customer.name}}</a></li>
                     </ul>
                 </div><!-- /btn-group -->
