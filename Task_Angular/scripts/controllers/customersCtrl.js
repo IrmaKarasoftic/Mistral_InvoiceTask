@@ -36,15 +36,17 @@
         $scope.newCustomer = {
             id: null,
             name: null,
-            company: null,
-            streetAddress: null,
-            isDeleted : false,
-            city: null,
-            zipCode: null,
-            phoneNumber: null
+            company: null
         }
         $scope.charsAndNumbers = "^[a-zA-Z0-9]*$";
 
+        $scope.cancelCustomer = function () {
+            $scope.newCustomer = {
+                id: null,
+                name: null,
+                company: null
+            }
+        }
 
         $scope.createNewCustomer = function () {
             if ($scope.newCustomer.name === null ||
@@ -53,7 +55,6 @@
                 alert("All fields must be filled in.");
                 return;
             }
-            //if ($scope.newCustomer)
             dataService.create("customers", $scope.newCustomer, function (data) {
                 $scope.loadCustomersInfo();
                 if (data) {
@@ -61,6 +62,7 @@
                 }
                 else notificationsConfig.error("Adding customers failed!");
             })
+            $scope.cancelCustomer();
         }
 
 

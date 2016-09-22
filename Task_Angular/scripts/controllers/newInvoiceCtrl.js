@@ -61,19 +61,16 @@
                         $scope.pushItemToInvoice(i);
                         dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
                             if (data) {
-                                for (var j = 0; j < $scope.newInvoice.length; j += 1){
-                                    for (var k = 0; i < $scope.itemList.length; k += 1)
-                                        if($scope.itemList[k].id === $scope.newInvoice[j].id)
-                                        {
-                                            $scope.itemList[k].quantity = $scope.itemList[k].quantity - $scope.newInvoice[j].quantity
-                                            dataService.update("items", $scope.itemList[i].id, $scope.itemList[i], function (data) {
-                                                if (data) {
-                                                }
-                                                else
-                                                    alert("error while updating item quantity");
-                                            })
-                                        }
-                                }
+                                //for (var j = 0; j < $scope.newInvoice.length; j += 1){
+                                //     $scope.itemList[j].quantity = $scope.itemList[j].quantity - $scope.newInvoice[j].quantity
+                                //     dataService.update("items", $scope.itemList[j].id, $scope.itemList[j], function (data) {
+                                //         if (data) {
+                                //             alert("updated item");
+                                //          }
+                                //          else
+                                //        alert("error while updating item quantity");
+                                //     })
+                                //}
                             }
                             else
                                 alert("error");
@@ -125,14 +122,14 @@
         };
 
         $scope.customerTransferBillTo = function (customer) {
-            $scope.newInvoice.billTo = customer;
+            $scope.newInvoice.billTo = $.extend(true, {}, customer);
         };
         $scope.customerTransferShipTo = function (customer) {
-            $scope.newInvoice.shipTo = customer;
+            $scope.newInvoice.shipTo = $.extend(true, {}, customer);
         };
 
         $scope.pushToItemList = function () {
-            if ($scope.selectedItem === null) return;
+            if($scope.selectedItem === null) return;
             if (!$scope.listExists)
                 $scope.listExists = true;
             for (var i = 0; i < $scope.itemList.length; i += 1)
