@@ -49,41 +49,40 @@
             if ($scope.newInvoice.billTo === null ||
                 $scope.newInvoice.shipTo === null ||
                 $scope.newInvoice.customer === null ||
-                $scope.itemList.length < 1)
-            {
-                alert("All fields must be filled in.");
-                return;
+                $scope.itemList.length < 1) {
+                notificationsConfig.error("All fields must be filled in.");
             }
-            dataService.create("invoices", $scope.newInvoice, function (data) {
-                if (data) {
-                    $scope.newInvoice.id = data;
-                    for (var i = 0; i < $scope.itemList.length; i += 1) {
-                        $scope.pushItemToInvoice(i);
-                        dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
-                            if (data) {
-                                for (var j = 0; j < $scope.newInvoice.length; j += 1){
-                                    for (var k = 0; i < $scope.itemList.length; k += 1)
-                                        if($scope.itemList[k].id === $scope.newInvoice[j].id)
-                                        {
-                                            $scope.itemList[k].quantity = $scope.itemList[k].quantity - $scope.newInvoice[j].quantity
-                                            dataService.update("items", $scope.itemList[i].id, $scope.itemList[i], function (data) {
-                                                if (data) {
-                                                }
-                                                else
-                                                    alert("error while updating item quantity");
-                                            })
-                                        }
+            else {
+                dataService.create("invoices", $scope.newInvoice, function (data) {
+                    if (data) {
+                        $scope.newInvoice.id = data;
+                        for (var i = 0; i < $scope.itemList.length; i += 1) {
+                            $scope.pushItemToInvoice(i);
+                            dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
+                                if (data) {
+                                    for (var j = 0; j < $scope.newInvoice.length; j += 1) {
+                                        for (var k = 0; i < $scope.itemList.length; k += 1)
+                                            if ($scope.itemList[k].id === $scope.newInvoice[j].id) {
+                                                $scope.itemList[k].quantity = $scope.itemList[k].quantity - $scope.newInvoice[j].quantity
+                                                dataService.update("items", $scope.itemList[i].id, $scope.itemList[i], function (data) {
+                                                    if (data) {
+                                                    }
+                                                    else
+                                                        notificationsConfig.error("Error updating item quantity!");
+                                                })
+                                            }
+                                    }
                                 }
-                            }
-                            else
-                                alert("error");
-                        })
+                                else
+                                    notificationsConfig.error("Error!");
+                            })
+                        }
+                        notificationsConfig.success("Invoice successfully created");
                     }
-                    alert("Invoice created");
-                }
-                else
-                    alert("Error in invoice");
-            })
+                    else
+                        notificationsConfig.error("Error in invoice!");
+                })
+            }
         }
 
 
@@ -93,7 +92,7 @@
                     $scope.items = data;
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.error("Error!");
                 }
             })
         };
@@ -105,7 +104,7 @@
                     $scope.customers = data;
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.error("Error!");
                 }
             })
         }

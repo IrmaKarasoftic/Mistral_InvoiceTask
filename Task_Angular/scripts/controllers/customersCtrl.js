@@ -12,7 +12,7 @@
                     $scope.waitCustomers = false;
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.error("Error!");
                 }
             })
         };
@@ -23,7 +23,7 @@
                     $scope.companies = data;
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.error("Error!");
                 }
             })
         }
@@ -50,7 +50,7 @@
             if ($scope.newCustomer.name === null ||
                 $scope.newCustomer.company === null)
             {
-                alert("All fields must be filled in.");
+                notificationsConfig.error("All fields must be filled in!");
                 return;
             }
             //if ($scope.newCustomer)
