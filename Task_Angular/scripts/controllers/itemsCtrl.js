@@ -8,10 +8,10 @@
         $scope.removeOnId;
 
         $scope.newItem = {
-            id: 0,
-            description: "",
-            quantity: 0,
-            unitPrice: "",
+            id: null,
+            description: null,
+            quantity: null,
+            unitPrice: null,
             isDeleted: false
         }
 
@@ -27,6 +27,19 @@
         };
 
         $scope.createNewItem = function () {
+            //validation
+            if ($scope.newItem === null ||
+                $scope.newItem.quantity === 0 ||
+                $scope.newItem.unitPrice === 0 ||
+                typeof $scope.newItem.quantity !== "number" ||
+                typeof $scope.newItem.unitPrice !== "number")
+            {
+                $scope.hideNewItemRow();
+                $scope.loadItemsInfo();
+                alert("Incorrect input");
+                return;
+            }
+            //end validation
             dataService.create("items", $scope.newItem, function (data) {
                 if (data)
                 {

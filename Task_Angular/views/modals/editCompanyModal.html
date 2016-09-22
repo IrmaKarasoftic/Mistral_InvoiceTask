@@ -18,18 +18,18 @@
                     <div class="panel panel-info">
                         <div class="panel-body">
                             <p>Company ID: </p>
-                            <input type="text" name="id" class="form-control" id="disabledInput" disabled="" value="{{requestedCompany.id}}" ng-model="editCompany.id" />
+                            <input type="text" class="form-control" id="disabledInput" disabled="" value="{{requestedCompany.id}}" ng-model="editCompany.id" />
                             <p>Company Name: </p>
-                            <input type="text" name="name" class="form-control" id="inputDefault" value="{{requestedCompany.name}}" ng-model="editCompany.name" />
+                            <input type="text"  class="form-control" id="inputDefault" value="{{requestedCompany.name}}" ng-model="editCompany.name" />
                             
                             <p>Street address: </p>
-                            <input type="text" name="name" class="form-control" id="inputDefault" value="{{requestedCompany.streetAddress}}" ng-model="editCompany.streetAddress" />
+                            <input type="text" class="form-control" id="inputDefault" value="{{requestedCompany.streetAddress}}" ng-model="editCompany.streetAddress" />
                             <p>Zip code: </p>
-                            <input type="text" name="name" class="form-control" id="inputDefault" value="{{requestedCompany.zipCode}}" ng-model="editCompany.zipCode" />
+                            <input type="number" min="10000" max="99999"  class="form-control" id="inputDefault" value="{{requestedCompany.zipCode}}" ng-model="editCompany.zipCode" />
                             <p>City: </p>
-                            <input type="text" name="name" class="form-control" id="inputDefault" value="{{requestedCompany.city}}" ng-model="editCompany.city" />
+                            <input type="text" class="form-control" id="inputDefault" value="{{requestedCompany.city}}" ng-model="editCompany.city" />
                             <p>Phone number: </p>
-                            <input type="text" name="name" class="form-control" id="inputDefault" value="{{requestedCompany.phoneNumber}}" ng-model="editCompany.phoneNumber" />
+                            <input type="text" class="form-control" id="inputDefault" value="{{requestedCompany.phoneNumber}}" ng-model="editCompany.phoneNumber" />
 
                         </div>
                     </div>

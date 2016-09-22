@@ -3,7 +3,7 @@
 
     taskAngular.controller('homeController', function ($scope) {
 
-        $scope.tagline = "To the moon and back!";
+        $scope.tagline = "Manage your invoices with ease.";
 
     });
 }());

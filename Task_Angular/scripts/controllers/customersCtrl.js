@@ -31,19 +31,30 @@
         };
 
         $scope.newCustomer = {
-            id: 0,
-            name: "",
-            company: 0,
-            companyName: "",
-            streetAddress: "",
+            id: null,
+            name: null,
+            company: null,
+            companyName: null,
+            streetAddress: null,
             isDeleted : false,
-            city: "",
-            zipCode: 0,
-            phoneNumber: ""
+            city: null,
+            zipCode: null,
+            phoneNumber: null
         }
 
 
         $scope.createNewCustomer = function () {
+            if ($scope.newCustomer.name === null ||
+                $scope.newCustomer.company === null)
+            {
+                alert("All fields must be filled in.");
+                return;
+            }
+            if (typeof $scope.newCustomer.name === "string")
+            {
+                alert("Incorrect input");
+                return;
+            }
             //if ($scope.newCustomer)
             dataService.create("customers", $scope.newCustomer, function (data) {
                 $scope.loadCustomersInfo();

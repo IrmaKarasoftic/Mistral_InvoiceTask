@@ -2,22 +2,20 @@
 <div class="container-fluid">
     <div class="form-style-6">
         <ng-form class="panel-body" #id="newCompany">
-            <p>Company Name: </p>
-            <input type="text" name="name" class="form-control" id="inputDefault" ng-model="editCompany.name" />
-
+            <p>Name: </p>
+            <input type="text" class="form-control" ng-model="newCompany.name" />
             <p>Street address: </p>
-            <input type="text" name="name" class="form-control" id="inputDefault" ng-model="editCompany.streetAddress" />
+            <input type="text" class="form-control"  ng-model="newCompany.streetAddress" />
             <p>Zip code: </p>
-            <input type="number" name="name" class="form-control" id="inputDefault" ng-model="editCompany.zipCode" />
+            <input type="number" class="form-control" ng-model="newCompany.zipCode" />
             <p>City: </p>
-            <input type="text" name="name" class="form-control" id="inputDefault" ng-model="editCompany.city" />
+            <input type="text" class="form-control"  ng-model="newCompany.city" />
             <p>Phone number: </p>
-            <input type="text" name="name" class="form-control" id="inputDefault" ng-model="editCompany.phoneNumber" />
-
+            <input type="text" class="form-control" ng-model="newCompany.phoneNumber" />
         </ng-form>
     </div>
     <div class="newCompanyButtons">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createNewCustomer()" ng-pattern="string">Save</button>
-        <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createNewCompany()">Save</button>
+        <a href="#/companies" class="btn btn-default" data-dismiss="modal">Cancel</a>
     </div>
 </div>

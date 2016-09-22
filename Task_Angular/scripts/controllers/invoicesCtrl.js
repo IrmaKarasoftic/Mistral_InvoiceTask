@@ -23,7 +23,6 @@
         $scope.loadInvoicesInfo = function () {
             dataService.list("invoices", function (data) {
                 if (data) {
-                    //console.log(data);
                     $scope.invoices = data;
                 } else {
                     alert("error");
@@ -36,7 +35,7 @@
             $scope.requestedInvoice.isDeleted = true;
             dataService.update("invoices", $scope.requestedInvoice.id, $scope.requestedInvoice, function (data) {
                 if (data) {
-                    alert("invoice updated");
+                    alert("invoice removed");
                     $scope.loadInvoicesInfo();
                 }
                 else
@@ -92,7 +91,7 @@
         }
 
         $scope.removeOn = function (invoice) {
-            $scope.editOff();
+            $scope.editOnId = null;
             $scope.removeOnId = invoice.id;
             $scope.requestedInvoice = invoice;
         }

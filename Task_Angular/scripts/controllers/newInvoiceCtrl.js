@@ -8,10 +8,10 @@
             "date": "",
             "items": [],
             "status": "Issued",
-            "customer": 0,
+            "customer": null,
             "customerName": "",
-            "billTo": {},
-            "shipTo": {},
+            "billTo": null,
+            "shipTo": null,
             "isDeleted": false
         }
         $scope.newInvoice.date = new Date();
@@ -51,6 +51,14 @@
         }
 
         $scope.createNewInvoice = function () {
+            if ($scope.newInvoice.billTo === null ||
+                $scope.newInvoice.shipTo === null ||
+                $scope.newInvoice.customer === null ||
+                $scope.itemList.length < 1)
+            {
+                alert("All fields must be filled in.");
+                return;
+            }
             dataService.create("invoices", $scope.newInvoice, function (data) {
                 if (data) {
                     $scope.newInvoice.id = data;

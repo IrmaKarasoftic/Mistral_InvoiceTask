@@ -31,26 +31,44 @@
         };
 
         $scope.newCompany = {
-            id: 0,
-            name: "",
-            company: 0,
-            companyName: "",
-            streetAddress: "",
-            isDeleted: false,
-            city: "",
-            zipCode: 0,
-            phoneNumber: ""
+            id: null,
+            name: null,
+            company: null,
+            streetAddress: null,
+            city: null,
+            zipCode: null,
+            phoneNumber: null,
+            isDeleted: false
         }
 
 
         $scope.createNewCompany = function () {
-            //if ($scope.newCompany)
+            if ($scope.newCompany.name === null ||
+                $scope.newCompany.streetAddress === null ||
+                $scope.newCompany.city === null ||
+                $scope.newCompany.zipCode === null ||
+                $scope.newCompany.phoneNumber === null)
+            {
+                alert("All fields must be filled in.");
+                return;
+            }
+            if (
+                typeof $scope.newCompany.name === "string" ||
+                typeof $scope.newCompany.streetAddress === "string" ||
+                typeof $scope.newCompany.city === "string" ||
+                typeof $scope.newCompany.zipCode === "number" ||
+                typeof $scope.newCompany.phoneNumber === "number")
+            {
+                alert("Incorrect input");
+                return;
+            }
             dataService.create("companies", $scope.newCompany, function (data) {
                 $scope.loadCompaniesInfo();
                 if (data) {
                     notificationsConfig.success("Company added");
                 }
-                else notificationsConfig.error("Adding companies failed!");
+                else
+                    notificationsConfig.error("Adding companies failed!");
             })
         }
 
