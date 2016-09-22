@@ -78,7 +78,8 @@ namespace Task_API.Models
                 City = company.city,
                 Name = company.Name,
                 PhoneNumber = company.phoneNumber,
-                ZipCode = company.zipCode
+                ZipCode = company.zipCode,
+                IsDeleted = company.IsDeleted,
             };
         }
 
