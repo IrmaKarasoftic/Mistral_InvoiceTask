@@ -11,7 +11,8 @@
             id: 0,
             description: "",
             quantity: 0,
-            unitPrice: ""
+            unitPrice: "",
+            isDeleted: false
         }
 
         $scope.loadItemsInfo = function () {
@@ -51,7 +52,8 @@
         }
 
         $scope.removeItem = function () {
-            dataService.remove("items", $scope.newItem.id, function (data) {
+            $scope.newItem.isDeleted = true;
+            dataService.update("items", $scope.newItem.id,$scope.newItem, function (data) {
                 if (data) {
                     alert("Item removed");
                 }

@@ -12,6 +12,12 @@ tr {
   height: 57px;
 }
 
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
 
 .loader {
     bottom: 0;

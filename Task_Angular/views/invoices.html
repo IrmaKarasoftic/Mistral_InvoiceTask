@@ -16,11 +16,30 @@
                 <td class="col-md-1">{{invoice.id}}</td>
                 <td class="col-md-2">{{invoice.date | date: 'mediumDate'}}</td>
                 <td class="col-md-2">{{invoice.customerName}}</td>
-                <td class="col-md-2">{{invoice.status}}</td>
+                <td ng-hide="checkEdit(invoice)" class="col-md-2">{{invoice.status}}</td>
+                <!--on edit-->
+                <td ng-show="checkEdit(invoice)">
+                    <select class="form-control"
+                            ng-model="requestedInvoice.status" 
+                            ng-options="statusType.value as statusType.name for statusType in statusTypes"
+                            ><option value="" disabled selected>- Select Status -</option>
+                    </select>
+                </td>
+                <!--end on edit-->
                 <td class="col-md-2">
-                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-eye"></i></button>
-                    <!--<button class="btn btn-default btn-sm col-md-offset-1" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-cog"></i></button>-->
-                    <button class="btn btn-default btn-sm col-md-offset-1" ng-click="invoiceTransfer(invoice)"><i class="fa fa-times"></i></button>
+                    <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-eye"></i></button>
+                    <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" ng-click="editOn(invoice)"><i class="fa fa-pencil-square-o"></i></button>
+                    <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" ng-click=""><i class="fa fa-envelope-o "></i></button>
+                    <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" ng-click=""><i class="fa fa-print "></i></button>
+                    <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" ng-click="removeOn(invoice)"><i class="fa fa-times"></i></button>
+                    <!--on edit-->
+                    <button ng-show="checkEdit(invoice)" class="btn btn-default" ng-click="editOff()"><strong>Cancel</strong></button>
+                    <button ng-show="checkEdit(invoice)" class="btn btn-success" ng-click="updateInvoice()"><strong>Submit</strong></button>
+                    <!--end on edit-->
+                    <!--on remove-->
+                    <button ng-show="checkRemove(invoice)" class="btn btn-default" ng-click="removeOff()"><strong>Cancel</strong></button>
+                    <button ng-show="checkRemove(invoice)" class="btn btn-danger" ng-click="removeInvoice()"><strong>Remove</strong></button>
+                    <!--end on remove-->
                 </td>
             </tr>
         </tbody>
