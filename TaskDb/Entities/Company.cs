@@ -8,5 +8,7 @@
         public string city { get; set; }
         public int zipCode { get; set; }
         public string phoneNumber { get; set; }
+        public bool IsDeleted { get; set; }
+        
     }
 }

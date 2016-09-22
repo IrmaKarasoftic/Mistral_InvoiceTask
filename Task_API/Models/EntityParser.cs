@@ -50,7 +50,8 @@ namespace Task_API.Models
                 city = model.City,
                 phoneNumber = model.PhoneNumber,
                 StreetAddress = model.StreetAddress,
-                zipCode = model.ZipCode
+                zipCode = model.ZipCode,
+                IsDeleted = model.IsDeleted,
             };
         }
 

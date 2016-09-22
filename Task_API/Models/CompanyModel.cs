@@ -11,6 +11,8 @@ namespace Task_API.Models
         public string Name { get; set; }
         public string StreetAddress { get; set; }
         public string City { get; set; }
+        public bool IsDeleted { get; set; }
+
         public int ZipCode { get; set; }
         public string PhoneNumber { get; set; }
     }
