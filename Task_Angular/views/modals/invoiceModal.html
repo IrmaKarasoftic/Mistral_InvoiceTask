@@ -85,11 +85,89 @@
             </div>
         </div><!--end modal body-->
         <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#typeInEmailModal" onclick="emailTransfer(email)">Email the invoice</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#typeInEmailModal" ng-click="emailTransfer(requestedInvoice)">Email the invoice</button>
+            <button type="button" class="btn btn-primary" ng-click="printDiv('printable')">Print the invoice</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div><!--end modal footer-->
     </div><!--end modal content-->
 </div><!--end modal dialog-->
+
+<div id="printable" ng-hide="">
+    <h2 style="font-family: " Open Sans", "Helvetica Neue" , Helvetica, Arial, sans-serif;">INVOICE #{{requestedInvoice.id}} {{requestedInvoice.status}}</h2><h1 style="font-family: " Open Sans", "Helvetica Neue" , Helvetica, Arial, sans-serif;">XYZ<br /><small>Makes billing easy</small></h1>
+    <hr>
+    <h4>Date: {{requestedInvoice.date | date: 'mediumDate'}}</h4>
+    <h5>Invoice ID: {{requestedInvoice.id}}</h5>
+    <h5>Customer ID: {{requestedInvoice.customer}}</h5>
+    <hr>
+    <div style="width:27%; display:inline-block; border: #008cba solid;margin:10px; padding:5px">
+        <strong>From:</strong>
+        <div class="panel-body">
+            <p>2854 Granville Lane</p>
+            <p>Newark, 07104</p>
+            <p>973-482-1872</p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+        </div>
+    </div>
+    <div style="width:27%; display:inline-block; border: #008cba solid;margin:10px; padding:5px">
+        <strong>Bill To:</strong>
+        <div class="panel-body">
+            <p>Customer Name: {{requestedInvoice.billTo.name}}</p>
+            <p>Company Name: {{requestedInvoice.billTo.companyName}}</p>
+            <p>Street Address: {{requestedInvoice.billTo.streetAddress}}</p>
+            <p>City, Zip: {{requestedInvoice.billTo.city}}, {{requestedInvoice.billTo.zipCode}}</p>
+            <p>Phone/Fax: {{requestedInvoice.billTo.phoneNumber}}</p>
+        </div>
+    </div>
+    <div style="width:27%; display:inline-block; border: #008cba solid;margin:10px; padding:5px">
+        <strong>Ship To:</strong>
+        <div class="panel-body">
+            <p>Customer Name: {{requestedInvoice.shipTo.name}}</p>
+            <p>Company Name: {{requestedInvoice.shipTo.companyName}}</p>
+            <p>Street Address: {{requestedInvoice.shipTo.streetAddress}}</p>
+            <p>City, Zip: {{requestedInvoice.shipTo.city}}, {{requestedInvoice.shipTo.zipCode}}</p>
+            <p>Phone/Fax: {{requestedInvoice.shipTo.phoneNumber}}</p>
+        </div>
+    </div>
+    <div style="width:100%;">
+        <div style="width:17%; display:inline-block;">
+            <h4>ID</h4>
+        </div>
+        <div style="width:17%; display:inline-block;">
+            <h4>Description</h4>
+        </div>
+        <div style="width:17%; display:inline-block;">
+            <h4>Amount</h4>
+        </div>
+        <div style="width:17%; display:inline-block;">
+            <h4>Quantity</h4>
+        </div>
+        <div style="width:17%; display:inline-block;">
+            <h4>Total</h4>
+        </div>
+    </div>
+    <hr>
+    <div style="width:100%;">
+        <div ng-repeat="item in requestedInvoice.items">
+            <div style="width:17%; display:inline-block;">{{item.id}}</div>
+            <div style="width:17%; display:inline-block;">{{item.description}}</div>
+            <div style="width:17%; display:inline-block;">{{item.price}}</div>
+            <div style="width:17%; display:inline-block;">{{item.quantity}}</div>
+            <div style="width:17%; display:inline-block;">{{item.quantity * item.price | number:2}}</div>
+        </div>
+    </div>
+    <hr>
+    <hr>
+    <div>
+        <p><strong>Subtotal: {{subTotal | number:2}}</strong></p>
+        <p><strong>Tax Rate: {{taxRate | number:2}}</strong></p>
+        <p><strong>Tax: {{tax | number:2}}</strong></p>
+        <p><strong>Other: </strong></p>
+        <h3><strong>TOTAL: {{total | number:2}}</strong></h3>
+    </div>
+</div>
 <!-- Email Modal -->
 <div class="modal fade" id="typeInEmailModal" role="dialog">
     <div ng-include="'views/modals/typeInEmailModal.html'"></div>
