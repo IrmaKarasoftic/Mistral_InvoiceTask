@@ -20,17 +20,11 @@
                     templateUrl: "views/login.html",
                     controller: "loginController"
                 })
+                .when("/companies", {
+                    templateUrl: "views/companies.html",
+                    controller: "companiesController"
+                })
                 .otherwise({ redirectTo: "/home" });
         })
-    /*
-    .run(function ($rootScope, $location) {
-            $rootScope.$on("$routeChangeStart", function (event, next, current) {
-                if (!authenticated) {
-                    if (next.templateUrl != "views/login.html")
-                        $location.path("/login");
-                }
-            })
-        });
-   */
     
 }());

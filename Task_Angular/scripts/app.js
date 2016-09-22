@@ -24,10 +24,13 @@
                     templateUrl: "views/customers.html",
                     controller: "customersController"
                 })
-
-                .when("/login", {
-                    templateUrl: "views/login.html",
-                    controller: "loginController"
+                .when("/companies", {
+                    templateUrl: "views/companies.html",
+                    controller: "companiesController"
+                })
+                .when("/newCompany", {
+                    templateUrl: "views/newCompany.html",
+                    controller: "companiesController"
                 })
                 .otherwise({ redirectTo: "/home" });
         })

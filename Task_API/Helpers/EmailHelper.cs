@@ -10,7 +10,7 @@ namespace Task_API.Helpers
 {
     public class EmailHelper
     {
-        public static void SendInvoiceEmail(Invoice invoiceToPrint)
+        public static void SendInvoiceEmail(string invoiceToPrint, string mailTo)
         {
             SmtpClient SmtpServer = EmailHelper.SetSmtp();
             String Username = System.Configuration.ConfigurationManager.AppSettings["invoiceTaskMistral"];
@@ -18,15 +18,16 @@ namespace Task_API.Helpers
             Invoice Invoice = new Invoice();
 
             MailAddress from = new MailAddress(Username);
-            string subject = "Invoice " + invoiceToPrint.Id;
+            string subject = "Invoice: ";
             string content = "<p>"+ "Thank you for your purchase." +"</p>"+"</br>";
 
             MailMessage mail = new MailMessage();
             mail.IsBodyHtml = true;
             mail.From = from;
             mail.Subject = subject;
+            
 
-            string bodyHtml = "";
+            string bodyHtml = invoiceToPrint;
 
             mail.Body = content + bodyHtml;
             
