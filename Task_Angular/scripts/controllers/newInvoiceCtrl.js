@@ -46,9 +46,9 @@
         }
 
         $scope.createNewInvoice = function () {
-            if ($scope.newInvoice.billTo !== null ||
-                $scope.newInvoice.shipTo !== null ||
-                $scope.newInvoice.customer !== null ||
+            if ($scope.newInvoice.billTo !== null &&
+                $scope.newInvoice.shipTo !== null &&
+                $scope.newInvoice.customer !== null &&
                 $scope.itemList.length >= 1) {
                 //Generate invoice
                 dataService.create("invoices", $scope.newInvoice, function (data) {

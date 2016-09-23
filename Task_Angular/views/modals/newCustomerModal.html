@@ -15,7 +15,7 @@
                             <input type="text" name="name" class="form-control" id="inputDefault" ng-model="newCustomer.name" placeholder="Customer name"  />
                             <p>Select company:</p>
 
-                            <select ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company">
+                            <select style="font-size:16px" ng-options="company.id as company.name for company in companies" ng-model="newCustomer.company">
                                 <option value="">- - - Choose company - - - </option>
                             </select>
                         </ng-form>
