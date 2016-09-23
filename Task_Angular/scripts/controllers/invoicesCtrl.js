@@ -50,22 +50,21 @@
                     notificationsConfig.success("invoice removed");
                     $scope.loadInvoicesInfo();
                 }
-                else
-                    notificationsConfig.error("Error");
+                else notificationsConfig.error("Error");
             })
         }
 
         $scope.updateInvoice = function () {
-                dataService.update("invoices", $scope.requestedInvoice.id, $scope.requestedInvoice, function (data) {
-                    if (data) {
-                        notificationsConfig.success("invoice updated");
-                    }
-                    else
-                        notificationsConfig.error("Error");
-                    $scope.editOff();
-                })
-            }
-        
+            dataService.update("invoices", $scope.requestedInvoice.id, $scope.requestedInvoice, function (data) {
+                if (data) {
+                    notificationsConfig.success("invoice updated");
+                }
+                else
+                    notificationsConfig.error("Error");
+                $scope.editOff();
+            })
+        }
+
 
 
         $scope.calculateValues = function (invoice) {
@@ -132,7 +131,7 @@
             "items": [],
             "status": 1,
             "customer": 0,
-            "customerName": "",
+            "costumerName": "",
             "billTo": {},
             "shipTo": {},
             "isDeleted": false,
