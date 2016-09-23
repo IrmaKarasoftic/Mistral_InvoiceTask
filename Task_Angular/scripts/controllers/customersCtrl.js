@@ -72,7 +72,6 @@
                 else {
                     notificationsConfig.success("Customer update failed");
                 }
-                $scope.editOff();
 
             })
         }
