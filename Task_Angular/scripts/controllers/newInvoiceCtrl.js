@@ -71,9 +71,9 @@
                     }
                     //Update all store quantities for corresponding items in newInvoice
                     for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
-                        console.log($scope.itemList[i], $scope.itemList[i].quantity, $scope.newInvoice.items[i].quantity);
+                        //console.log($scope.itemList[i], $scope.itemList[i].quantity, $scope.newInvoice.items[i].quantity);
                         $scope.itemList[i].quantity = $scope.itemList[i].quantity - $scope.newInvoice.items[i].quantity
-                        console.log($scope.itemList[i], $scope.itemList[i].quantity);
+                        //console.log($scope.itemList[i], $scope.itemList[i].quantity);
                         dataService.update("items", $scope.itemList[i].id, $scope.itemList[i], function (data) {
                             if (data) {
                                 

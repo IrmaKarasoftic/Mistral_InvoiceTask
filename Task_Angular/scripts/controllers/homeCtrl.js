@@ -5,19 +5,17 @@
     
         $scope.income = [];
 
-        $scope.years = [
-            {year: 2013},
-            {year: 2014},
-            {year: 2015},
-            {year: 2016},
-        ]
+        $scope.years = ["2013", "2014", "2015", "2016"];
 
         $scope.loadIncome = function () {
             for (var i = 0; i < $scope.years.length; i += 1)
             {
-                dataService.create("invoiceItems", $scope.years[i]+"/aa", function (data) {
+                dataService.read("invoiceItems", $scope.years[i]+"/aa", function (data) {
                     if (data) {
-                        $scope.income.push(data);
+                        $scope.income.push({
+                            year: $scope.years[i],
+                            incomeData : data
+                        });
                     }
                     else {
                         alert("error");
@@ -27,7 +25,6 @@
         };
 
         $scope.loadIncome();
-        console.log($scope.income);
 
     });
 }());
