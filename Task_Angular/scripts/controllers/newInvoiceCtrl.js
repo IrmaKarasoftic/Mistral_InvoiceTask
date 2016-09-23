@@ -80,6 +80,9 @@
                                     notificationsConfig.error("error while updating item quantity");
                             })
                         }
+
+                        notificationsConfig.success("Invoice created!");
+
                     }
                     else
                         notificationsConfig.error("Error in invoice!");

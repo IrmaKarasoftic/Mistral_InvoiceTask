@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Task_API.Models;
 using TaskDb;
+using static TaskDb.Enumerators;
 
 namespace Task_API.Helpers
 {
@@ -19,7 +20,7 @@ namespace Task_API.Helpers
             var list = invoiceRepository.context.InvoiceItems.ToList();
             foreach (var item in list)
             {
-                if (item.Invoice.Date.Year == year)
+                if (item.Invoice.Date.Year == year && item.Invoice.Status == Status.Paid)
                 {
                     
                     total += item.Item.UnitPrice * item.Item.Quantity;
@@ -28,6 +29,7 @@ namespace Task_API.Helpers
                 }
             }
             model.Total = total;
+            model.year = year;
             return model;
         }
     }

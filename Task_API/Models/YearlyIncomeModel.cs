@@ -13,5 +13,6 @@ namespace Task_API.Models
         }
         public List<ItemModel> Items { get; set; }
         public double Total { get; set; }
+        public int year { get; set; }
     }
 }
