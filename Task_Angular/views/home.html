@@ -12,9 +12,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr  ng-repeat="income in incomes | orderBy : +year" class="qtr" id="q{{$index+1}}">
+                <tr  ng-repeat="income in incomes | orderBy : '+year'" class="qtr" id="q{{$index+1}}">
                     <th scope="row">{{income.year}}</th>
-                    <td class="sent bar" style="height: {{income.total / 100}}px"><p>{{income.total}}</p></td>
+                    <td class="sent bar" style="height: {{income.total / 100}}%"><p>{{income.total | number:2}}</p></td>
                 </tr>
             </tbody>
         </table>
