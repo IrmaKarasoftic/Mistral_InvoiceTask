@@ -15,9 +15,6 @@
                     notificationsConfig.error("Error!");
                 }
             })
-        };
-
-        $scope.loadCompaniesInfo = function () {
             dataService.list("companies", function (data) {
                 if (data) {
                     $scope.companies = data;
@@ -26,7 +23,7 @@
                     notificationsConfig.error("Error!");
                 }
             })
-        }
+        };
 
         $scope.customerTransfer = function (customer) {
             $scope.requestedCustomer = customer;
