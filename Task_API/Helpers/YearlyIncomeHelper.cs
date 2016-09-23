@@ -22,9 +22,11 @@ namespace Task_API.Helpers
             {
                 if (item.Invoice.Date.Year == year && item.Invoice.Status == Status.Paid)
                 {
-                    
-                    total += item.Item.UnitPrice * item.Item.Quantity;
+
+                    total += item.Price * item.Quantity;
                     iModel = factory.Create(item.Item);
+                    iModel.Quantity = item.Quantity;
+                    iModel.UnitPrice = item.Price;
                     model.Items.Add(iModel);
                 }
             }

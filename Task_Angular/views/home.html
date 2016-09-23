@@ -8,13 +8,13 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th class="sent">Yearly Total</th>
+                    <th class="sent" style="width:7vw;height:7vw; font-size:1.3vw">Yearly Total</th>
                 </tr>
             </thead>
             <tbody>
                 <tr  ng-repeat="income in incomes | orderBy : '+year'" class="qtr" id="q{{$index+1}}">
                     <th scope="row">{{income.year}}</th>
-                    <td class="sent bar" style="height: {{income.total / 100}}%"><p>{{income.total | number:2}}</p></td>
+                    <td class="sent bar" style="height: {{income.total / 70}}%"><p>{{income.total | number:2}}</p></td>
                 </tr>
             </tbody>
         </table>
