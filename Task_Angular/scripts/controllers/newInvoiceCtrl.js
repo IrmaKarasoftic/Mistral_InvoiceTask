@@ -1,4 +1,4 @@
-﻿ (function () {
+﻿(function () {
     var taskAngular = angular.module('taskAngular');
 
     taskAngular.controller('newInvoiceController', function ($scope, dataService) {
@@ -46,48 +46,51 @@
         }
 
         $scope.createNewInvoice = function () {
-            if ($scope.newInvoice.billTo === null ||
-                $scope.newInvoice.shipTo === null ||
-                $scope.newInvoice.customer === null ||
-                $scope.itemList.length < 1) {
+            if ($scope.newInvoice.billTo !== null ||
+                $scope.newInvoice.shipTo !== null ||
+                $scope.newInvoice.customer !== null ||
+                $scope.itemList.length >= 1) {
+                //Generate invoice
+                dataService.create("invoices", $scope.newInvoice, function (data) {
+                    //get invoice ID
+                    if (data) {
+                        $scope.newInvoice.id = data;
+                        //Push all items from itemList to newInvoice
+                        for (var i = 0; i < $scope.itemList.length; i += 1)
+                            $scope.pushItemToInvoice(i);
+                        //Generate all items from newInvoice as invoiceItem models
+                        for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
+                            dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
+                                if (data) {
+                                }
+                                else
+                                    notificationsConfig.error("error while generating invoice items");
+                            })
+                        }
+                        //Update all store quantities for corresponding items in newInvoice
+                        for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
+                            //console.log($scope.itemList[i], $scope.itemList[i].quantity, $scope.newInvoice.items[i].quantity);
+                            $scope.itemList[i].quantity = $scope.itemList[i].quantity - $scope.newInvoice.items[i].quantity
+                            //console.log($scope.itemList[i], $scope.itemList[i].quantity);
+                            dataService.update("items", $scope.itemList[i].id, $scope.itemList[i], function (data) {
+                                if (data) {
+
+                                }
+                                else
+                                    notificationsConfig.error("error while updating item quantity");
+                            })
+                        }
+                    }
+                    else
+                        notificationsConfig.error("Error in invoice!");
+                    window.location = "#/invoices";
+                })
+            }
+            else {
                 notificationsConfig.error("All fields must be filled in.");
             }
-            //Generate invoice
-            dataService.create("invoices", $scope.newInvoice, function (data) {
-                //get invoice ID
-                if (data) {
-                    $scope.newInvoice.id = data;
-                    //Push all items from itemList to newInvoice
-                    for (var i = 0; i < $scope.itemList.length; i += 1)
-                        $scope.pushItemToInvoice(i);
-                    //Generate all items from newInvoice as invoiceItem models
-                    for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
-                        dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
-                            if (data) {
-                            }
-                            else
-                                notificationsConfig.error("error while generating invoice items");
-                        })
-                    }
-                    //Update all store quantities for corresponding items in newInvoice
-                    for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
-                        //console.log($scope.itemList[i], $scope.itemList[i].quantity, $scope.newInvoice.items[i].quantity);
-                        $scope.itemList[i].quantity = $scope.itemList[i].quantity - $scope.newInvoice.items[i].quantity
-                        //console.log($scope.itemList[i], $scope.itemList[i].quantity);
-                        dataService.update("items", $scope.itemList[i].id, $scope.itemList[i], function (data) {
-                            if (data) {
-                                
-                            }
-                            else
-                                notificationsConfig.error("error while updating item quantity");
-                        })
-                    }
-                }
-                 else
-                     notificationsConfig.error("Error in invoice!");
-                    })
-            }
-        
+        }
+
 
 
         $scope.loadItemsInfo = function () {
@@ -135,11 +138,11 @@
         };
 
         $scope.pushToItemList = function () {
-            if($scope.selectedItem === null) return;
+            if ($scope.selectedItem === null) return;
             if (!$scope.listExists)
                 $scope.listExists = true;
             for (var i = 0; i < $scope.itemList.length; i += 1)
-                if ($scope.selectedItem === $scope.itemList[i]){
+                if ($scope.selectedItem === $scope.itemList[i]) {
                     $scope.isInList = true;
                     $scope.purchasedQuantity[i] += 1;
                 }
@@ -156,8 +159,7 @@
 
         $scope.removeFromItemList = function (item) {
             for (var i = 0; i < $scope.itemList.length; i += 1)
-                if (item === $scope.itemList[i])
-                {
+                if (item === $scope.itemList[i]) {
                     $scope.itemList.splice(i, 1);
                     $scope.purchasedQuantity.splice(i, 1);
                 }
@@ -172,7 +174,7 @@
             $scope.total = 0;
             $scope.taxRate = 0.17;
             $scope.tax = 0;
-            for (var i = 0; i < $scope.itemList.length; i+=1)
+            for (var i = 0; i < $scope.itemList.length; i += 1)
                 $scope.subTotal = $scope.subTotal + $scope.purchasedQuantity[i] * $scope.itemList[i].unitPrice;
             $scope.tax = $scope.subTotal * $scope.taxRate;
             $scope.total = $scope.subTotal + $scope.tax;

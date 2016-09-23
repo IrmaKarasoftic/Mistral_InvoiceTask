@@ -8,7 +8,7 @@
         $scope.total = 0;
         $scope.taxRate = 0.17;
         $scope.tax = 0;
-        
+
         $scope.requestedInvoice;
         $scope.editOnId;
         $scope.removeOnId;
@@ -71,8 +71,7 @@
             $scope.subTotal = 0;
             $scope.total = 0;
             $scope.tax = 0;
-            for (var i = 0; i<invoice.items.length; i++)
-            {
+            for (var i = 0; i < invoice.items.length; i++) {
                 $scope.subTotal = $scope.subTotal + invoice.items[i].quantity * invoice.items[i].price;
             }
             $scope.tax = $scope.subTotal * $scope.taxRate;
@@ -121,7 +120,7 @@
         }
 
         $scope.loadInvoicesInfo();
-        
+
 
         $scope.emailTransfer = function (email) {
             $scope.email = email;
@@ -151,9 +150,9 @@
         }
         $scope.printDiv = function (divName) {
             var printContents = document.getElementById(divName).innerHTML;
-            var popupWin = window.open('', '_blank', 'width=300,height=300');
+            var popupWin = window.open('', '_blank', 'width=1000,height=1000');
             popupWin.document.open();
-            popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
+            popupWin.document.write('<!DOCTYPE html><html><head><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/bootstrapYeti.css"><link rel="stylesheet" href="css/font-awesome.min.css"><link rel="stylesheet" href="css/style.css"></head><body onload="window.print()"><div class="reward-body">' + printContents + '</div></body></html>');
             popupWin.document.close();
         }
 
