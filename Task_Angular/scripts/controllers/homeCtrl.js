@@ -15,7 +15,7 @@
         $scope.loadIncome = function () {
             for (var i = 0; i < $scope.years.length; i += 1)
             {
-                dataService.create("yearlyincome", $scope.years[i], function (data) {
+                dataService.create("invoiceItems", $scope.years[i]+"/aa", function (data) {
                     if (data) {
                         $scope.income.push(data);
                     }
