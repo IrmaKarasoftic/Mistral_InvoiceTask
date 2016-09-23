@@ -4,50 +4,20 @@
 <div class="row">
     <div class="col-md-5 col-md-offset-4">
         <table id="q-graph">
-            <caption>Yearly Results</caption>
+            <caption>Yearly Income</caption>
             <thead>
                 <tr>
                     <th></th>
-                    <th class="sent">Total</th>
+                    <th class="sent">Yearly Total</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="qtr" id="q1">
-                    <th scope="row">2013</th>
-                    <td class="sent bar" style="height: 75px"><p>{{income[0].total}}</p></td>
-                </tr>
-                <tr class="qtr" id="q2">
-                    <th scope="row">2014</th>
-                    <td class="sent bar" style="height: 70px"><p>{{income[1].total}}</p></td>
-                </tr>
-                <tr class="qtr" id="q3">
-                    <th scope="row">2015</th>
-                    <td class="sent bar" style="height: 80px"><p>{{income[2].total}}</p></td>
-                </tr>
-                <tr class="qtr" id="q4">
-                    <th scope="row">2016</th>
-                    <td class="sent bar" style="height: 250px"><p>{{income[3].total}}</p></td>
+                <tr  ng-repeat="income in incomes | orderBy : +year" class="qtr" id="q{{$index+1}}">
+                    <th scope="row">{{income.year}}</th>
+                    <td class="sent bar" style="height: {{income.total / 100}}px"><p>{{income.total}}</p></td>
                 </tr>
             </tbody>
         </table>
-
-        <div id="ticks">
-            <div class="tick" style="height: 59px;">
-                <p>$20,000</p>
-            </div>
-            <div class="tick" style="height: 59px;">
-                <p>$15,000</p>
-            </div>
-            <div class="tick" style="height: 59px;">
-                <p>$10,000</p>
-            </div>
-            <div class="tick" style="height: 59px;">
-                <p>$5,000</p>
-            </div>
-            <div class="tick" style="height: 59px;">
-                <p>$1,000</p>
-            </div>
-        </div>
     </div>
 </div>
 
