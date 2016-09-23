@@ -15,7 +15,7 @@
             <tr ng-repeat="invoice in invoices">
                 <td class="col-md-1">{{invoice.id}}</td>
                 <td class="col-md-2">{{invoice.date | date: 'mediumDate'}}</td>
-                <td class="col-md-2">{{invoice.customerName}}</td>
+                <td class="col-md-2">{{invoice.name}}</td>
                 <td ng-hide="checkEdit(invoice)" class="col-md-2">{{invoice.status}}</td>
                 <!--on edit-->
                 <td ng-show="checkEdit(invoice)">

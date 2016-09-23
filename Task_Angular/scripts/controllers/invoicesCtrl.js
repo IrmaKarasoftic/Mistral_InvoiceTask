@@ -131,7 +131,7 @@
             "items": [],
             "status": 1,
             "customer": 0,
-            "costumerName": "",
+            "customerName": "",
             "billTo": {},
             "shipTo": {},
             "isDeleted": false,

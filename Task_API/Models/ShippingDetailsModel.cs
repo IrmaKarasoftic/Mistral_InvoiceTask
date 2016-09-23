@@ -8,7 +8,7 @@ namespace Task_API.Models
     public class ShippingDetailsModel
     {
         public int Id { get; set; }
-        public String CostumerName { get; set; }
+        public String CustomerName { get; set; }
         public String CompanyName { get; set; }
         public String StreetAddress { get; set; }
         public String City { get; set; }
