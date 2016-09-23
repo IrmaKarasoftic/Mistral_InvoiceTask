@@ -27,7 +27,6 @@
 
         $scope.customerTransfer = function (customer) {
             $scope.requestedCustomer = customer;
-            $scope.loadCompaniesInfo();
             $scope.editCustomer = $.extend(true, {}, customer);
         };
 
