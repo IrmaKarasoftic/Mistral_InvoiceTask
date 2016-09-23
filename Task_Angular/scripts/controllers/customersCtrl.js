@@ -47,8 +47,7 @@
 
         $scope.createNewCustomer = function () {
             if ($scope.newCustomer.name === null ||
-                $scope.newCustomer.company === null)
-            {
+                $scope.newCustomer.company === null) {
                 notificationsConfig.error("All fields must be filled in!");
                 return;
             }
@@ -107,4 +106,3 @@
 
     });
 }());
-    

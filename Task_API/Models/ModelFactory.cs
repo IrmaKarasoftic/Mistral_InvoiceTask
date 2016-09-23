@@ -22,22 +22,22 @@ namespace Task_API.Models
             }
 
             ShippingDetailsModel bill = new ShippingDetailsModel()
-            {                
-                CompanyName = invoice.BillTo.Name,
-                StreetAddress=invoice.Customer.Company.StreetAddress,
-                CostumerName = invoice.Customer.Name,
-                PhoneNumber = invoice.Customer.Company.phoneNumber,
-                City = invoice.Customer.Company.city,
-                ZipCode = invoice.Customer.Company.zipCode,
+            {
+                CompanyName = invoice.BillTo.Company.Name,
+                StreetAddress = invoice.BillTo.Company.StreetAddress,
+                CostumerName = invoice.BillTo.Name,
+                PhoneNumber = invoice.BillTo.Company.phoneNumber,
+                City = invoice.BillTo.Company.city,
+                ZipCode = invoice.BillTo.Company.zipCode,
             };
             ShippingDetailsModel ship = new ShippingDetailsModel()
             {
-                CompanyName = invoice.BillTo.Name,
-                StreetAddress = invoice.Customer.Company.StreetAddress,
-                CostumerName = invoice.Customer.Name,
-                PhoneNumber = invoice.Customer.Company.phoneNumber,
-                City = invoice.Customer.Company.city,
-                ZipCode = invoice.Customer.Company.zipCode
+                CompanyName = invoice.ShipTo.Company.Name,
+                StreetAddress = invoice.ShipTo.Company.StreetAddress,
+                CostumerName = invoice.ShipTo.Name,
+                PhoneNumber = invoice.ShipTo.Company.phoneNumber,
+                City = invoice.ShipTo.Company.city,
+                ZipCode = invoice.ShipTo.Company.zipCode
             };
             return new InvoiceModel()
             {
@@ -94,7 +94,7 @@ namespace Task_API.Models
                 IsDeleted = customer.IsDeleted,
             };
         }
-        
+
         public InvoiceItemModel Create(InvoiceItem invoiceItem)
         {
             return new InvoiceItemModel()

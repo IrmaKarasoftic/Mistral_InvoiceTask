@@ -11,7 +11,7 @@ namespace Task_API.Controllers
 {
     public class CompaniesController : HomeController<Company>
     {
-        public CompaniesController(Repository<Company> repo):base(repo) {}
+        public CompaniesController(Repository<Company> repo) : base(repo) { }
 
         public IHttpActionResult Get()
         {
@@ -42,7 +42,7 @@ namespace Task_API.Controllers
 
         public IHttpActionResult Post(CompanyModel company)
         {
-            if(company != null)
+            if (company != null)
             {
                 try
                 {
@@ -64,7 +64,7 @@ namespace Task_API.Controllers
 
                 Company comp = Repository.Get(id);
                 Company company = Parser.Create(model, Repository.HomeContext());
-                if(comp != null)
+                if (comp != null)
                 {
                     Repository.Update(company, id);
                     return Ok(Factory.Create(company));
@@ -79,7 +79,7 @@ namespace Task_API.Controllers
             try
             {
                 Company company = Repository.Get(id);
-                if(company != null)
+                if (company != null)
                 {
                     Repository.Delete(id);
                     return Ok();

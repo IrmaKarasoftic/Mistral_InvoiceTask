@@ -73,7 +73,6 @@
                     </tr>
                 </tbody>
             </table>
-
             <div class="row">
                 <div class="col-md-3 col-md-offset-9">
                     <p><strong>Subtotal: {{subTotal | number:2}}</strong></p>
@@ -91,8 +90,7 @@
         </div><!--end modal footer-->
     </div><!--end modal content-->
 </div><!--end modal dialog-->
-
-<div id ="printable" class="modal-dialog modal-lg" ng-hide="hidden">
+<div id="printable" class="modal-dialog modal-lg" ng-hide="hidden">
     <div class="modal-content">
         <div class="modal-header bg-info">
             <h2 class="modal-title">INVOICE #{{requestedInvoice.id}} {{requestedInvoice.status}}</h2>
@@ -121,11 +119,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 "style="width:30vw;display:inline-block">
+                <div class="col-md-4 " style="width:30vw;display:inline-block">
                     <div class="panel panel-info">
                         <div class="panel-heading"><h3 class="panel-title"><strong>Bill To:</strong></h3></div>
                         <div class="panel-body">
-                            <p>Customer Name: {{requestedInvoice.billTo.costumerName}}</p>
+                            <p>Customer Name: {{requestedInvoice.billTo.name}}</p>
                             <p>Company Name: {{requestedInvoice.billTo.companyName}}</p>
                             <p>Street Address: {{requestedInvoice.billTo.streetAddress}}</p>
                             <p>City, Zip: {{requestedInvoice.billTo.city}}, {{requestedInvoice.billTo.zipCode}}</p>
@@ -137,7 +135,7 @@
                     <div class="panel panel-success">
                         <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
                         <div class="panel-body">
-                            <p>Customer Name: {{requestedInvoice.shipTo.costumerName}}</p>
+                            <p>Customer Name: {{requestedInvoice.shipTo.name}}</p>
                             <p>Company Name: {{requestedInvoice.shipTo.companyName}}</p>
                             <p>Street Address: {{requestedInvoice.shipTo.streetAddress}}</p>
                             <p>City, Zip: {{requestedInvoice.shipTo.city}}, {{requestedInvoice.shipTo.zipCode}}</p>
@@ -166,7 +164,6 @@
                     </tr>
                 </tbody>
             </table>
-
             <div class="row">
                 <div class="col-md-3 col-md-offset-9">
                     <p><strong>Subtotal: {{subTotal | number:2}}</strong></p>
@@ -179,7 +176,6 @@
         </div><!--end modal body-->
     </div><!--end modal content-->
 </div><!--end modal dialog-->
-
 <!-- Email Modal -->
 <div class="modal fade" id="typeInEmailModal" role="dialog">
     <div ng-include="'views/modals/typeInEmailModal.html'"></div>

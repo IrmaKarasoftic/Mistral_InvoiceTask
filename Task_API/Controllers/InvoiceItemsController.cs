@@ -41,7 +41,7 @@ namespace Task_API.Controllers
         }
         [Route("api/invoiceItems/{year}/{aa}")]
         [HttpGet]
-        public IHttpActionResult GetByYear(int year, string foo="aa")
+        public IHttpActionResult GetByYear(int year, string foo = "aa")
         {
             try
             {
@@ -73,7 +73,7 @@ namespace Task_API.Controllers
 
         public IHttpActionResult Put(InvoiceItemModel model)
         {
-            if ( model != null)
+            if (model != null)
             {
                 try
                 {

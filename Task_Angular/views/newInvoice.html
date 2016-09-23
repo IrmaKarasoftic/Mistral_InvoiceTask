@@ -10,15 +10,15 @@
             <div class="input-group">
                 <input type="text" class="form-control" id="customerID" aria-label="..." ng-model="newInvoice.customer" value="newInvoice.customer">
                 <div class="input-group-btn">
-                    <button 
-                            type="button" 
-                            class="btn btn-default dropdown-toggle" 
-                            data-toggle="dropdown" 
-                            aria-haspopup="true" 
+                    <button type="button"
+                            class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
                             aria-expanded="false">
-                     <span class="caret"></span>
+                        <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-left scrollable-menu">-
+                    <ul class="dropdown-menu dropdown-menu-left scrollable-menu">
+                        -
                         <li ng-repeat="customer in customers" ng-click="getCustomerID(customer)"><a>{{customer.name}}</a></li>
                     </ul>
                 </div><!-- /btn-group -->
@@ -29,7 +29,6 @@
     <h2>Company Details</h2>
     <br />
 </div>
-
 <div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">
@@ -192,17 +191,15 @@
     </div>
     <br />
     <a href="" class="btn btn-primary"
-            ng-click="createNewInvoice()">
+       ng-click="createNewInvoice()">
         Submit
     </a>
 </div>
-
 
 <!-- Customer List Modal -->
 <div class="modal fade" id="customerListModal" role="dialog">
     <div ng-include="'views/modals/customerListModal.html'"></div>
 </div>
-
 <!-- Item List Modal -->
 <div class="modal fade" id="itemListModal" role="dialog">
     <div ng-include="'views/modals/itemListModal.html'"></div>

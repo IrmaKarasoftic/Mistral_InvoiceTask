@@ -12,7 +12,7 @@ namespace Task_API.Controllers
 {
     public class ItemsController : HomeController<Item>
     {
-        public ItemsController(Repository<Item> repo): base(repo) {}
+        public ItemsController(Repository<Item> repo) : base(repo) { }
 
         public IHttpActionResult Get()
         {
@@ -33,7 +33,7 @@ namespace Task_API.Controllers
             try
             {
                 var item = Repository.Get(id);
-                if(item != null)  return Ok(item);
+                if (item != null) return Ok(item);
                 return NotFound();
             }
             catch (Exception)
@@ -44,7 +44,7 @@ namespace Task_API.Controllers
 
         public IHttpActionResult Post(ItemModel item)
         {
-            if( item != null)
+            if (item != null)
             {
                 try
                 {
@@ -61,7 +61,7 @@ namespace Task_API.Controllers
 
         public IHttpActionResult Put(ItemModel item, int id)
         {
-            if(item != null)
+            if (item != null)
             {
                 try
                 {

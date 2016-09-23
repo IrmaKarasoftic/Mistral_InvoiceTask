@@ -12,7 +12,7 @@ namespace Task_API.Controllers
 {
     public class CustomersController : HomeController<Customer>
     {
-        public CustomersController(Repository<Customer> repo):base(repo) {}
+        public CustomersController(Repository<Customer> repo) : base(repo) { }
 
 
         public IHttpActionResult Get()
@@ -62,7 +62,7 @@ namespace Task_API.Controllers
 
         public IHttpActionResult Put(CustomerModel customer, int id)
         {
-            if(customer != null)
+            if (customer != null)
             {
                 try
                 {
@@ -70,9 +70,9 @@ namespace Task_API.Controllers
                     Company comp = new Repository<Company>(Repository.HomeContext()).Get(companyId);
                     Customer co = Repository.Get(id);
                     Customer cost = Parser.Create(customer, Repository.HomeContext());
-                    if (co != null) 
+                    if (co != null)
                     {
-                        new CustomerUnit(Repository.HomeContext()).Update(cost, id); 
+                        new CustomerUnit(Repository.HomeContext()).Update(cost, id);
                         return Ok(Factory.Create(cost));
                     }
                     return NotFound();
@@ -84,7 +84,7 @@ namespace Task_API.Controllers
             }
             return NotFound();
         }
-        
+
         public IHttpActionResult Delete(int id)
         {
             try
@@ -99,7 +99,7 @@ namespace Task_API.Controllers
             }
             catch (Exception ex)
             {
-                 return BadRequest(ex.Message);
+                return BadRequest(ex.Message);
             }
         }
     }
