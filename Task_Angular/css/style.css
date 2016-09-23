@@ -241,3 +241,26 @@ tr {
     border:#008cba solid;
     width:80%;
 }
+#qtr p
+{
+    font-size:3vw;
+}
+
+.yearlyIncome {
+    margin-left:31%;
+}
+nav.navbar.navbar-inverse.navbar-fixed-top {
+    font-size:1.5vw;
+}
+td.col-md-2.ng-binding, td.col-md-1.ng-binding {
+    font-size:1.3vw;
+    font-weight:200;
+}
+th.col-md-3 h4, th.col-md-2 h4, th.col-md-1 h4 {
+    font-size:1.5vw;
+    font-weight:500;
+}
+
+.page-header h1 {
+    font-size:4vw;
+}

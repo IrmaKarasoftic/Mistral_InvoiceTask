@@ -17,7 +17,7 @@ namespace Task_API.Models
                 itModel.Id = i.Id;
                 itModel.Description = i.Item.Description;
                 itModel.Quantity = i.Quantity;
-                itModel.Price = i.Item.UnitPrice;
+                itModel.Price = i.Price;
                 items.Add(itModel);
             }
 
@@ -46,7 +46,7 @@ namespace Task_API.Models
                 Items = items,
                 Status = invoice.Status.ToString(),
                 Customer = invoice.Customer.Id,
-                CustomerName = invoice.Customer.Name,
+                Name = invoice.Customer.Name,
                 BillTo = bill,
                 ShipTo = ship,
                 IsDeleted = invoice.IsDeleted,

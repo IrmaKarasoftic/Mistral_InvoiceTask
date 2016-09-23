@@ -1,24 +1,20 @@
-﻿<div class="jumbotron text-center">
-    <h1>Welcome</h1>
-    </div>
-<div class="row">
-    <div class="col-md-5 col-md-offset-4">
-        <table id="q-graph">
-            <caption>Yearly Income</caption>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th class="sent" style="width:7vw;height:7vw; font-size:1.3vw">Yearly Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr  ng-repeat="income in incomes | orderBy : '+year'" class="qtr" id="q{{$index+1}}">
-                    <th scope="row">{{income.year}}</th>
-                    <td class="sent bar" style="height: {{income.total / 70}}%"><p>{{income.total | number:2}}</p></td>
-                </tr>
-            </tbody>
-        </table>
+﻿<div class="row">
+    <div class="yearlyIncome">
+
+        <h1 style="text-align:center"></h1>
+            <table id="q-graph">
+                <thead>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="income in incomes | orderBy : '+year'"  id="q{{$index+1}}" style="font-size:30px; color:black;">
+                        <th scope="row">{{income.year}}</th>
+                        <td class="sent bar" style="height: {{income.total / 70}}%; width:120px;"><p>{{income.total | number:2}}</p></td>
+                    </tr>
+                </tbody>
+            </table>
     </div>
 </div>
-
+<div class="jumbotron text-center">
+    <h1>Yearly Income</h1>
+</div>
 

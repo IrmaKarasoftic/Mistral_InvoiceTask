@@ -13,7 +13,7 @@ namespace Task_API.Models
         public List<InvoiceItemModel> Items { get; set; }
         public string Status { get; set; }
         public int Customer { get; set; }
-        public string CustomerName { get; set; }
+        public string Name { get; set; }
         public ShippingDetailsModel BillTo { get; set; }
         public ShippingDetailsModel ShipTo { get; set; }
         public bool IsDeleted { get; set; }
