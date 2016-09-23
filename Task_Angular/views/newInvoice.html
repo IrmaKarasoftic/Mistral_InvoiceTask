@@ -154,6 +154,7 @@
                 <tr>
                     <th class="col-md-1"><h4>ID</h4></th>
                     <th class="col-md-2"><h4>Description</h4></th>
+                    <th class="col-md-2"><h4>Store Qty</h4></th>
                     <th class="col-md-2"><h4>Amount</h4></th>
                     <th class="col-md-2"><h4>Quantity</h4></th>
                     <th class="col-md-2"><h4>Total</h4></th>
@@ -164,6 +165,7 @@
                 <tr ng-repeat="item in itemList">
                     <td class="col-md-1">{{item.id}}</td>
                     <td class="col-md-2">{{item.description}}</td>
+                    <td class="col-md-2">{{item.quantity - purchasedQuantity[$index]}}</td>
                     <td class="col-md-2">{{item.unitPrice}}</td>
                     <td>
                         <input class="form-control"
