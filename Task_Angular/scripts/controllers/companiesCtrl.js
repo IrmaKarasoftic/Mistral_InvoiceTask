@@ -32,7 +32,7 @@
             phoneNumber: null,
             isDeleted: false
         }
-        $scope.incorrect= false;
+        $scope.incorrect = false;
         $scope.validation = function () {
             if ($scope.newCompany.name === null ||
                $scope.newCompany.streetAddress === null ||
@@ -55,17 +55,27 @@
         }
 
         $scope.createNewCompany = function () {
-            $scope.validation();
-            if ($scope.incorrect) return;
-            dataService.create("companies", $scope.newCompany, function (data) {
-                if (data) {
-                    notificationsConfig.success("Company added");
-                }
-                else
-                    notificationsConfig.error("Adding companies failed!");
+            if ($scope.newCompany.name !== null &&
+                $scope.newCompany.streetAddress !== null &&
+                $scope.newCompany.city !== null &&
+                $scope.newCompany.zipCode !== null &&
+                $scope.newCompany.phoneNumber !== null
+                ) {
+                $scope.validation();
+                if ($scope.incorrect) return;
+                dataService.create("companies", $scope.newCompany, function (data) {
+                    if (data) {
+                        notificationsConfig.success("Company added");
+                    }
+                    else
+                        notificationsConfig.error("Adding companies failed!");
 
-                $scope.loadCompaniesInfo();
-            })
+                    $scope.loadCompaniesInfo();
+                })
+            }
+            else {
+                notificationsConfig.error("All fields must be filled in.");
+            }
         }
 
 
