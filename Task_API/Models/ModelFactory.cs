@@ -17,7 +17,7 @@ namespace Task_API.Models
                 itModel.Id = i.Id;
                 itModel.Description = i.Item.Description;
                 itModel.Quantity = i.Quantity;
-                itModel.Price = i.Item.UnitPrice;
+                itModel.Price = i.Price;
                 items.Add(itModel);
             }
 

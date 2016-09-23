@@ -56,11 +56,6 @@
         }
 
         $scope.updateInvoice = function () {
-            if ($scope.newCompany.name !== null &&
-                $scope.newCompany.streetAddress !== null &&
-                $scope.newCompany.city !== null &&
-                $scope.newCompany.zipCode !== null &&
-                $scope.newCompany.phoneNumber !== null) {
                 dataService.update("invoices", $scope.requestedInvoice.id, $scope.requestedInvoice, function (data) {
                     if (data) {
                         notificationsConfig.success("invoice updated");
@@ -70,10 +65,7 @@
                     $scope.editOff();
                 })
             }
-            else {
-                notificationsConfig.error("All fields must be filled in.");
-            }
-        }
+        
 
 
         $scope.calculateValues = function (invoice) {
