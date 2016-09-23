@@ -12,10 +12,7 @@
             {
                 dataService.read("invoiceItems", $scope.years[i]+"/aa", function (data) {
                     if (data) {
-                        $scope.income.push({
-                            year: $scope.years[i],
-                            incomeData : data
-                        });
+                        $scope.income.push(data);
                     }
                     else {
                         alert("error");
