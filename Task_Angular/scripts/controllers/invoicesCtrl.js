@@ -144,6 +144,7 @@
             dataService.create("emails", $scope.email, function (data) {
                 if (data) {
                     notificationsConfig.success("Email sent");
+                    $('#typeInEmailModal').modal('toggle');
                 }
                 else notificationsConfig.error("Sending Email failed!");
             })
