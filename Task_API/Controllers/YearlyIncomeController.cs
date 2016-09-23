@@ -14,7 +14,6 @@ namespace Task_API.Controllers
         public YearlyIncomeController(Repository<InvoiceItem> repo) : base(repo) { }
         public IHttpActionResult Get(int year)
         {
-            
             try
             {
                 YearlyIncomeModel yearlyIncome = Helpers.YearlyIncomeHelper.GetRevenueByYear(year, Repository.HomeContext());

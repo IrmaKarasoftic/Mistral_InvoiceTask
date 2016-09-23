@@ -13,17 +13,21 @@ namespace Task_API.Helpers
         {
             ModelFactory factory = new ModelFactory();
             YearlyIncomeModel model = new YearlyIncomeModel();
-            Repository<Invoice> companyRepository = new Repository<Invoice>(context);
+            Repository<InvoiceItem> invoiceRepository = new Repository<InvoiceItem>(context);
+            ItemModel iModel = new ItemModel();
             double total = 0;
-
-            foreach (var item in companyRepository.context.InvoiceItems)
+            var list = invoiceRepository.context.InvoiceItems.ToList();
+            foreach (var item in list)
             {
                 if (item.Invoice.Date.Year == year)
                 {
+                    
                     total += item.Item.UnitPrice * item.Item.Quantity;
-                    model.Items.Add(factory.Create(item.Item));
+                    iModel = factory.Create(item.Item);
+                    model.Items.Add(iModel);
                 }
             }
+            model.Total = total;
             return model;
         }
     }
