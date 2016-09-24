@@ -191,7 +191,6 @@
     <Compile Include="Controllers\InvoiceItemsController.cs" />
     <Compile Include="Controllers\InvoicesController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,7 +199,6 @@
     <Compile Include="Helpers\CustomerHelper.cs" />
     <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="Helpers\GenerateAnInvoice.cs" />
-    <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="Helpers\YearlyIncomeHelper.cs" />
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />

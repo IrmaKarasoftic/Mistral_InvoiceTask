@@ -24,6 +24,7 @@ namespace Task_API.Helpers
             invoice.Customer = context.Customers.Find(model.Customer);
             invoice.Status = (Status)Enum.Parse(typeof(Status), model.Status);
 
+            //a way to avoid a front-end problem when BillTo and Ship to are the same person - one of them is always null
             if (model.BillTo == null)
             {
                 invoice.BillTo = context.Customers.Find(model.ShipTo.Id);
