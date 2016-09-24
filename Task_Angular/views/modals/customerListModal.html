@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-if="billTo" ng-repeat="customer in customers | orderBy: '+name'" data-dismiss="modal" ng-click="customerTransferBillTo(customer)">
+                    <tr ng-if="billTo" ng-repeat="customer in customers | orderBy: '+name'" ng-click="customerTransferBillTo(customer)">
                         <td class="col-md-1">{{customer.id}}</td>
                         <td class="col-md-2">{{customer.name}}</td>
                         <td class="col-md-2">{{customer.companyName}}</td>
@@ -26,7 +26,7 @@
                         <td class="col-md-2">{{customer.city}}, {{customer.zipCode}}</td>
                         <td class="col-md-2">{{customer.phoneNumber}}</td>
                     </tr>
-                    <tr ng-if="shipTo" ng-repeat="customer in customers | orderBy: '+name'" data-dismiss="modal" ng-click="customerTransferShipTo(customer)">
+                    <tr ng-if="shipTo" ng-repeat="customer in customers | orderBy: '+name'" ng-click="customerTransferShipTo(customer)">
                         <td class="col-md-1">{{customer.id}}</td>
                         <td class="col-md-2">{{customer.name}}</td>
                         <td class="col-md-2">{{customer.companyName}}</td>
@@ -38,7 +38,7 @@
             </table>
         </div><!--end modal body-->
         <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" ng-click="closeCustomerListModal()">Close</button>
         </div><!--end modal footer-->
     </div><!--end modal content-->
 </div><!--end modal dialog-->

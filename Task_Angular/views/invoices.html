@@ -1,6 +1,6 @@
 ﻿<div>
     <h2><i class="fa fa-wpforms"></i>  Invoices Management</h2>
-    <a href="#/newinvoice" class="btn btn-primary pull-right"><strong>New Invoice</strong></a>
+    <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#newInvoiceModal" ng-click="startNewInvoice()"><strong>New Invoice</strong></button>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -27,7 +27,7 @@
                 </td>
                 <!--end on edit-->
                 <td class="col-md-2">
-                    <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" data-toggle="modal" data-target="#invoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-eye"></i></button>
+                    <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" data-toggle="modal" data-target="#viewInvoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-eye"></i></button>
                     <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" ng-click="editOn(invoice)"><i class="fa fa-pencil-square-o"></i></button>
                     <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" ng-click="removeOn(invoice)"><i class="fa fa-times"></i></button>
                     <!--on edit-->
@@ -44,6 +44,11 @@
     </table>
 </div>
 <!-- Invoice Modal -->
-<div class="modal fade" id="invoiceModal" role="dialog">
-    <div ng-include="'views/modals/invoiceModal.html'"></div>
+<div class="modal fade" id="viewInvoiceModal" role="dialog">
+    <div ng-include="'views/modals/viewInvoiceModal.html'"></div>
+</div><!--end modal-->
+
+<!-- New Invoice Modal -->
+<div class="modal fade" id="newInvoiceModal" role="dialog">
+    <div ng-include="'views/modals/newInvoiceModal.html'"></div>
 </div><!--end modal-->
