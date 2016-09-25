@@ -12,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="invoice in invoices">
+            <tr ng-repeat="invoice in invoices | orderBy:'-date'">
                 <td class="col-md-1">{{invoice.id}}</td>
                 <td class="col-md-2">{{invoice.date | date: 'mediumDate'}}</td>
                 <td class="col-md-2">{{invoice.name}}</td>
@@ -28,7 +28,8 @@
                 <!--end on edit-->
                 <td class="col-md-2">
                     <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" data-toggle="modal" data-target="#viewInvoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-eye"></i></button>
-                    <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" ng-click="editOn(invoice)"><i class="fa fa-pencil-square-o"></i></button>
+                    <button ng-hide="checkActions(invoice) || checkDraft(invoice)" class="btn btn-default btn-sm" ng-click="editOn(invoice)"><i class="fa fa-pencil-square-o"></i></button>
+                    <button ng-hide="checkActions(invoice) || !checkDraft(invoice)" class="btn btn-default btn-sm" data-toggle="modal" data-target="#editInvoiceModal" ng-click="editDraftInvoice(invoice)"><i class="fa fa-pencil-square-o"></i></button>
                     <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" ng-click="removeOn(invoice)"><i class="fa fa-times"></i></button>
                     <!--on edit-->
                     <button ng-show="checkEdit(invoice)" class="btn btn-default" ng-click="editOff()"><strong>Cancel</strong></button>
@@ -46,6 +47,11 @@
 <!-- Invoice Modal -->
 <div class="modal fade" id="viewInvoiceModal" role="dialog">
     <div ng-include="'views/modals/viewInvoiceModal.html'"></div>
+</div><!--end modal-->
+
+<!-- Edit Invoice Modal -->
+<div class="modal fade" id="editInvoiceModal" role="dialog">
+    <div ng-include="'views/modals/editInvoiceModal.html'"></div>
 </div><!--end modal-->
 
 <!-- New Invoice Modal -->

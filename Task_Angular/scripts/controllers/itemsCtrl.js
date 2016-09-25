@@ -33,12 +33,9 @@
                 $scope.newItem.unitPrice === 0 ||
                 typeof $scope.newItem.quantity !== "number" ||
                 typeof $scope.newItem.unitPrice !== "number") {
-                $scope.hideNewItemRow();
-                $scope.loadItemsInfo();
                 alert("Incorrect input");
                 $scope.incorrect = true;
                 return;
-                
             }
         }
 

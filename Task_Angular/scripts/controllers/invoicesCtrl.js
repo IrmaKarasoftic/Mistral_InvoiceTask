@@ -24,7 +24,7 @@
             { name: "Cancelled", value: 3 }
         ]
 
-
+        //
         $scope.loadInvoicesInfo = function () {
             dataService.list("invoices", function (data) {
                 if (data) {
@@ -134,7 +134,11 @@
             return $scope.checkEdit(invoice) || $scope.checkRemove(invoice);
         }
 
+        $scope.checkDraft = function (invoice) {
+            return invoice.status === "Draft";
+        }
 
+        
 
         $scope.emailTransfer = function (email) {
             $scope.email = email;
@@ -174,22 +178,27 @@
 
         ////////////////////////
         // Object instantiated for validation purposes
-        $scope.newInvoice = {
-            "id": 0,
-            "date": "",
-            "items": [],
-            "status": "Issued",
-            "customer": null,
-            "customerName": "",
-            "billTo": null,
-            "shipTo": null,
-            "isDeleted": false
+        $scope.newInvoice;
+        $scope.initializeNewInvoice = function () {
+            $scope.newInvoice = {
+                "id": 0,
+                "date": "",
+                "items": [],
+                "status": "Issued",
+                "customer": null,
+                "customerName": "",
+                "billTo": null,
+                "shipTo": null,
+                "isDeleted": false
+            }
         }
 
         // Instantiating date for new invoice
         $scope.startNewInvoice = function () {
+            $scope.initializeNewInvoice();
             $scope.newInvoice.date = new Date();
             $scope.newInvoice.date.toJSON();
+            $scope.calculateFinal();
         }
 
         // Object hard coded (unnecessary at the moment)
@@ -208,45 +217,32 @@
         $scope.isInList = false; // increase quantity if in list
         $scope.itemList = []; // list of items to be in invoice
         $scope.purchasedQuantity = []; // invoice item quantity, different from quantity in store
-
+        $scope.guestCustomer;
         $scope.billTo = false; // select customer button
         $scope.shipTo = false; // select customer button
-
+        $scope.billToCustomer;
+        $scope.shipToCustomer;
 
         //Customer ID for new invoice
-        $scope.getCustomerID = function (customer) {
+        $scope.newSetCustomerID = function (customer) {
             $scope.newInvoice.customer = customer.id;
         }
+        //Customer ID for existing invoice
+        $scope.editSetCustomerID = function (customer) {
+            $scope.requestedInvoice.customer = customer.id;
+        }
 
-        // Select customer button Bill To section
-        $scope.switchBillTo = function () {
-            $scope.billTo = true;
-            $scope.shipTo = false;
+        $scope.newSetBillTo = function (customer) {
+            $scope.newInvoice.billTo = customer;
+            $scope.billToCustomer = null;
         };
 
-        // Select customer button Ship To section
-        $scope.switchShipTo = function () {
-            $scope.billTo = false;
-            $scope.shipTo = true;
+        $scope.newSetShipTo = function (customer) {
+            $scope.newInvoice.shipTo = customer;
+            $scope.shipToCustomer = null;
         };
 
-        //Selection in modal
-        $scope.customerTransferBillTo = function (customer) {
-            $scope.newInvoice.billTo = $.extend(true, {}, customer);
-            $('#customerListModal').modal('toggle');
 
-        };
-
-        //Selection in modal
-        $scope.customerTransferShipTo = function (customer) {
-            $scope.newInvoice.shipTo = $.extend(true, {}, customer);
-            $('#customerListModal').modal('toggle');
-        };
-
-        //close button customer list modal
-        $scope.closeCustomerListModal = function () {
-            $('#customerListModal').modal('toggle');
-        };
         //Add item button
         $scope.pushToItemList = function (item) {
             $scope.selectedItem = item;
@@ -293,6 +289,23 @@
             $scope.tax = $scope.subTotal * $scope.taxRate;
             $scope.total = $scope.subTotal + $scope.tax;
         }
+
+        //initialize draft to newInvoice
+        $scope.editDraftInvoice = function (invoice) {
+            $scope.newInvoice = invoice;
+            $scope.newInvoice.date = new Date();
+            $scope.newInvoice.date.toJSON();
+            $scope.calculateValues($scope.newInvoice);
+            for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
+                for (var j = 0; j < $scope.items.length; j += 1)
+                    if ($scope.newInvoice.items[i].description === $scope.items[j].description)
+                    {
+                        $scope.itemList.push($scope.items[j]);
+                        $scope.purchasedQuantity.push($scope.newInvoice.items[i].quantity);
+                    }
+            }
+            $scope.listExists = true;
+        };
 
 
 
@@ -353,22 +366,25 @@
         }
 
         $scope.cancelNewInvoice = function () {
-            $scope.newInvoice = {
-                "id": 0,
-                "date": "",
-                "items": [],
-                "status": "Issued",
-                "customer": null,
-                "customerName": "",
-                "billTo": null,
-                "shipTo": null,
-                "isDeleted": false
-            }
+            $scope.initializeNewInvoice();
+            $scope.guestCustomer = null;
             $scope.itemList = [];
             $scope.listExists = false;
             $scope.selectedItem = null;
             $scope.calculateFinal();
             $('#newInvoiceModal').modal('toggle');
+            $scope.loadInvoicesInfo();
+        }
+
+        $scope.cancelEditDraftInvoice = function () {
+            $scope.initializeNewInvoice();
+            $scope.guestCustomer = null;
+            $scope.itemList = [];
+            $scope.listExists = false;
+            $scope.selectedItem = null;
+            $scope.calculateFinal();
+            $('#editInvoiceModal').modal('toggle');
+            $scope.loadInvoicesInfo();
         }
 
         $scope.loadInvoicesInfo();
