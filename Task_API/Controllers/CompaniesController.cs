@@ -17,6 +17,7 @@ namespace Task_API.Controllers
         {
             try
             {
+                //Get all companies that aren't deleted
                 var companies = Repository.Get().ToList().Select(x => Factory.Create(x)).ToList().Where(x => x.IsDeleted == false).ToList();
                 return Ok(companies);
             }

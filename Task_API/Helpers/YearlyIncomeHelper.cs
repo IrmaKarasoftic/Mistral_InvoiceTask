@@ -18,6 +18,7 @@ namespace Task_API.Helpers
             ItemModel iModel = new ItemModel();
             double total = 0;
             var list = invoiceRepository.context.InvoiceItems.ToList();
+            //Go through a list, and add the price of every sold item
             foreach (var item in list)
             {
                 if (item.Invoice.Date.Year == year && item.Invoice.Status == Status.Paid)
