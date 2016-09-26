@@ -452,7 +452,7 @@
                     notificationsConfig.success("invoice updated");
                 } else
                     notificationsConfig.error("Error");
-                $('#newInvoiceModal').modal('toggle');
+                $scope.cancelEditDraftInvoice();
                 $scope.loadInvoicesInfo();
             });
         }
