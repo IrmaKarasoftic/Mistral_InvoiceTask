@@ -94,17 +94,18 @@
                     $scope.incorrect = false;
                     return;
                 }
-            dataService.update("companies", $scope.editCompany.id, $scope.editCompany, function (data) {
-                $scope.loadCompaniesInfo();
-                if (data) {
-                    notificationsConfig.success("Company updated");
-                }
-                else {
-                    notificationsConfig.error("Company update failed");
-                }
-                $scope.editOff();
+                dataService.update("companies", $scope.editCompany.id, $scope.editCompany, function (data) {
+                    $scope.loadCompaniesInfo();
+                    if (data) {
+                        notificationsConfig.success("Company updated");
+                    }
+                    else {
+                        notificationsConfig.error("Company update failed");
+                    }
+                    $scope.editOff();
 
-            })
+                })
+            }
         }
 
         $scope.removeCompany = function () {
