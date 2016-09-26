@@ -32,7 +32,7 @@
 
         $scope.newCustomer = {
             id: null,
-            name: null,
+            name: "",
             company: null
         }
         $scope.charsAndNumbers = "^[a-zA-Z0-9]*$";
@@ -40,13 +40,13 @@
         $scope.cancelCustomer = function () {
             $scope.newCustomer = {
                 id: null,
-                name: null,
+                name: "",
                 company: null
             }
         }
 
         $scope.createNewCustomer = function () {
-            if ($scope.newCustomer.name === null ||
+            if ($scope.newCustomer.name === "" ||
                 $scope.newCustomer.company === null) {
                 notificationsConfig.error("All fields must be filled in!");
                 return;
@@ -63,6 +63,11 @@
 
 
         $scope.updateCustomer = function () {
+            if ($scope.newCustomer.name === "" ||
+    $scope.newCustomer.company === null) {
+                notificationsConfig.error("All fields must be filled in!");
+                return;
+            }
             dataService.update("customers", $scope.editCustomer.id, $scope.editCustomer, function (data) {
                 $scope.loadCustomersInfo();
                 if (data) {

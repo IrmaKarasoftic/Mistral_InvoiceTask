@@ -24,19 +24,19 @@
 
         $scope.newCompany = {
             id: null,
-            name: null,
-            company: null,
-            streetAddress: null,
-            city: null,
+            name: "",
+            company: "",
+            streetAddress: "",
+            city: "",
             zipCode: null,
             phoneNumber: null,
             isDeleted: false
         }
         $scope.incorrect = false;
         $scope.validation = function () {
-            if ($scope.newCompany.name === null ||
-               $scope.newCompany.streetAddress === null ||
-               $scope.newCompany.city === null ||
+            if ($scope.newCompany.name === "" ||
+               $scope.newCompany.streetAddress === "" ||
+               $scope.newCompany.city === "" ||
                $scope.newCompany.zipCode === null ||
                $scope.newCompany.phoneNumber === null) {
                 alert("All fields must be filled in.");
@@ -55,14 +55,17 @@
         }
 
         $scope.createNewCompany = function () {
-            if ($scope.newCompany.name !== null &&
-                $scope.newCompany.streetAddress !== null &&
-                $scope.newCompany.city !== null &&
+            if ($scope.newCompany.name !== "" &&
+                $scope.newCompany.streetAddress !== "" &&
+                $scope.newCompany.city !== "" &&
                 $scope.newCompany.zipCode !== null &&
                 $scope.newCompany.phoneNumber !== null
                 ) {
                 $scope.validation();
-                if ($scope.incorrect) return;
+                if ($scope.incorrect) {
+                    $scope.incorrect = false;
+                    return;
+                }
                 dataService.create("companies", $scope.newCompany, function (data) {
                     if (data) {
                         notificationsConfig.success("Company added");
@@ -80,6 +83,17 @@
 
 
         $scope.updateCompany = function () {
+            if ($scope.newCompany.name !== "" &&
+                $scope.newCompany.streetAddress !== "" &&
+                $scope.newCompany.city !== "" &&
+                $scope.newCompany.zipCode !== null &&
+                $scope.newCompany.phoneNumber !== null
+                ) {
+                $scope.validation();
+                if ($scope.incorrect) {
+                    $scope.incorrect = false;
+                    return;
+                }
             dataService.update("companies", $scope.editCompany.id, $scope.editCompany, function (data) {
                 $scope.loadCompaniesInfo();
                 if (data) {

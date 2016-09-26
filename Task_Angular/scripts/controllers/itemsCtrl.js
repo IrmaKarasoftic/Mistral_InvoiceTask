@@ -9,7 +9,7 @@
 
         $scope.newItem = {
             id: null,
-            description: null,
+            description: "",
             quantity: null,
             unitPrice: null,
             isDeleted: false
@@ -29,6 +29,7 @@
         $scope.incorrect= false;
         $scope.validation = function () {
             if ($scope.newItem === null ||
+                $scope.newItem.description === "" ||
                 $scope.newItem.quantity === 0 ||
                 $scope.newItem.unitPrice === 0 ||
                 typeof $scope.newItem.quantity !== "number" ||
@@ -41,7 +42,10 @@
 
         $scope.createNewItem = function () {
             $scope.validation();
-            if ($scope.incorrect) return;
+            if ($scope.incorrect) {
+                $scope.incorrect = false;
+                return;
+            }
             dataService.create("items", $scope.newItem, function (data) {
                 if (data)
                 {
@@ -56,6 +60,10 @@
 
         $scope.updateItem = function () {
             $scope.validation();
+            if ($scope.incorrect) {
+                $scope.incorrect = false;
+                return;
+            }
             dataService.update("items", $scope.newItem.id, $scope.newItem, function (data) {
                 if (data) {
                     notificationsConfig.success("Item updated");
