@@ -11,12 +11,28 @@
                     Date: {{newInvoice.date | date: medium-date}}
                     <br />
                     CustomerID:
-                    <input type="number" class="form-control" ng-model="newInvoice.customer" placeholder="#" readonly>
-                    <select ng-model="guestCustomer"
-                            class="form-control"
-                            ng-options="customer.name for customer in customers"
-                            ng-change="newSetCustomerID(guestCustomer)">
-                        <option value="" disabled selected>- Select Customer -</option>
+                    <div class="row">
+                        <div class="col-md-4"><input type="number" class="form-control" ng-model="newInvoice.customer" placeholder="#" readonly></div>
+                        <div class="col-md-8">
+                            <select class="form-control"
+                                    ng-model="guestCustomer"
+                                    ng-options="customer.name for customer in customers"
+                                    ng-change="newSetCustomerID(guestCustomer)">
+                                <option value="" disabled selected>- Select Customer -</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    Status:
+                    <select class="form-control"
+                            ng-model="newInvoice.status"
+                            ng-options="statusType.value as statusType.name for statusType in statusTypes">
+                        <option value="" disabled selected>- Select Status -</option>
                     </select>
                 </div>
                 <br />
@@ -131,7 +147,7 @@
             </div>
         </div><!--end modal body-->
         <div class="modal-footer bg-info">
-            <button class="btn btn-primary" ng-click="updateInvoice()">Submit</button>
+            <button class="btn btn-primary" ng-click="updateDraftInvoice()">Submit</button>
             <button class="btn btn-danger" ng-click="cancelEditDraftInvoice()">Cancel</button>
         </div><!--end modal footer-->
     </div><!--end modal content-->

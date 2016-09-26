@@ -79,6 +79,8 @@
             })
         }
 
+        
+
 
 
         $scope.calculateValues = function (invoice) {
@@ -242,19 +244,30 @@
             $scope.shipToCustomer = null;
         };
 
+        //filter quantity 0
+        $scope.notZero = function (quantity) {
+            return quantity !== 0;
+        };
+
+
 
         //Add item button
         $scope.pushToItemList = function (item) {
             $scope.selectedItem = item;
             if ($scope.selectedItem === null) return;
+            if ($scope.selectedItem.quantity === 0) {
+                alert("Quantity of this item reached 0.");
+                return;
+            }
             if (!$scope.listExists)
                 $scope.listExists = true;
             // if item is in list increase its quantity
             for (var i = 0; i < $scope.itemList.length; i += 1)
                 if ($scope.selectedItem === $scope.itemList[i]) {
                     $scope.isInList = true;
+                    if ($scope.itemList[i].quantity - $scope.purchasedQuantity[i] >= 0)
                     $scope.purchasedQuantity[i] += 1;
-                }
+                    }
             if (!$scope.isInList) {
                 $scope.itemList.push($scope.selectedItem);
                 $scope.purchasedQuantity.push(1);
@@ -300,7 +313,14 @@
                 for (var j = 0; j < $scope.items.length; j += 1)
                     if ($scope.newInvoice.items[i].description === $scope.items[j].description)
                     {
-                        $scope.itemList.push($scope.items[j]);
+                        $scope.itemList.push({
+                            id:             $scope.newInvoice.items[i].id,
+                            description:    $scope.newInvoice.items[i].description,
+                            quantity:       $scope.items[j].quantity,
+                            invoiceId:      $scope.newInvoice.id,
+                            itemId:         $scope.items[j].id,
+                            unitPrice:          $scope.items[j].unitPrice
+                        });
                         $scope.purchasedQuantity.push($scope.newInvoice.items[i].quantity);
                     }
             }
@@ -310,7 +330,7 @@
 
 
         // Separate function to be used in createNewInvoice
-        $scope.pushItemToInvoice = function (i) { // i from loop
+        $scope.pushItemToNewInvoice = function (i) { // i from loop
             $scope.newInvoice.items.push({
                 description: $scope.itemList[i].description,
                 quantity: $scope.purchasedQuantity[i],
@@ -319,6 +339,19 @@
                 price: $scope.itemList[i].unitPrice
             })
         }
+
+        $scope.pushItemToDraftInvoice = function (i) { // i from loop
+            $scope.newInvoice.items.push({
+                id : $scope.itemList[i].id,
+                description: $scope.itemList[i].description,
+                quantity: $scope.purchasedQuantity[i],
+                invoiceId: $scope.newInvoice.id,
+                itemId: $scope.itemList[i].itemId,
+                price: $scope.itemList[i].unitPrice
+            })
+        }
+
+
 
         $scope.createNewInvoice = function () {
             // Validation
@@ -333,7 +366,7 @@
                         $scope.newInvoice.id = data;
                         //Push all items from itemList to newInvoice
                         for (var i = 0; i < $scope.itemList.length; i += 1)
-                            $scope.pushItemToInvoice(i);
+                            $scope.pushItemToNewInvoice(i);
                         //Generate all items from newInvoice as invoiceItem models respectively
                         for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
                             dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
@@ -363,6 +396,50 @@
             else {
                 notificationsConfig.error("All fields must be filled in.");
             }
+        }
+
+        $scope.updateDraftInvoice = function () {
+            $scope.newInvoice.items = [];
+            //Push all items from itemList to newInvoice
+            for (var i = 0; i < $scope.itemList.length; i += 1)
+                $scope.pushItemToDraftInvoice(i);
+            console.log($scope.newInvoice);
+            dataService.update("invoices", $scope.newInvoice.id, $scope.newInvoice, function (data) {
+                if (data) {
+                    for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
+                        if ($scope.newInvoice.items[i].id !== null)
+                        dataService.update("invoiceitems", $scope.newInvoice.items[i].itemId, $scope.newInvoice.items[i], function (data) {
+                            if (data) {
+                            }
+                            else
+                                notificationsConfig.error("error while updating invoice items");
+                        })
+                        else
+                            dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
+                                if (data) {
+                                }
+                                else
+                                    notificationsConfig.error("error while generating invoice items");
+                            })
+                    }
+                    //Update all store quantities for corresponding items in DraftInvoice
+                    for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
+                        $scope.itemList[i].quantity = $scope.itemList[i].quantity - $scope.newInvoice.items[i].quantity;
+                        dataService.update("items", $scope.itemList[i].itemId, {
+                            id: $scope.itemList[i].itemId,
+                            description: $scope.itemList[i].description,
+                            quantity: $scope.itemList[i].quantity,
+                            unitPrice: $scope.itemList[i].unitPrice,
+                            isDeleted: false
+                        }, function (data) {
+                            if (data) { }
+                            else notificationsConfig.error("error while updating item quantity");
+                        })
+                    }
+                    notificationsConfig.success("invoice updated");
+                } else
+                    notificationsConfig.error("Error");
+            });
         }
 
         $scope.cancelNewInvoice = function () {
