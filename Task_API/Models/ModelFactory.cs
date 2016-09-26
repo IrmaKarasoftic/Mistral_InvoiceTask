@@ -25,7 +25,7 @@ namespace Task_API.Models
             {
                 CompanyName = invoice.BillTo.Company.Name,
                 StreetAddress = invoice.BillTo.Company.StreetAddress,
-                CustomerName = invoice.BillTo.Name,
+                Name = invoice.BillTo.Name,
                 PhoneNumber = invoice.BillTo.Company.phoneNumber,
                 City = invoice.BillTo.Company.city,
                 ZipCode = invoice.BillTo.Company.zipCode,
@@ -34,7 +34,7 @@ namespace Task_API.Models
             {
                 CompanyName = invoice.ShipTo.Company.Name,
                 StreetAddress = invoice.ShipTo.Company.StreetAddress,
-                CustomerName = invoice.ShipTo.Name,
+                Name = invoice.ShipTo.Name,
                 PhoneNumber = invoice.ShipTo.Company.phoneNumber,
                 City = invoice.ShipTo.Company.city,
                 ZipCode = invoice.ShipTo.Company.zipCode

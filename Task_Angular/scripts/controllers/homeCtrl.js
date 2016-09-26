@@ -9,7 +9,7 @@
 
         $scope.loadIncomes = function () {
             for (var i = 0; i < $scope.years.length; i += 1) {
-                dataService.read("invoiceItems", $scope.years[i] + "/aa", function (data) {
+                dataService.read("yearlyIncome", $scope.years[i], function (data) {
                     if (data) {
                         $scope.incomes.push(data);
                     }
