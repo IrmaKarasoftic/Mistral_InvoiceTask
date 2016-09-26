@@ -385,7 +385,13 @@
                         //Update all store quantities for corresponding items in newInvoice
                         for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
                             $scope.itemList[i].quantity = $scope.itemList[i].quantity - $scope.newInvoice.items[i].quantity
-                            dataService.update("items", $scope.itemList[i].itemId, $scope.itemList[i], function (data) {
+                            dataService.update("items", $scope.itemList[i].itemId, {
+                                id: $scope.itemList[i].itemId,
+                                description: $scope.itemList[i].description,
+                                quantity: $scope.itemList[i].quantity,
+                                unitPrice: $scope.itemList[i].unitPrice,
+                                isDeleted: false
+                            }, function (data) {
                                 if (data) { }
                                 else notificationsConfig.error("error while updating item quantity");
                             })
@@ -395,7 +401,7 @@
                     else
                         notificationsConfig.error("Error in invoice!");
                     //window.location = "#/invoices"; // If invoice is created send the user to invoices view
-                    $('#newInvoiceModal').modal('toggle');
+                    $scope.cancelNewInvoice();
                     $scope.loadInvoicesInfo();
                 })
             }
@@ -446,6 +452,8 @@
                     notificationsConfig.success("invoice updated");
                 } else
                     notificationsConfig.error("Error");
+                $('#newInvoiceModal').modal('toggle');
+                $scope.loadInvoicesInfo();
             });
         }
 
