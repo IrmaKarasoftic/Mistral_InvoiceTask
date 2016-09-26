@@ -263,13 +263,14 @@
                 $scope.listExists = true;
             // if item is in list increase its quantity
             for (var i = 0; i < $scope.itemList.length; i += 1)
-                if ($scope.selectedItem === $scope.itemList[i]) {
+                if ($scope.selectedItem.description === $scope.itemList[i].description) {
                     $scope.isInList = true;
                     if ($scope.itemList[i].quantity - $scope.purchasedQuantity[i] >= 0)
                     $scope.purchasedQuantity[i] += 1;
                     }
             if (!$scope.isInList) {
                 $scope.itemList.push({
+                    id: null,
                     itemId: $scope.selectedItem.id,
                     description: $scope.selectedItem.description,
                     quantity: $scope.selectedItem.quantity,
@@ -412,6 +413,7 @@
             dataService.update("invoices", $scope.newInvoice.id, $scope.newInvoice, function (data) {
                 if (data) {
                     for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
+                        console.log($scope.newInvoice.items[i].id);
                         if ($scope.newInvoice.items[i].id !== null)
                         dataService.update("invoiceitems", $scope.newInvoice.items[i].itemId, $scope.newInvoice.items[i], function (data) {
                             if (data) {
