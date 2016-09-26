@@ -61,7 +61,7 @@
             $scope.requestedInvoice.isDeleted = true;
             dataService.update("invoices", $scope.requestedInvoice.id, $scope.requestedInvoice, function (data) {
                 if (data) {
-                    notificationsConfig.success("invoice removed");
+                    notificationsConfig.success("Invoice removed");
                     $scope.loadInvoicesInfo();
                 }
                 else notificationsConfig.error("Error");
@@ -71,7 +71,7 @@
         $scope.updateInvoice = function () {
             dataService.update("invoices", $scope.requestedInvoice.id, $scope.requestedInvoice, function (data) {
                 if (data) {
-                    notificationsConfig.success("invoice updated");
+                    notificationsConfig.success("Invoice updated");
                 }
                 else
                     notificationsConfig.error("Error");
@@ -449,7 +449,7 @@
                             else notificationsConfig.error("error while updating item quantity");
                         })
                     }
-                    notificationsConfig.success("invoice updated");
+                    notificationsConfig.success("Invoice updated");
                 } else
                     notificationsConfig.error("Error");
                 $scope.cancelEditDraftInvoice();
