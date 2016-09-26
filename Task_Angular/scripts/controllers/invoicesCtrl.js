@@ -269,7 +269,12 @@
                     $scope.purchasedQuantity[i] += 1;
                     }
             if (!$scope.isInList) {
-                $scope.itemList.push($scope.selectedItem);
+                $scope.itemList.push({
+                    itemId: $scope.selectedItem.id,
+                    description: $scope.selectedItem.description,
+                    quantity: $scope.selectedItem.quantity,
+                    unitPrice: $scope.selectedItem.unitPrice
+                });
                 $scope.purchasedQuantity.push(1);
             }
             // Reset variables needed in this function and calculate totals
@@ -335,7 +340,7 @@
                 description: $scope.itemList[i].description,
                 quantity: $scope.purchasedQuantity[i],
                 invoiceId: $scope.newInvoice.id,
-                itemId: $scope.itemList[i].id,
+                itemId: $scope.itemList[i].itemId,
                 price: $scope.itemList[i].unitPrice
             })
         }
@@ -379,7 +384,7 @@
                         //Update all store quantities for corresponding items in newInvoice
                         for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
                             $scope.itemList[i].quantity = $scope.itemList[i].quantity - $scope.newInvoice.items[i].quantity
-                            dataService.update("items", $scope.itemList[i].id, $scope.itemList[i], function (data) {
+                            dataService.update("items", $scope.itemList[i].itemId, $scope.itemList[i], function (data) {
                                 if (data) { }
                                 else notificationsConfig.error("error while updating item quantity");
                             })
