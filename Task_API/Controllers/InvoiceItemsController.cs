@@ -40,21 +40,7 @@ namespace Task_API.Controllers
             }
         }
         
-        [Route("api/invoiceItems/{year}/{aa}")]
-        [HttpGet]
-        public IHttpActionResult GetByYear(int year, string foo = "aa")
-        {
-            try
-            {
-                YearlyIncomeModel yearlyIncome = Helpers.YearlyIncomeHelper.GetRevenueByYear(year, Repository.HomeContext());
-                if (yearlyIncome != null) return Ok(yearlyIncome);
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+       
         public IHttpActionResult Post(InvoiceItemModel invoiceItem)
         {
             if (invoiceItem != null)
