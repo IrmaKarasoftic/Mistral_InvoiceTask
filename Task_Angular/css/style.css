@@ -13,3 +13,27 @@
 #editInvoiceModal {
     overflow-y:scroll;
 }
+
+#qtr p
+{
+    font-size:3vw;
+}
+
+.yearlyIncome {
+    margin-left:31%;
+}
+.yearlyIncome p {
+    font-size:1.4vw;
+}
+.yearlyIncome th.ng-binding {
+    font-size:1.4vw;
+
+}
+nav.navbar.navbar-inverse.navbar-fixed-top {
+    font-size:1.2vw;
+}
+
+
+.page-header h1 {
+    font-size:3vw;
+}
